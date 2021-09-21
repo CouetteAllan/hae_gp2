@@ -154,8 +154,7 @@
     <ClCompile Include="ConsoleApplication1.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="A.hpp" />
-    <ClInclude Include="B.hpp" />
+    <ClInclude Include="Toto.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

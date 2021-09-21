@@ -2,13 +2,13 @@
 //
 
 #include <iostream>
-
+#include "Toto.h"
 
 namespace GP2 {
 
 }
 
-int main()
+/*int main0()
 {
     std::cout << "Hello World!\n";
 	printf("0\n");
@@ -23,6 +23,27 @@ int main()
 	printf("%s\n", "toto");
 
 	printf("%lli", 123456789123456789);
+
+	//std::cout << "123456789123456789" << std::endl;
+}*/
+
+
+int main()
+{
+	printf("0\n");
+	//allocation statique,
+	//l'instance est sur la pile / stack
+
+	Toto tStatic;
+
+	printf("%.1f", tStatic.x);
+
+	//garde pour plus tard
+	//allocation dynamique
+	Toto*tDynamic = new Toto();
+
+	return 0;
+
 }
 
 // Exécuter le programme : Ctrl+F5 ou menu Déboguer > Exécuter sans débogage
