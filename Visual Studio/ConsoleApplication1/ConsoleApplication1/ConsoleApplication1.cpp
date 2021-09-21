@@ -3,9 +3,26 @@
 
 #include <iostream>
 
+
+namespace GP2 {
+
+}
+
 int main()
 {
     std::cout << "Hello World!\n";
+	printf("0\n");
+
+	int zero = 0;
+	
+	printf("%i\n",zero);
+
+
+	printf("%.1f\n", 0.5);
+
+	printf("%s\n", "toto");
+
+	printf("%lli", 123456789123456789);
 }
 
 // Exécuter le programme : Ctrl+F5 ou menu Déboguer > Exécuter sans débogage
