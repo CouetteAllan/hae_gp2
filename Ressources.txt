@@ -4,3 +4,9 @@ site du zero
 google/youtube
 stack exchange
 https://www.learncpp.com/
+
+explorer par soi même certains mots clés:
+rendu, multithread, transform...
+
+Nehe Production
+
