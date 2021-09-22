@@ -2,14 +2,21 @@
 //
 
 #include <iostream>
+#include "Toto.h"
 
-int main()
+/*int main0()
 {
 	printf("%i \n", 0);
 	printf("%.1f \n", 0.5f);
 	printf("%s \n", "toto");
 	printf("%lli \n", 123456789123456789);
 	
+}*/
+
+int main() {
+	Toto tStatic;
+
+	printf("%.3f", tStatic.x);
 }
 
 // Exécuter le programme : Ctrl+F5 ou menu Déboguer > Exécuter sans débogage
