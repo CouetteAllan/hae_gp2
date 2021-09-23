@@ -58,6 +58,44 @@ struct Vec4 {
 };
 
 
+
+static int monObjet = 33;
+
+class B {
+public:
+    float cthullu = 0;
+};
+
+class A : public B {
+
+};
+
+int Strlen(const char* chaine) {
+    int nbr = 0;
+    int idx = 0;
+    while (chaine[idx] != 0) {
+        nbr++;
+        idx++;
+    }
+
+    return nbr;
+};
+
+
+int Countc(const char* maChaine, char c) {
+    //renvoie le nombre d'occurence de c dans maChaine;
+    int nbr = 0;
+    int size = Strlen(maChaine);
+
+    for (int i = 0; i < size; i++)
+    {
+        if (maChaine[i] == c)
+            nbr++;
+    }
+
+    return nbr;
+}
+
 int main()
 {
     /*int tab[] = { 0,1,2,3 };
@@ -106,19 +144,9 @@ int main()
 
     printf("%.2f %.2f %.2f %.2f\n", tata->x, tata->y, tata->z, tata->w);*/
 
-    int size = 20;
 
-    IntArray toto(size);
+    int nbA = Countc("bananananana", 'c');
 
-    for (int i = 0; i < size; i++)
-    {
-        toto.set(i, i * i);
-    }
-    
-    for (int i = 0; i < size; i++)
-    {
-        printf("%i\n", toto.get(i));
-    }
-    return 0;
+    printf("nombre de c: %d", nbA);
 }
 
