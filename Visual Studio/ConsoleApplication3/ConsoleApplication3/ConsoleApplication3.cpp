@@ -71,14 +71,12 @@ class A : public B {
 };
 
 int Strlen(const char* chaine) {
-    int nbr = 0;
     int idx = 0;
     while (chaine[idx] != 0) {
-        nbr++;
         idx++;
     }
 
-    return nbr;
+    return idx;
 };
 
 
