@@ -4,10 +4,53 @@
 #include <iostream>
 
 
-struct Vec {
+struct Vec4 {
     float x = 0;
     float y = 0;
     float z = 0;
+    float w = 0;
+
+    /*void Add(Vec4* vector) {
+        x += vector->x;
+        y += vector->y;
+        z += vector->z;
+        w += vector->w;
+    };*/
+
+    Vec4 add(Vec4 v) {
+        Vec4 res;
+        res.x = x + v.x;
+        res.y = y + v.y;
+        res.z = z + v.z;
+        res.w = w + v.w;
+        return res;
+    };
+
+    void Incr(float n) {
+        x += n;
+        y += n;
+        z += n;
+        w += n;
+    };
+
+    void Div(Vec4* vector) {
+        x /= vector->x;
+        y /= vector->y;
+        z /= vector->z;
+        w /= vector->w;
+    };
+    
+    void Mult(Vec4* vector) {
+        x *= vector->x;
+        y *= vector->y;
+        z *= vector->z;
+        w *= vector->w;
+    };
+};
+
+struct Array {
+    //int borne max ?
+    //remplir ce tableau
 };
 
 int main()
@@ -31,14 +74,34 @@ int main()
 
     //printf("%d\n", ++*c); //prend le contenu de c et incremente le */
 
-    //Vec toto;
-    Vec* toto = new Vec();
+    /*Vec4 toto;
 
-    toto->y = 67;//(*toto).y = 67;
-    (*toto).x = 42;
-    toto->z = 7;
+    toto.x = 42;
+    toto.y = 67;
+    toto.z = 7;
+    toto.w = 18;
 
-    printf("%.1f %.1f %.1f", toto->x, toto->y, toto->z);
+    
+
+
+    //toto->Incr(5);
+
+
+    Vec4 tata;
+    tata.x = 58;
+    tata.y = 33;
+    tata.z = 93;
+    tata.w = 82;
+    
+    Vec4 res = toto.add(tata);
+
+    printf("%.0f %.0f %.0f %.0f\n", res.x,res.y,res.z,res.w);
+
+    tata->Mult(toto);
+
+    printf("%.2f %.2f %.2f %.2f\n", tata->x, tata->y, tata->z, tata->w);*/
+
+    Array tableau;
     return 0;
 }
 
