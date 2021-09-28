@@ -142,9 +142,5 @@ int main()
 
     printf("%.2f %.2f %.2f %.2f\n", tata->x, tata->y, tata->z, tata->w);*/
 
-
-    int nbA = Countc("bananananana", 'c');
-
-    printf("nombre de c: %d", nbA);
 }
 
