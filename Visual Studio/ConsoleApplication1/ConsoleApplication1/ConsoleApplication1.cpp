@@ -4,6 +4,7 @@
 #include <iostream>
 #include "Toto.h"
 #include "Array.hpp"
+#include "LinkedList.hpp"
 
 
 int Strlen(const char* maChaine) {
@@ -47,17 +48,9 @@ void Strncpy(const char* source, char* destination, size_t num) {
 
 int main()
 {
-	char motA[10] = "banane";
-	char motB[20] = "";
-	const char* motC = "salade de fruit";
+	MyLinkedList* MaListe;
 
 
-	printf("%s\n", motA);
-	printf("%s\n", motB);
-	Strncpy(motA, motB,3);
-	printf("%s\n", motB);
-
-	printf("%s", motC);
 
 	/*int size = 10;
 
