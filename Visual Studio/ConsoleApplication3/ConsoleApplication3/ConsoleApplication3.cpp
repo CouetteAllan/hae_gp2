@@ -104,6 +104,20 @@ void Strcpy(const char* source, char* destination) {
 
 int main()
 {
+
+    char str1[20] = "Banane";
+    char str2[20] = "";
+
+    Strcpy(str1, str2);
+
+    printf("%s\n", str2);
+
+
+}
+
+int exoVecteur() {
+
+
     /*int tab[] = { 0,1,2,3 };
 
     int* c = &tab[0];
@@ -112,13 +126,13 @@ int main()
 
     //printf("%d\n",*c++); //incrémente c et prend le contenu
     //*c => pile
-    //afficher c 
+    //afficher c
     //incrementer la valeur
     //incremente c et prend le contenu
 
-    //printf("%d\n",(*c)++); // prend le contenu de c et incremente 
+    //printf("%d\n",(*c)++); // prend le contenu de c et incremente
 
-    //printf("%d\n", *++c); // incremente c et prend le contenu 
+    //printf("%d\n", *++c); // incremente c et prend le contenu
     //1 ?
 
     //printf("%d\n", ++*c); //prend le contenu de c et incremente le */
@@ -130,7 +144,7 @@ int main()
     toto.z = 7;
     toto.w = 18;
 
-    
+
 
 
     //toto->Incr(5);
@@ -141,7 +155,7 @@ int main()
     tata.y = 33;
     tata.z = 93;
     tata.w = 82;
-    
+
     Vec4 res = toto.add(tata);
 
     printf("%.0f %.0f %.0f %.0f\n", res.x,res.y,res.z,res.w);
@@ -149,14 +163,6 @@ int main()
     tata->Mult(toto);
 
     printf("%.2f %.2f %.2f %.2f\n", tata->x, tata->y, tata->z, tata->w);*/
-
-    char str1[20] = "Banane";
-    char str2[20] = "";
-
-    Strcpy(str1, str2);
-
-    printf("%s\n", str2);
-
-
+    return 0;
 }
 
