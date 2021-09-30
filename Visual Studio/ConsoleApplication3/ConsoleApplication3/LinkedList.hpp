@@ -112,12 +112,21 @@ public:
 
 	}
 
+	void RemoveAll() {
+		while (numberOfNode > 0) {
+			RemoveFirst();
+		}
+	}
+
 	
 	void PrintLinkedList() {
 		//print la data jusqu'à trouver un pointeur null qui signifie la fin ou alors jusqu'au node "last"
 		current = head;
-		if (current == NULL)
+		if (current == NULL) {
+			printf("Nothing to Print");
 			return;
+		}
+
 
 		printf("Printing: \n");
 

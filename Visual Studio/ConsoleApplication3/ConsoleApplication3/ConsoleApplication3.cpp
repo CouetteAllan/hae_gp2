@@ -126,6 +126,9 @@ int main()
     linkedList->RemoveLast();
     linkedList->PrintLinkedList();
 
+    linkedList->RemoveAll();
+    linkedList->PrintLinkedList();
+
 
 }
 
