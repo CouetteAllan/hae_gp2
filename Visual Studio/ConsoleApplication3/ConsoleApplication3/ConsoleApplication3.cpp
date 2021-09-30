@@ -111,10 +111,19 @@ int main()
     linkedList->AddBeginning(10);
     linkedList->AddBeginning(20);
     linkedList->AddLast(5);
+    linkedList->AddLast(6);
+    linkedList->AddLast(7);
+    linkedList->AddLast(200);
 
     linkedList->PrintLinkedList();
 
     linkedList->AddInPosition(2, 2);
+    linkedList->PrintLinkedList();
+
+    linkedList->RemoveFirst();
+    linkedList->PrintLinkedList();
+
+    linkedList->RemoveLast();
     linkedList->PrintLinkedList();
 
 

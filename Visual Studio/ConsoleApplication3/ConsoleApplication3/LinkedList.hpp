@@ -60,7 +60,7 @@ public:
 		Node* newNode = new Node(value);
 		current = head;
 
-		if (index == 0) {
+		if (index <= 0) {
 			AddBeginning(value);
 			return;
 		}
@@ -70,15 +70,45 @@ public:
 			return;
 		}
 
-		int n = 0;
-
-		while (n < index-1) {
-			n++;
+		for (size_t i = 0; i < index-1; i++)
+		{
 			current = current->next;
 		}
+
 		newNode->next = current->next;
 		current->next = newNode;
 		numberOfNode++;
+
+	}
+
+	void RemoveFirst() {
+
+		if (numberOfNode > 0) {
+			Node* temp = head;
+			head = head->next;
+			delete temp;
+
+			numberOfNode--;
+			if (numberOfNode == 0)
+				last = NULL;
+		}
+
+	}
+
+	void RemoveLast() {
+		if (numberOfNode > 0) {
+
+			current = head;
+			for (size_t i = 0; i < numberOfNode-2; i++)
+			{
+				current = current->next;
+			}
+			last = current;
+			delete last->next;
+			last->next = NULL;
+			numberOfNode--; 
+		}
+
 
 	}
 
