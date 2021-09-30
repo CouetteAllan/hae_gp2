@@ -114,6 +114,10 @@ int main()
 
     linkedList->PrintLinkedList();
 
+    linkedList->AddInPosition(2, 2);
+    linkedList->PrintLinkedList();
+
+
 }
 
 int exoVecteur() {

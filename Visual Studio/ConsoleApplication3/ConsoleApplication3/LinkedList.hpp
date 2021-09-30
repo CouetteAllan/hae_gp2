@@ -56,6 +56,32 @@ public:
 		numberOfNode++;
 	}
 
+	void AddInPosition(int value, int index) {
+		Node* newNode = new Node(value);
+		current = head;
+
+		if (index == 0) {
+			AddBeginning(value);
+			return;
+		}
+
+		if (index >= numberOfNode) {
+			AddLast(value);
+			return;
+		}
+
+		int n = 0;
+
+		while (n < index-1) {
+			n++;
+			current = current->next;
+		}
+		newNode->next = current->next;
+		current->next = newNode;
+		numberOfNode++;
+
+	}
+
 	
 	void PrintLinkedList() {
 		//print la data jusqu'à trouver un pointeur null qui signifie la fin ou alors jusqu'au node "last"
@@ -69,6 +95,7 @@ public:
 			printf("%i\n", current->data);
 			current = current->next;
 		}
+		printf("Number of nodes: %i\n", numberOfNode);
 
 	}
 
