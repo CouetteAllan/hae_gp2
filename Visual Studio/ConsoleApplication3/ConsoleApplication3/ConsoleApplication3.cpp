@@ -94,6 +94,14 @@ int Countc(const char* maChaine, char c) {
     return nbr;
 }
 
+void Strcpy(const char* source, char* destination) {
+    for (size_t i = 0; i < Strlen(source); i++)
+    {
+        destination[i] = source[i];
+    }
+}
+
+
 int main()
 {
     /*int tab[] = { 0,1,2,3 };
@@ -141,6 +149,15 @@ int main()
     tata->Mult(toto);
 
     printf("%.2f %.2f %.2f %.2f\n", tata->x, tata->y, tata->z, tata->w);*/
+
+    char str1[20] = "Banane";
+    char str2[20];
+
+    Strcpy(str2, str1);
+
+    printf("%s", str2);
+
+    return 0;
 
 }
 
