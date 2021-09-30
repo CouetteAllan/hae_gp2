@@ -23,6 +23,7 @@ class MyLinkedList {
 private:
 	Node* head;
 	Node* last;
+	Node* current = nullptr;
 	int numberOfNode;
 
 public:
@@ -55,6 +56,20 @@ public:
 		numberOfNode++;
 	}
 
+	
+	void PrintLinkedList() {
+		//print la data jusqu'à trouver un pointeur null qui signifie la fin ou alors jusqu'au node "last"
+		current = head;
+		if (current == NULL)
+			return;
 
+		printf("Printing: \n");
+
+		while (current != NULL) {
+			printf("%i\n", current->data);
+			current = current->next;
+		}
+
+	}
 
 };

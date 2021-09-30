@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include "IntArray.hpp"
+#include "LinkedList.hpp"
 
 
 struct Vec4 {
@@ -105,13 +106,13 @@ void Strcpy(const char* source, char* destination) {
 int main()
 {
 
-    char str1[20] = "Banane";
-    char str2[20] = "";
+    MyLinkedList* linkedList = new MyLinkedList();
 
-    Strcpy(str1, str2);
+    linkedList->AddBeginning(10);
+    linkedList->AddBeginning(20);
+    linkedList->AddLast(5);
 
-    printf("%s\n", str2);
-
+    linkedList->PrintLinkedList();
 
 }
 
