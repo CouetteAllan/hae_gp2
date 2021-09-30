@@ -151,13 +151,12 @@ int main()
     printf("%.2f %.2f %.2f %.2f\n", tata->x, tata->y, tata->z, tata->w);*/
 
     char str1[20] = "Banane";
-    char str2[20];
+    char str2[20] = "";
 
-    Strcpy(str2, str1);
+    Strcpy(str1, str2);
 
-    printf("%s", str2);
+    printf("%s\n", str2);
 
-    return 0;
 
 }
 
