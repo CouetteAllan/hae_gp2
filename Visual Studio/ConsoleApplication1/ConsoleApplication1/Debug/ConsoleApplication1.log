@@ -1,4 +1,6 @@
 ﻿  ConsoleApplication1.cpp
-c:\workspace\allan\hae_gp2\visual studio\consoleapplication1\consoleapplication1\consoleapplication1.cpp(24): warning C4018: '<' : incompatibilité signed/unsigned
-c:\workspace\allan\hae_gp2\visual studio\consoleapplication1\consoleapplication1\consoleapplication1.cpp(34): warning C4018: '<' : incompatibilité signed/unsigned
+c:\workspace\allan\hae_gp2\visual studio\consoleapplication1\consoleapplication1\linkedlist.hpp(74): warning C4018: '<' : incompatibilité signed/unsigned
+c:\workspace\allan\hae_gp2\visual studio\consoleapplication1\consoleapplication1\linkedlist.hpp(103): warning C4018: '<' : incompatibilité signed/unsigned
+c:\workspace\allan\hae_gp2\visual studio\consoleapplication1\consoleapplication1\consoleapplication1.cpp(25): warning C4018: '<' : incompatibilité signed/unsigned
+c:\workspace\allan\hae_gp2\visual studio\consoleapplication1\consoleapplication1\consoleapplication1.cpp(35): warning C4018: '<' : incompatibilité signed/unsigned
   ConsoleApplication1.vcxproj -> C:\WorkSpace\Allan\hae_gp2\Visual Studio\ConsoleApplication1\Debug\ConsoleApplication1.exe
