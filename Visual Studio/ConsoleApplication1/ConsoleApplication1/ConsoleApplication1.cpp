@@ -3,7 +3,7 @@
 
 #include <iostream>
 #include "Toto.h"
-#include "Array.hpp"
+#include "IntArray.hpp"
 #include "LinkedList.hpp"
 
 
@@ -65,7 +65,7 @@ void Strncpy2(const char* source, char* destination, size_t num) {
 int main()
 {
 
-	MyLinkedList* linkedList = new MyLinkedList();
+	/*MyLinkedList* linkedList = new MyLinkedList();
 
 	linkedList->AddBeginning(10);
 	linkedList->AddBeginning(20);
@@ -90,6 +90,17 @@ int main()
 	char chaine[250] = {};
 	Strcpy2(toto, chaine);
 
-	printf("%s", chaine);
+	printf("%s", chaine);*/
+
+	IntArray toto(5);
+	toto.Insert(10);
+	toto.Insert(8);
+	toto.Insert(12);
+	toto.Insert(5);
+	toto.Insert(9);
+	toto.Insert(1);
+
+	return 0;
+	
 
 }

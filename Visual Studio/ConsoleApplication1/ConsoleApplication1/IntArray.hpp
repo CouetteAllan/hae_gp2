@@ -1,6 +1,9 @@
 #pragma once
 #include <cstdlib>
+#include <utility>
 
+
+//#define MALLOC_VERSION
 class IntArray {
 	int* data = nullptr;
 	int size = 0;
@@ -28,6 +31,10 @@ public:
 	void set(int idx, int value);
 
 	void Resize(int newSize);
+
+	void Insert(int value);
+
+	void InsertAt(int idx, int value);
 
 	int get(int idx) {
 		//si indx est hors des bornes du tableau
