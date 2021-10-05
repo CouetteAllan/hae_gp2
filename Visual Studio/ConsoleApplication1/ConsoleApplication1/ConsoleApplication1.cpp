@@ -93,8 +93,8 @@ int main()
 	printf("%s", chaine);*/
 
 	IntArray toto(4);
-	for (int i = 0; i < 4; ++i)
-		toto.set(i, 2 * i);
+	for (int i = 0; i < 4; i++)
+		toto.set(i, -2 * i);
 	toto.Insert(3);
 	toto.Insert(7);
 	toto.Insert(9);
