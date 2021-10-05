@@ -17,43 +17,50 @@ void IntArray::set(int idx, int value)
 void IntArray::Resize(int newSize)
 {
 	if (size >= newSize)
+		// 	   sortir
 		return;
-
-	data = (int*)realloc(data, (newSize + 1) * sizeof(int));
-
-	for (size_t i = size; i < newSize; i++)
-	{
-		data[i] = 0;
-	}
-	size = (newSize + 1);
+#ifdef MALLOC_VERSION
+	data = (int*)realloc(data, newSize * sizeof(int));
+	memset(data + size, 0, (newSize - size) * sizeof(int));
+	size = newSize;
+#else
+	int* ndata = new int[newSize];
+	memset(ndata, 0, newSize * sizeof(int));
+	memcpy(ndata, data, size * sizeof(int));
+	int* oldData = data;
+	this->data = ndata;
+	delete oldData;
+	size = newSize;
+#endif
 }
 
 void IntArray::Insert(int value)
 {
-	int temp = 0;
-	int tempIdx = 0;
-	for (size_t i = 0; i < size; i++)
+	int idx = 0;
+	while ((idx < size) && (data[idx] < value))
 	{
-		if (data[i] > temp) {
-			temp = data[i];
-			tempIdx = i;
-		}
+		idx++;
 	}
-
-	Resize(size + 1);
-
-	set(tempIdx, temp);
-
+	InsertAt(idx, value);
 
 }
 
 void IntArray::InsertAt(int idx, int value)
 {
 	int sz = size;
-	Resize(std::max(idx+1, size + 1));
+	Resize(std::max<int>(idx+1, size + 1));
 
-	for (; sz >= idx; sz--)
+	for (; sz > idx; sz--)
 		data[sz] = data[sz - 1];
 	data[idx] = value;
 
+}
+
+static int cmp(const void * v0, const void * v1) {
+	return *(int*)v1 - *(int*)v0;
+}
+
+void IntArray::QSort()
+{
+	::qsort(data, size, sizeof(int), cmp);
 }

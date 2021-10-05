@@ -36,6 +36,8 @@ public:
 
 	void InsertAt(int idx, int value);
 
+	void QSort(/*void* arr, size_t elementCount, size_t elementSize,*/ );
+
 	int get(int idx) {
 		//si indx est hors des bornes du tableau
 		//faire throw exception:out of bounds;

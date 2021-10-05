@@ -92,14 +92,13 @@ int main()
 
 	printf("%s", chaine);*/
 
-	IntArray toto(5);
-	toto.Insert(10);
-	toto.Insert(8);
-	toto.Insert(12);
-	toto.Insert(5);
+	IntArray toto(4);
+	for (int i = 0; i < 4; ++i)
+		toto.set(i, 2 * i);
+	toto.Insert(3);
+	toto.Insert(7);
 	toto.Insert(9);
-	toto.Insert(1);
-
+	toto.QSort();
 	return 0;
 	
 
