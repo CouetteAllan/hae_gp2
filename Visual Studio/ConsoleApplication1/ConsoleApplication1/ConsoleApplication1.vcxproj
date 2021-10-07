@@ -152,10 +152,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="ConsoleApplication1.cpp" />
+    <ClCompile Include="IntArray.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Array.hpp" />
+    <ClInclude Include="BinaryTree.hpp" />
     <ClInclude Include="ConsoleApplication1.h" />
+    <ClInclude Include="IntArray.hpp" />
     <ClInclude Include="LinkedList.hpp" />
     <ClInclude Include="Toto.h" />
   </ItemGroup>
