@@ -4,6 +4,7 @@
 #include <iostream>
 #include "IntArray.hpp"
 #include "LinkedList.hpp"
+#include "IntList.hpp"
 
 
 struct Vec4 {
@@ -106,30 +107,19 @@ void Strcpy(const char* source, char* destination) {
 int main()
 {
 
-    MyLinkedList* linkedList = new MyLinkedList();
+    IntList* tata = (IntList*)malloc(sizeof(IntList));
+    tata->value = 70;
+    tata->next = nullptr;
 
-    linkedList->AddBeginning(10);
-    linkedList->AddBeginning(20);
-    linkedList->AddLast(5);
-    linkedList->AddLast(6);
-    linkedList->AddLast(7);
-    linkedList->AddLast(200);
+    tata = appendFirst(tata, 66);
+    tata = appendLast(tata, 67);
+    tata = appendLast(tata, 72);
+    tata = appendLast(tata, 55);
+    //if (length(tata) != 1) throw "alarm?";
+    //remove(tata, 66);
+    //if (length(tata) != 0) throw "alarm?";
 
-    linkedList->PrintLinkedList();
-
-    linkedList->AddInPosition(2, 2);
-    linkedList->PrintLinkedList();
-
-    linkedList->RemoveFirst();
-    linkedList->PrintLinkedList();
-
-    linkedList->RemoveLast();
-    linkedList->PrintLinkedList();
-
-    linkedList->RemoveAll();
-    linkedList->PrintLinkedList();
-
-
+    return 0;
 }
 
 int exoVecteur() {
