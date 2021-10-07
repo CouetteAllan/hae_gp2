@@ -5,6 +5,7 @@
 #include "IntArray.hpp"
 #include "LinkedList.hpp"
 #include "IntList.hpp"
+#include "IntTree.hpp"
 
 
 struct Vec4 {
@@ -106,15 +107,17 @@ void Strcpy(const char* source, char* destination) {
 
 int main()
 {
+    IntTree* toto = create(70);
 
-    IntList* tata = (IntList*)malloc(sizeof(IntList));
-    tata->value = 70;
-    tata->next = nullptr;
+    toto = insert(toto,75);
+    toto = insert(toto,74);
+    toto = insert(toto,76);
+    toto = insert(toto,65);
+    toto = insert(toto,25);
+    toto = insert(toto,30);
 
-    tata = appendFirst(tata, 66);
-    tata = appendLast(tata, 67);
-    tata = appendLast(tata, 72);
-    tata = appendLast(tata, 55);
+    toto = remove(toto, 75);
+
     //if (length(tata) != 1) throw "alarm?";
     //remove(tata, 66);
     //if (length(tata) != 0) throw "alarm?";
