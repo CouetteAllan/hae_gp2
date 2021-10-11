@@ -2,7 +2,6 @@
 
 int count(IntTree* head)
 {
-    int nbr = 0;
 
     if (!head)
         return 0;
