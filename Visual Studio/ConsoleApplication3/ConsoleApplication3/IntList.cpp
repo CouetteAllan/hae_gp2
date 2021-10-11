@@ -1,4 +1,4 @@
-#include "IntList.hpp"
+	#include "IntList.hpp"
 
 int length(IntList* l)
 {
@@ -54,9 +54,6 @@ IntList* remove(IntList* l, int value)
 	}
 	
 	
-
-
-
 }
 
 
