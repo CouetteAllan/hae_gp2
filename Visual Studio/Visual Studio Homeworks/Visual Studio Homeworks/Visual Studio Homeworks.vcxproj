@@ -151,9 +151,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="IntList.cpp" />
+    <ClCompile Include="IntTree.cpp" />
     <ClCompile Include="Visual Studio Homeworks.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="IntList.hpp" />
+    <ClInclude Include="IntTree.hpp" />
     <ClInclude Include="Toto.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
