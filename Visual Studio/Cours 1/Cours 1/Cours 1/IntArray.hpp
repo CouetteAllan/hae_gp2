@@ -1,6 +1,9 @@
 #pragma once
 #include <cstdlib>
 #include <utility>
+#include <functional>
+#include <iostream>
+
 
 
 //#define MALLOC_VERSION
@@ -35,6 +38,14 @@ public:
 	void Insert(int value);
 
 	void InsertAt(int idx, int value);
+
+	void Reverse();
+
+	void Iter(std::function<void(int)> f);
+
+	int Sum();
+
+	static IntArray* fromArray(int* data, int len);
 
 	void QSort(/*void* arr, size_t elementCount, size_t elementSize,*/ );
 

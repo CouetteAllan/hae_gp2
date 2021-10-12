@@ -10,7 +10,6 @@ void IntArray::set(int idx, int value)
 		throw "exception:out of bounds";
 	}
 
-	//récupérer la donnée à la case idx et l'affecter
 	data[idx] = value;
 }
 
@@ -54,6 +53,58 @@ void IntArray::InsertAt(int idx, int value)
 		data[sz] = data[sz - 1];
 	data[idx] = value;
 
+}
+
+
+void IntArray::Reverse()
+{
+	for (size_t i = 0; i < size / 2; i++)
+	{
+		int temp = data[size - i-1];
+		data[size - i-1] = data[i];
+		data[i] = temp;
+	}
+
+
+}
+
+void IntArray::Iter(std::function<void(int)> f)
+{
+	for (size_t i = 0; i < size; i++)
+	{
+		f(data[i]);
+	}
+
+}
+
+static double tempRes;
+
+int IntArray::Sum()
+{
+	tempRes = 0.0;
+
+	std::function<void(int)> add = [](int value) {
+
+		tempRes += value;
+
+	};
+
+	Iter(add);
+
+	return tempRes;
+
+}
+
+IntArray * IntArray::fromArray(int * data, int len)
+{
+	IntArray* copy = new IntArray(len);
+
+	for (size_t i = 0; i < len; i++)
+	{
+		copy->set(i, data[i]);
+	}
+
+	return copy;
 }
 
 static int cmp(const void * v0, const void * v1) {
