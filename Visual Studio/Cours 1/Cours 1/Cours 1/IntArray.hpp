@@ -47,6 +47,8 @@ public:
 
 	static IntArray* fromArray(int* data, int len);
 
+
+
 	void QSort(/*void* arr, size_t elementCount, size_t elementSize,*/ );
 
 	int get(int idx) {
