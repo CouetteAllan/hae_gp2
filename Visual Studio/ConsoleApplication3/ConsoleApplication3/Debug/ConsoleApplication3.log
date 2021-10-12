@@ -1,5 +1,0 @@
-﻿  ConsoleApplication3.cpp
-C:\Workshop\Allan\hae_gp2\Visual Studio\ConsoleApplication3\ConsoleApplication3\IntList.hpp(7,16): warning C4244: 'initialisation' : conversion de 'double' en 'int', perte possible de données
-C:\Workshop\Allan\hae_gp2\Visual Studio\ConsoleApplication3\ConsoleApplication3\IntTree.hpp(6,16): warning C4244: 'initialisation' : conversion de 'double' en 'int', perte possible de données
-C:\Workshop\Allan\hae_gp2\Visual Studio\ConsoleApplication3\ConsoleApplication3\ConsoleApplication3.cpp(101,26): warning C4018: '<' : incompatibilité signed/unsigned
-  ConsoleApplication3.vcxproj -> C:\Workshop\Allan\hae_gp2\Visual Studio\ConsoleApplication3\Debug\ConsoleApplication3.exe
