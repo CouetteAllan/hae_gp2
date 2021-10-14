@@ -118,16 +118,136 @@ int Div(int a, int b) {
 	return 1 + Div(Sub(a, b), b);
 }
 
-int Mod(int a, int b); // reste de la division
+int Mod(int a, int b) {
+	if (b == 0) {
+		throw "division by zero";
+	}
+	if (a == 0)
+		return 0;
+	if (b == 1)
+		return 0;
+	if (a < b)
+		return a;
+	else {
+		return Mod(Sub(a, b), b);
+	}
 
-int Len(int vecX, int vecY); // avec les fonctions precédentes
+}
+
+int Mod2(int a, int b) {
+	return a - Mul(Div(a, b) ,b);
+
+}
+
+int Sqr(int a) {
+	return Mul(a, a);
+}
 
 
+int Len(int vecX, int vecY) {
+	return 0;
+}
+
+
+int Strlen(const char* chaine) {
+	int idx = 0;
+	while (chaine[idx] != 0) {
+		idx++;
+	}
+
+	return idx;
+}
+int indx = 0;
+int StrlenRecursive(const char* chaine) {
+	if (nullptr == chaine) {
+		return 0;
+	}
+
+	if (*chaine == 0) {
+		return 0;
+	}
+
+	return 1 + StrlenRecursive(chaine + 1);
+	
+}
+
+
+void Strcpy(const char* source, char* destination) {
+	for (size_t i = 0; i < Strlen(source); i++)
+	{
+		destination[i] = source[i];
+	}
+}
+
+void StrcpyRecursive(const char* source, char* destination) {
+	if (nullptr == source) {
+		return;
+	}
+	if (nullptr == destination) {
+		return;
+	}
+
+	if (*source == 0) {
+		return;
+	}
+
+	*destination = *source;
+
+	StrcpyRecursive(source + 1, destination + 1);
+
+}
+
+void StrncpyRecursive(const char* source, char* destination, int nbChars) {
+	if (nullptr == source) {
+		return;
+	}
+	if (*source == 0) {
+		return;
+	}
+	*destination = *source;
+
+	nbChars--;
+	if (nbChars == 0)
+		return;
+
+	StrncpyRecursive(source + 1, destination + 1,nbChars);
+
+}
+
+void ZeroMemory(void* ptr, int nbByte) {
+	if (!ptr) {
+		return;
+	}
+	(char*)ptr = 0;
+
+
+	nbByte--;
+	if (nbByte == 0) {
+		return;
+	}
+	ZeroMemory(ptr, nbByte);
+}
+
+void Memcpy(const void* source, void* destination, int nbByte) {
+
+	if (nullptr == source) {
+		return;
+	}
+
+	*destination = *source;
+
+	nbByte--;
+	if (nbByte == 0)
+		return;
+	Memcpy(source + 1, destination + 1, nbByte);
+}
 
 int main() {
-	int c = Div(10, 2);
+	int c = Mod2(26, 3);
 
+	int nbrc = StrlenRecursive("Bonjour");
+	char tata[256] = {};
 
-
+	StrncpyRecursive("Bonsoir", tata,4);
 	return 0;
 }
