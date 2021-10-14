@@ -1,6 +1,8 @@
 ﻿  Cours 1.cpp
 C:\Workshop\Allan\hae_gp2\Visual Studio\Cours 1\Cours 1\Cours 1\Cours 1.cpp(27,23): warning C4018: '<' : incompatibilité signed/unsigned
 C:\Workshop\Allan\hae_gp2\Visual Studio\Cours 1\Cours 1\Cours 1\Cours 1.cpp(33,7): warning C4101: 'found' : variable locale non référencée
-C:\Workshop\Allan\hae_gp2\Visual Studio\Cours 1\Cours 1\Cours 1\Cours 1.cpp(176,23): warning C4018: '<' : incompatibilité signed/unsigned
-C:\Workshop\Allan\hae_gp2\Visual Studio\Cours 1\Cours 1\Cours 1\Cours 1.cpp(264,21): warning C4390: ';' : une instruction contrôlée a été trouvée vide ; est-ce ce que vous souhaitiez ?
+C:\Workshop\Allan\hae_gp2\Visual Studio\Cours 1\Cours 1\Cours 1\Cours 1.cpp(202,23): warning C4018: '<' : incompatibilité signed/unsigned
+C:\Workshop\Allan\hae_gp2\Visual Studio\Cours 1\Cours 1\Cours 1\Cours 1.cpp(290,21): warning C4390: ';' : une instruction contrôlée a été trouvée vide ; est-ce ce que vous souhaitiez ?
+C:\Workshop\Allan\hae_gp2\Visual Studio\Cours 1\Cours 1\Cours 1\Cours 1.cpp(93): warning C4715: 'AddExplicit' : les chemins de contrôle ne retournent pas tous une valeur
+C:\Workshop\Allan\hae_gp2\Visual Studio\Cours 1\Cours 1\Cours 1\Cours 1.cpp(127): warning C4715: 'MulExplicit' : les chemins de contrôle ne retournent pas tous une valeur
   Cours 1.vcxproj -> C:\Workshop\Allan\hae_gp2\Visual Studio\Cours 1\Cours 1\Debug\Cours 1.exe
