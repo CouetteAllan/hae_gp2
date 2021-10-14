@@ -84,6 +84,14 @@ int Add(int a, int b) {
 			return -1 + Add(a, b + 1);
 }
 
+int AddExplicit(int a, int b) {
+	if (b == 0)
+		return a;
+	else
+		if (b > 0)
+			return 1 + AddExplicit(a, b - 1);
+}
+
 int Sub(int a, int b) {
 	return Add(a, -b);
 }
@@ -215,39 +223,126 @@ void StrncpyRecursive(const char* source, char* destination, int nbChars) {
 }
 
 void ZeroMemory(void* ptr, int nbByte) {
-	if (!ptr) {
+	char* mem = (char*)ptr;
+
+	if (mem == nullptr) {
 		return;
 	}
-	(char*)ptr = 0;
+
+	*mem = 0;
 
 
 	nbByte--;
+
 	if (nbByte == 0) {
 		return;
 	}
-	ZeroMemory(ptr, nbByte);
+
+	ZeroMemory(mem + 1, nbByte);
 }
 
-void Memcpy(const void* source, void* destination, int nbByte) {
+void Memcpy2(const void* source, void* destination, int nbByte) {
+	const char* mem = (const char*)source;
+	char* mem2 = (char*)destination;
 
 	if (nullptr == source) {
 		return;
+	}if (nullptr == destination) {
+		return;
 	}
 
-	*destination = *source;
+	*mem2 = *mem;
 
 	nbByte--;
 	if (nbByte == 0)
 		return;
-	Memcpy(source + 1, destination + 1, nbByte);
+	Memcpy2(mem + 1, mem2 + 1, nbByte);
+}
+
+const char* StrChrRec(const char* str, char token) {
+	if (!str)
+		return nullptr;
+	if (*str == token)
+		return str;
+	else
+		return StrChrRec(str + 1, token);
+}
+
+bool IsPrefixe(const char* str, const char* sub) {
+	if (str == nullptr);
+
+
+
+	if (*sub == 0) {
+		return true;
+	}
+
+	if (*str != *sub) {
+		return false;
+	}
+	return IsPrefixe(str + 1, sub + 1);
+}
+
+const char* StrStrRec(const char* str, char* sub) {
+	if (!str)
+		return nullptr;
+	if (*str)
+		return nullptr;
+	if (!sub)
+		return nullptr;
+
+	if (IsPrefixe(str,sub))
+		return str;
+	else
+		return StrStrRec(str + 1, sub);
+}
+
+char* findEnd(char* str) {
+	if (str == nullptr)
+		return nullptr;
+	if (*str) {
+		return findEnd(str + 1);
+	}
+	else {
+		return str;
+	}
+}
+
+char* Strcat(const char* source,char* destination) {
+	if (nullptr == destination)
+		return nullptr;
+	
+	char* dstEnd = findEnd(destination);
+	StrcpyRecursive(source, dstEnd);
+	return destination;
+
+}
+
+int Strcmp(const char* a, const char* b) {
+	if (a == nullptr && b == nullptr) return 0;
+	if (a == nullptr) return -1;
+	if (b == nullptr) return 1;
+	if (!*a && *b)   return -1;
+	if (!*b && *a)   return 1;
+	if (!*b && !*a)  return 0;
+	return Strcmp(a + 1, b + 1);
 }
 
 int main() {
 	int c = Mod2(26, 3);
 
 	int nbrc = StrlenRecursive("Bonjour");
-	char tata[256] = {};
+	const char* toto = "Bravo le renard blanc";
+	char tota[] = "renard";
 
-	StrncpyRecursive("Bonsoir", tata,4);
+	
+	//char* tata = Strcat(toto, tota);
+	//tata = Strcat(tata, tota);
+
+	bool cas0 = Strcmp("sapin", "sapin") == 0;
+	bool casMinus1 = Strcmp("sapin", "Grandsapin") == -1;
+	bool cas1 = Strcmp("Grandsapin", "sapin") == 1;
+
+
 	return 0;
 }

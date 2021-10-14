@@ -2,4 +2,5 @@
 C:\Workshop\Allan\hae_gp2\Visual Studio\Cours 1\Cours 1\Cours 1\Cours 1.cpp(27,23): warning C4018: '<' : incompatibilité signed/unsigned
 C:\Workshop\Allan\hae_gp2\Visual Studio\Cours 1\Cours 1\Cours 1\Cours 1.cpp(33,7): warning C4101: 'found' : variable locale non référencée
 C:\Workshop\Allan\hae_gp2\Visual Studio\Cours 1\Cours 1\Cours 1\Cours 1.cpp(176,23): warning C4018: '<' : incompatibilité signed/unsigned
+C:\Workshop\Allan\hae_gp2\Visual Studio\Cours 1\Cours 1\Cours 1\Cours 1.cpp(264,21): warning C4390: ';' : une instruction contrôlée a été trouvée vide ; est-ce ce que vous souhaitiez ?
   Cours 1.vcxproj -> C:\Workshop\Allan\hae_gp2\Visual Studio\Cours 1\Cours 1\Debug\Cours 1.exe
