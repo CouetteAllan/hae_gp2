@@ -1,5 +1,6 @@
 
 #include <iostream>
+#include "Int64Array.hpp"
 
 int StrLen(const char* chaine) {
 	if (!chaine)
@@ -82,8 +83,8 @@ const char* StrChr(const char* dst, char c) {
 	return StrChr(dst + 1, c);
 }
 
-int main()
-{
+/*
+int mainRecursive() {
 	int c = StrLen("bonjour"); // 7
 	int cd = StrLen("");// 0
 	int ce = StrLen(nullptr);// 0
@@ -92,11 +93,25 @@ int main()
 	int minusOne = StrCmp("bonjour", "bonsoir");// -1
 	int zero = StrCmp("toto", "toto");// 0
 
-
 	const char* toto = StrStr("Bonjour le monde", "le monde");//le monde
 
 	const char* tata = StrChr("Hello World", 'o');
 
 	return 0;
+}*/
 
+int main()
+{
+	Int64Array tablo(15);
+	for (size_t i = 0; i < 15; i++)
+	{
+		tablo.set_unsafe(i, i*i);
+	}
+
+	for (size_t i = 0; i < 20; i++)
+	{
+		tablo[i] = i * 3;
+	}
+
+	return 0;
 }

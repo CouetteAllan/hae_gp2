@@ -152,6 +152,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Cours 2.cpp" />
+    <ClCompile Include="Int64Array.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Int64Array.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
