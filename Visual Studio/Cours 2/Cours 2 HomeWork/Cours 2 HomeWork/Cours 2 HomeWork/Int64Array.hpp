@@ -27,6 +27,9 @@ public:
 
 	~Int64Array() {
 		free(data);
+		data = nullptr;
+		currentSize = 0;
+		maxSize = 0;
 	}
 
 	void ensure(int size);
@@ -36,6 +39,8 @@ public:
 	void set(int pos, int64 elem);
 
 	void push_back(int64 elem);
+
+	void push_right(int pos);
 
 	void push_front(int64 elem);
 
