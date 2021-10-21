@@ -2,6 +2,7 @@
 #include <iostream>
 #include "Int64Array.hpp"
 
+
 int StrLen(const char* chaine) {
 	if (!chaine)
 		return 0;
@@ -103,16 +104,21 @@ int mainRecursive() {
 int main()
 {
 	Int64Array tablo(15);
-	for (size_t i = 0; i < 15; i++)
+	for (int64 i = 0; i < 15; i++)
 	{
-		tablo.set_unsafe(i, i*i);
+		tablo[i] = i * i;
 	}
 
 	tablo.insert(12, 99);
-	tablo.insert(14, 99);
-	tablo.insert(16, 99);
 
+	
 	int posFour = tablo.searchPosition(4);
-	int posNULL = tablo.searchPosition(7);
+
+	int64 tt[] = { 4654,4846,35143,54,546,2,545 };
+	int size = sizeof(tt) / sizeof(int64);
+
+	Int64Array ti3;
+	ti3.load(tt,size);
+	ti3.insertionSort(tt, size);
 	return 0;
 }

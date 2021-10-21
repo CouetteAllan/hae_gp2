@@ -1,4 +1,5 @@
 #include "Int64Array.hpp"
+#include "Chrono.hpp";
 
 void Int64Array::ensure(int size)
 {
@@ -37,7 +38,7 @@ void Int64Array::push_front(int64 elem)
 void Int64Array::push_right(int pos)
 {
 	ensure(maxSize + 1);
-	_shift_from_to(maxSize, pos);
+	_shift_from_to(pos, maxSize);
 }
 
 
@@ -49,22 +50,19 @@ void Int64Array::insert(int pos, int64 elem)
 
 void Int64Array::insert_ordered(int64 elem)
 {
-	
-	//if(elem < data[a])
-		//insert(a,elem)
-	//else
-	//	_shift()
+	int pos = _insert_ordered_at(0, elem);
+	insert(pos, elem);
 }
 
 int Int64Array::searchPosition(int64 elem)
 {
-	//manque le cas où on ne trouve pas l'élément dans le tablo
+	return _search_position_in_data(data,elem);
+}
 
-	if (*data == elem)
-		return 0;
+void Int64Array::remove(int64 elem)
+{
 
-	++data;
-	return 1 + searchPosition(elem);
+
 }
 
 void Int64Array::zero_memory(int64* data, int bytes)
@@ -86,18 +84,73 @@ void Int64Array::zero_memory(int64* data, int bytes)
 	zero_memory(mem + 1, bytes);
 }
 
-void Int64Array::_shift_from_to(int end, int cur)
+void Int64Array::append_sorted(const int64* t, int size)
 {
-	if (end == cur)
+	if (size <= 0)
 		return;
+	insert_ordered(t[0]);
+	append_sorted(t + 1, size - 1);
+}
 
-	data[end] = data[end - 1];
+void Int64Array::load(const int64* arr, int sz)
+{
+	if (sz == 0)
+		return;
+	set(curSize, *arr);
+	curSize++;
+	load(arr + 1, sz - 1);
 
-	end--;
-	_shift_from_to(end, cur);
+}
+
+void Int64Array::insertionSort(const int64* arr, int sz)
+{
+	clear();
+	load(arr, sz);
+
+	for (size_t i = 1; i < sz; i++)
+	{
+		int j = i;
+		while (j > 0 && data[j] < data[j - 1])
+		{
+			int c = data[j];
+			data[j] = data[j - 1]; 
+			data[j - 1] = c;
+			j--;
+		}
+	}
 }
 
 
+void Int64Array::_shift_from_to(int end, int cur)
+{
+	if (cur <= end)
+		return;
 
+	data[cur] = data[cur - 1];
+	
+	_shift_from_to(end, cur - 1);
+}
+
+int Int64Array::_insert_ordered_at(int idx, int64 elem)
+{
+	if (idx >= curSize)
+		return curSize;
+
+	if (elem < data[idx])
+		return 0;
+
+	return 1 + _insert_ordered_at(idx + 1, elem);
+}
+
+int Int64Array::_search_position_in_data(int64* data, int64 elem)
+{
+	//manque le cas où la valeur n'est pas trouvée
+
+	if (*data == elem) {
+		return 0;
+	}
+
+	return 1 + _search_position_in_data(data + 1, elem);
+}
 
 

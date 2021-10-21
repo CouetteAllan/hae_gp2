@@ -8,7 +8,7 @@
 using int64 = int64_t;
 
 class Int64Array {
-public :
+public:
 	int64_t* data = nullptr;
 	int maxSize = 0;
 	int curSize = 0;
@@ -17,14 +17,14 @@ public :
 		data = (int64*)malloc(30 * sizeof(int64));
 		maxSize = 30;
 		curSize = 0;
-		zero_memory(data,maxSize);
+		zero_memory(data, maxSize);
 	}
 
 	Int64Array(int size) {
 		data = (int64*)malloc(size * sizeof(int64));
 		maxSize = size;
 		curSize = size;
-		zero_memory(data,maxSize);
+		zero_memory(data, maxSize);
 	}
 
 	~Int64Array() {
@@ -52,7 +52,16 @@ public :
 
 	int searchPosition(int64 elem);
 
+	void remove(int64 elem);
+
 	void zero_memory(int64* data, int bytes);
+
+	void append_sorted(const int64* t, int size);
+
+	void load(const int64* arr, int sz);
+
+	void insertionSort(const int64* arr, int sz);
+
 
 	int64& get(int pos)
 	{
@@ -70,8 +79,11 @@ protected:
 
 	void _shift_from_to(int end, int cur);
 
-	void _shift();
+	int _insert_ordered_at(int pos, int64 elem);
+
+	void clear() {
+		curSize = 0;
+	}
+
+	int _search_position_in_data(int64* data, int64 elem);
 };
-
-
-

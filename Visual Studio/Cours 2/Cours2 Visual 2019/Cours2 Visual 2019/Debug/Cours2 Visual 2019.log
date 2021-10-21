@@ -1,2 +1,3 @@
-﻿  Int64Array.cpp
+﻿  Cours 2.cpp
+C:\Workshop\Allan\hae_gp2\Visual Studio\Cours 2\Cours2 Visual 2019\Cours2 Visual 2019\Cours 2.cpp(109,9): warning C4244: 'argument' : conversion de 'int64' en 'int', perte possible de données
   Cours2 Visual 2019.vcxproj -> C:\Workshop\Allan\hae_gp2\Visual Studio\Cours 2\Cours2 Visual 2019\Debug\Cours2 Visual 2019.exe
