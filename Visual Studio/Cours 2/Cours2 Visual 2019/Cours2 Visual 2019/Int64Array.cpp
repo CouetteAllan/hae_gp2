@@ -6,9 +6,11 @@ void Int64Array::ensure(int size)
 	if (size <= maxSize)
 		return;
 	int oldSize = maxSize;
-	maxSize = curSize = size;
-	data = (int64*)realloc(data, maxSize * sizeof(int64));
-	zero_memory(data + oldSize, maxSize - oldSize);
+	maxSize = curSize = size * 2;
+
+	data = (int64*)malloc(maxSize * sizeof(int64));
+
+	zero_memory(0,maxSize);
 }
 
 void Int64Array::set_unsafe(int pos, int64 elem)
@@ -41,6 +43,11 @@ void Int64Array::push_right(int pos)
 	_shift_from_to(pos, maxSize);
 }
 
+void Int64Array::push_left(int pos)
+{
+	_shift_from_to(maxSize, pos);
+}
+
 
 void Int64Array::insert(int pos, int64 elem)
 {
@@ -61,27 +68,20 @@ int Int64Array::searchPosition(int64 elem)
 
 void Int64Array::remove(int64 elem)
 {
-
-
+	int pos = searchPosition(elem);
+	if (pos >= 0) {
+		data[pos] = 0;
+		push_left(pos);
+		//data = (int64*)realloc(data, maxSize - 1 * sizeof(int64));
+	}
+	else
+		return;
 }
 
-void Int64Array::zero_memory(int64* data, int bytes)
+void Int64Array::zero_memory(int indx, int bytes)
 {
-	int64* mem = data;
+	memset(data + indx, 0, bytes * sizeof(int64));
 
-	if (mem == nullptr) {
-		return;
-	}
-
-	*mem = 0;
-
-	bytes--;
-
-	if (bytes == 0) {
-		return;
-	}
-
-	zero_memory(mem + 1, bytes);
 }
 
 void Int64Array::append_sorted(const int64* t, int size)
@@ -107,14 +107,15 @@ void Int64Array::insertionSort(const int64* arr, int sz)
 	clear();
 	load(arr, sz);
 
+	int j;
 	for (size_t i = 1; i < sz; i++)
 	{
-		int j = i;
+		j = i;
 		while (j > 0 && data[j] < data[j - 1])
 		{
-			int c = data[j];
+			int temp = data[j];
 			data[j] = data[j - 1]; 
-			data[j - 1] = c;
+			data[j - 1] = temp;
 			j--;
 		}
 	}

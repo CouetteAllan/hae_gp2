@@ -14,17 +14,17 @@ public:
 	int curSize = 0;
 
 	Int64Array() {
-		data = (int64*)malloc(30 * sizeof(int64));
-		maxSize = 30;
+		data = (int64*)malloc(16 * sizeof(int64));
+		maxSize = 16;
 		curSize = 0;
-		zero_memory(data, maxSize);
+		zero_memory(0, maxSize);
 	}
 
 	Int64Array(int size) {
 		data = (int64*)malloc(size * sizeof(int64));
 		maxSize = size;
 		curSize = size;
-		zero_memory(data, maxSize);
+		zero_memory(0, maxSize);
 	}
 
 	~Int64Array() {
@@ -46,6 +46,8 @@ public:
 
 	void push_right(int pos);
 
+	void push_left(int pos);
+
 	void insert(int pos, int64 elem);
 
 	void insert_ordered(int64 elem);
@@ -54,7 +56,7 @@ public:
 
 	void remove(int64 elem);
 
-	void zero_memory(int64* data, int bytes);
+	void zero_memory(int indx, int bytes);
 
 	void append_sorted(const int64* t, int size);
 

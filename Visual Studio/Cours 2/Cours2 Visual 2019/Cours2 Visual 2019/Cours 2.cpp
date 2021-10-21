@@ -1,7 +1,6 @@
-
 #include <iostream>
 #include "Int64Array.hpp"
-
+#include "Chrono.hpp"
 
 int StrLen(const char* chaine) {
 	if (!chaine)
@@ -103,22 +102,34 @@ int mainRecursive() {
 
 int main()
 {
-	Int64Array tablo(15);
-	for (int64 i = 0; i < 15; i++)
+	Int64Array tablo(2);
+
 	{
-		tablo[i] = i * i;
+		double t0 = getTimeStamp();
+		for (int i = 0; i < 1000000; i++)
+		{
+			tablo.push_back(rand() % 56456);
+		}
+		double t1 = getTimeStamp();
+		printf("time elapsed %lld s\n", (t1 - t0));
 	}
 
-	tablo.insert(12, 99);
+	{
+		double t0 = getTimeStamp();
+		Int64Array tiAppend;
+		tiAppend.append_sorted(tablo.data, tablo.curSize);
+		double t1 = getTimeStamp();
+		printf("time elapsed tappend %lld s\n", (t1 - t0));
+	}
 
+	{
+		double t0 = getTimeStamp();
+		Int64Array tiSort;
+		tiSort.insertionSort(tablo.data, tablo.curSize);
+		double t1 = getTimeStamp();
+		printf("time elapsed tsort %lld s\n", (t1 - t0));
+	}
 	
-	int posFour = tablo.searchPosition(4);
-
-	int64 tt[] = { 4654,4846,35143,54,546,2,545 };
-	int size = sizeof(tt) / sizeof(int64);
-
-	Int64Array ti3;
-	ti3.load(tt,size);
-	ti3.insertionSort(tt, size);
+	//int posFour = tablo.searchPosition(4);
 	return 0;
 }
