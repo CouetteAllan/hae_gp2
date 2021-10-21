@@ -6,7 +6,7 @@ void Int64Array::ensure(int size)
 	if (size <= maxSize)
 		return;
 	int oldSize = maxSize;
-	maxSize = curSize = size * 2;
+	maxSize = curSize = size;
 
 	data = (int64*)malloc(maxSize * sizeof(int64));
 
