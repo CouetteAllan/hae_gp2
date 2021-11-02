@@ -2,6 +2,7 @@
 #include "Int64Array.hpp"
 #include "Chrono.hpp"
 #include "List.hpp"
+#include "Tree.hpp"
 #include <cstdlib>
 #include <stdint.h>
 #include <utility>
@@ -153,8 +154,8 @@ typedef List<double> ListD;
 typedef List<int> ListInt;
 typedef List<float> ListFloat;
 typedef List<std::string> ListString;
-int main()
-{
+int mainList() {
+
 	std::vector<double> vd = { 0.0,2.0,1.0 };
 	vd.push_back(13);
 	vd.push_back(15);
@@ -180,5 +181,16 @@ int main()
 	}
 	printf("\n---------------------------------------------------------\n\n");
 
+	return 0;
+}
+
+
+
+int main()
+{
+	Tree<float>* tf = new Tree<float>(66.0f);
+	Tree<std::string>* ts = new Tree<std::string>("sapin");
+	ts->insert("lapin");
+	ts->insert("zapin");
 	return 0;
 }
