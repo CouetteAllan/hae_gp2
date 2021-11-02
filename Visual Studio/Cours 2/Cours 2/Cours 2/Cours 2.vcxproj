@@ -151,10 +151,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Chrono.cpp" />
     <ClCompile Include="Cours 2.cpp" />
     <ClCompile Include="Int64Array.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Chrono.hpp" />
     <ClInclude Include="Int64Array.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -1,2 +1,6 @@
 ﻿  Int64Array.cpp
+c:\workspace\allan\hae_gp2\visual studio\cours 2\cours 2\cours 2\int64array.cpp(2): warning C4067: jetons inattendus après la directive du préprocesseur - saut de ligne attendu
+c:\workspace\allan\hae_gp2\visual studio\cours 2\cours 2\cours 2\int64array.cpp(9): warning C4244: '=' : conversion de 'double' en 'int', perte possible de données
+c:\workspace\allan\hae_gp2\visual studio\cours 2\cours 2\cours 2\int64array.cpp(111): warning C4018: '<' : incompatibilité signed/unsigned
+c:\workspace\allan\hae_gp2\visual studio\cours 2\cours 2\cours 2\int64array.cpp(116): warning C4244: 'initialisation' : conversion de 'int64_t' en 'int', perte possible de données
   Cours 2.vcxproj -> C:\WorkSpace\Allan\hae_gp2\Visual Studio\Cours 2\Cours 2\Debug\Cours 2.exe

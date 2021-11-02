@@ -1,6 +1,6 @@
-
 #include <iostream>
 #include "Int64Array.hpp"
+#include "Chrono.hpp"
 
 int StrLen(const char* chaine) {
 	if (!chaine)
@@ -34,7 +34,7 @@ char* findEnd(char* str) {
 
 
 void StrCpy(char* destination, const char* source) {
-	
+
 	if (!destination)
 		return;
 	if (!source)
@@ -42,8 +42,8 @@ void StrCpy(char* destination, const char* source) {
 	if (!*source)
 		return;
 
-	*destination = *source ;
-	
+	*destination = *source;
+
 	StrCpy(destination + 1, source + 1);
 
 }
@@ -57,7 +57,7 @@ char* StrCat(char* destination, const char* source) {
 	char* destEnd = findEnd(destination);
 	StrCpy(destEnd, source);
 	return destination;
-	
+
 }
 
 const char* StrStr(const char* s0, const char* s1) {
@@ -102,16 +102,41 @@ int mainRecursive() {
 
 int main()
 {
-	Int64Array tablo(15);
-	for (size_t i = 0; i < 15; i++)
-	{
-		tablo.set_unsafe(i, i*i);
+	Int64Array tablo(16);
+
+	/*{
+		double t0 = getTimeStamp();
+		for (int i = 0; i < 1000000; i++)
+		{
+			tablo.push_back(rand() % 56456);
+		}
+		double t1 = getTimeStamp();
+		printf("time elapsed %lld s\n", (t1 - t0));
 	}
 
-	for (size_t i = 0; i < 20; i++)
 	{
-		tablo[i] = i * 3;
+		double t0 = getTimeStamp();
+		Int64Array tiAppend;
+		tiAppend.append_sorted(tablo.data, tablo.curSize);
+		double t1 = getTimeStamp();
+		printf("time elapsed tappend %lld s\n", (t1 - t0));
 	}
 
+	{
+		double t0 = getTimeStamp();
+		Int64Array tiSort;
+		tiSort.insertionSort(tablo.data, tablo.curSize);
+		double t1 = getTimeStamp();
+		printf("time elapsed tsort %lld s\n", (t1 - t0));
+	}*/
+	//int posFour = tablo.searchPosition(4);
+
+	for (size_t i = 0; i < 16; i++)
+	{
+		tablo[i] = i * 2;
+	}
+
+	int found28 = tablo.bsearch(28);
+	int found22 = tablo.bsearchIter(22);
 	return 0;
 }
