@@ -1,20 +1,41 @@
 ﻿  ConsoleApplication1.cpp
-C:\Workshop\Allan\hae_gp2\Visual Studio\Cours 4\Cours 4\ConsoleApplication1\ConsoleApplication1.cpp(8,17): warning C4244: 'initialisation' : conversion de 'T' en 'float', perte possible de données
+C:\Workshop\Allan\hae_gp2\Visual Studio\Cours 4\Cours 4\ConsoleApplication1\ConsoleApplication1.cpp(9,17): warning C4244: 'initialisation' : conversion de 'T' en 'float', perte possible de données
           with
           [
               T=unsigned int
           ]
-C:\Workshop\Allan\hae_gp2\Visual Studio\Cours 4\Cours 4\ConsoleApplication1\ConsoleApplication1.cpp(9,18): warning C4244: 'initialisation' : conversion de 'T' en 'float', perte possible de données
+C:\Workshop\Allan\hae_gp2\Visual Studio\Cours 4\Cours 4\ConsoleApplication1\ConsoleApplication1.cpp(10,18): warning C4244: 'initialisation' : conversion de 'T' en 'float', perte possible de données
           with
           [
               T=unsigned int
           ]
-C:\Workshop\Allan\hae_gp2\Visual Studio\Cours 4\Cours 4\ConsoleApplication1\ConsoleApplication1.cpp(23,59): warning C4244: 'argument' : conversion de 'float' en 'T', perte possible de données
+C:\Workshop\Allan\hae_gp2\Visual Studio\Cours 4\Cours 4\ConsoleApplication1\ConsoleApplication1.cpp(44,92): warning C4244: 'argument' : conversion de 'T' en 'float', perte possible de données
           with
           [
               T=int
           ]
-C:\Workshop\Allan\hae_gp2\Visual Studio\Cours 4\Cours 4\ConsoleApplication1\ConsoleApplication1.cpp(23,47): warning C4244: 'argument' : conversion de 'float' en 'T', perte possible de données
+C:\Workshop\Allan\hae_gp2\Visual Studio\Cours 4\Cours 4\ConsoleApplication1\ConsoleApplication1.cpp(44,59): warning C4244: 'argument' : conversion de 'T' en 'float', perte possible de données
+          with
+          [
+              T=int
+          ]
+C:\Workshop\Allan\hae_gp2\Visual Studio\Cours 4\Cours 4\ConsoleApplication1\ConsoleApplication1.cpp(46,59): warning C4244: 'argument' : conversion de 'float' en 'T', perte possible de données
+          with
+          [
+              T=int
+          ]
+C:\Workshop\Allan\hae_gp2\Visual Studio\Cours 4\Cours 4\ConsoleApplication1\ConsoleApplication1.cpp(46,47): warning C4244: 'argument' : conversion de 'float' en 'T', perte possible de données
+          with
+          [
+              T=int
+          ]
+C:\Workshop\Allan\hae_gp2\Visual Studio\Cours 4\Cours 4\ConsoleApplication1\ConsoleApplication1.cpp(97,37): warning C4244: '=' : conversion de 'double' en 'float', perte possible de données
+C:\Workshop\Allan\hae_gp2\Visual Studio\Cours 4\Cours 4\ConsoleApplication1\ConsoleApplication1.cpp(103,97): warning C4244: 'argument' : conversion de 'T' en 'float', perte possible de données
+          with
+          [
+              T=int
+          ]
+C:\Workshop\Allan\hae_gp2\Visual Studio\Cours 4\Cours 4\ConsoleApplication1\ConsoleApplication1.cpp(103,63): warning C4244: 'argument' : conversion de 'T' en 'float', perte possible de données
           with
           [
               T=int
