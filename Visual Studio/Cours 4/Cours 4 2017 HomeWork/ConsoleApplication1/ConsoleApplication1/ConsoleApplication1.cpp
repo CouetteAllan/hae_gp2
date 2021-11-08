@@ -25,17 +25,16 @@ int main()
 
 	sf::RectangleShape gun(sf::Vector2f(10, 90));
 	sf::Vector2f gunCenter;
-	gunCenter.x = gun.getSize().x / 2;
-	gunCenter.y = gun.getSize().y / 2;
 	gun.setOrigin(sf::Vector2f(5, 75));
 	gun.setFillColor(sf::Color::Red);
 	gun.setOutlineThickness(2);
 	gun.setOutlineColor(sf::Color::Cyan);
-	gun.setPosition(shape.getPosition().y, shape.getPosition().x);
 
-	sf::RectangleShape particles(sf::Vector2f(10, 10));
-	particles.setPosition(gunCenter.x, gunCenter.y - 75);
-	particles.setFillColor(sf::Color::White);
+	sf::CircleShape projectile(20);
+	projectile.setPosition(gun.getPosition().x, gun.getPosition().y);
+	projectile.setOrigin(sf::Vector2f(20, 20));
+	projectile.setFillColor(sf::Color::White);
+	projectile.setPosition(gun.getPosition().x, gun.getPosition().y);
 	bool shoot = false;
 
 	sf::CircleShape mouseCircle(10);
@@ -88,16 +87,16 @@ int main()
 
 		if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
 			shoot = true;
+			projectile.move((localMousePosition.x), (localMousePosition.y));
 		}
 		else
 			shoot = false;
 
 
 		auto angle = atan2((localMousePosition.x - gun.getPosition().x), -(localMousePosition.y - gun.getPosition().y));
-		angle = (angle / 3.1415926) * 180;
+		angle = (angle / 3.1415926) * 180; //rad en degré
 		gun.setRotation(angle);
 		gun.setPosition(shape.getPosition().x, shape.getPosition().y);
-		particles.setPosition(localMousePosition);
 
 
 		mouseCircle.setPosition(sf::Mouse::getPosition(window).x, sf::Mouse::getPosition(window).y);
@@ -106,16 +105,11 @@ int main()
 		window.draw(shape);
 		window.draw(gun);
 		//window.draw(mouseCircle);
-		if (shoot)
-			//window.draw(particles);
+		window.draw(projectile);
 		window.display();
 	}
 
 	
 
 	return 0;
-}
-
-void Shoot() {
-
 }
