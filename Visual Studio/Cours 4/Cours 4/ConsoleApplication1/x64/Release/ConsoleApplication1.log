@@ -1,0 +1,2 @@
+﻿  ConsoleApplication1.cpp
+LINK : fatal error LNK1181: impossible d'ouvrir le fichier en entrée 'sfml-graphics.lib'
