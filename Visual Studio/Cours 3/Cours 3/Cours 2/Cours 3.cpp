@@ -192,5 +192,11 @@ int main()
 	Tree<std::string>* ts = new Tree<std::string>("sapin");
 	ts->insert("lapin");
 	ts->insert("zapin");
+	ts->insert("vapin");
+	ts->insert("rapin");
+	ts->insert("japin");
+
+
+	ts = ts->remove("zapin");
 	return 0;
 }
