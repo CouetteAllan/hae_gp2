@@ -1,6 +1,7 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Main.hpp>
 #include <math.h>
+#include "Projectile.hpp"
 
 float catmull(float p0,float p1, float p2, float p3, float t) {
 	auto q = 2.0f * p1;
@@ -27,8 +28,8 @@ void drawMountain(sf::RenderWindow& window) {
 	sf::Vector2f b(600, sommet);
 	sf::Vector2f c(1000, sommet +50);
 	sf::Vector2f d(1300, 450);
-	/*
-	mountain.append(sf::Vertex(sf::Vertex(a,col)));
+	
+	/*mountain.append(sf::Vertex(sf::Vertex(a,col)));
 	mountain.append(sf::Vertex(sf::Vertex(b,col)));
 	mountain.append(sf::Vertex(sf::Vertex(c,col)));
 	mountain.append(sf::Vertex(sf::Vertex(d,col)));
@@ -65,8 +66,6 @@ void drawMountain(sf::RenderWindow& window) {
 		mountain.append(sf::Vertex(sf::Vector2f(x, y), col));
 	}
 	
-	
-	
 	window.draw(mountain);
 }
 
@@ -86,6 +85,13 @@ void drawGround(sf::RenderWindow& window) {
 	window.draw(arr);
 }
 
+
+void shootProjectile(sf::RectangleShape gun) {
+	sf::CircleShape projectile(20);
+	projectile.setPosition(gun.getPosition().x, gun.getPosition().y);
+	projectile.setOrigin(sf::Vector2f(20, 20));
+	projectile.setFillColor(sf::Color::White);
+}
 int main()
 {
 	sf::RenderWindow window(sf::VideoMode(1280, 720), "SFML works!");
@@ -115,11 +121,7 @@ int main()
 	gun.setOutlineThickness(2);
 	gun.setOutlineColor(sf::Color::Cyan);
 
-	sf::CircleShape projectile(20);
-	//projectile.setPosition(gun.getPosition().x, gun.getPosition().y);
-	projectile.setOrigin(sf::Vector2f(20, 20));
-	projectile.setFillColor(sf::Color::White);
-	projectile.setPosition(gun.getPosition().x, gun.getPosition().y);
+	
 	bool shoot = false;
 
 	sf::CircleShape mouseCircle(10);
@@ -127,8 +129,8 @@ int main()
 	mouseCircle.setFillColor(sf::Color::Yellow);
 	mouseCircle.setPosition(sf::Mouse::getPosition(window).x, sf::Mouse::getPosition(window).y);
 
+	Projectile projectiles();
 	
-
 
 	sf::Mouse::setPosition(sf::Vector2i(width / 2, height / 2), window);
 	while (window.isOpen())
@@ -152,7 +154,10 @@ int main()
 				break;
 
 			case::sf::Event::MouseButtonPressed:
-
+				if (event.mouseButton.button == sf::Mouse::Left)
+					shoot = true;
+				else
+					shoot = false;
 			default:
 				break;
 			}
@@ -173,13 +178,9 @@ int main()
 
 
 
-		if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
-			shoot = true;
-			projectile.move(localMousePosition);
-		}
-		else
-			shoot = false;
+		if (shoot) {
 
+		}
 
 		auto angle = atan2((localMousePosition.x - gun.getPosition().x), -(localMousePosition.y - gun.getPosition().y));
 		angle = (angle / 3.1415926) * 180; //rad en degré
@@ -195,7 +196,6 @@ int main()
 		window.draw(shape);
 		window.draw(gun);
 		//window.draw(mouseCircle);
-		window.draw(projectile);
 		window.display();
 	}
 
