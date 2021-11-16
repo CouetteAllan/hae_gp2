@@ -112,9 +112,7 @@ int main()
 	double tEnterFrame = getTimeStamp();
 	double tExitFrame = getTimeStamp();
 
-	Bullet bullets;
 	bool mouseLeftWasPressed = false;
-	Curve c;
 
 	sf::Texture textureWeeb;
 	if (!textureWeeb.loadFromFile("res/violet.png"))
@@ -122,9 +120,26 @@ int main()
 	sf::Texture textureDuck;
 	if (!textureDuck.loadFromFile("res/duck.png"))
 		return EXIT_FAILURE;
-	Entity paddle(PlayerObject,textureWeeb, 135, 30);
-	paddle.setPosition(800, 650);
+	sf::Texture textureBall;
+	if (!textureBall.loadFromFile("res/ball.png"))
+		return EXIT_FAILURE;
 
+	//----------CREATION DU PADDLE--------------
+	const int widthPaddle = 135;
+	const int heightPaddle = 30;
+	PlayerPaddle* paddle = new PlayerPaddle(PlayerObject,textureDuck, widthPaddle, heightPaddle);
+	paddle->setPosition(800, 650);
+	paddle->setOrigin(widthPaddle / 2, heightPaddle / 2);
+
+
+	//-----------CREATION DE LA BALLE---------------
+	Entity* ball = new Entity(Ball, textureBall, 20, 20);
+	ball->setOrigin(10, 10);
+	paddle->currentBall = ball;
+
+	World world;
+	world.data.push_back(paddle);
+	world.data.push_back(ball);
 	while (window.isOpen()){
 		sf::Event event;
 		double dt = tExitFrame - tEnterFrame;
@@ -146,7 +161,7 @@ int main()
 				break;
 			}
 		}
-		auto pos = paddle.getPosition();
+		auto pos = paddle->getPosition();
 		float deltaX = dt * 360;
 		float deltaY = dt * 360;
 		bool keyHit = false;
@@ -158,9 +173,17 @@ int main()
 			pos.x += deltaX;
 			keyHit = true;
 		}
-		if(keyHit)
-			if(pos.x < 0)
-				paddle.setPosition(pos);
+		if (keyHit) {
+			if (pos.x < 0)
+					pos.x = 0;
+			if (pos.x > window.getSize().x)
+					pos.x = window.getSize().x;
+			paddle->setPosition(pos);
+		}
+
+		if (paddle->box.intersects(ball->box)) {
+			ball->dy = -ball->dy;
+		}
 
 
 		bool mouseLeftIsPressed = sf::Mouse::isButtonPressed(sf::Mouse::Left);
@@ -168,12 +191,9 @@ int main()
 
 		sf::Vector2f mousePos = sf::Vector2f(sf::Mouse::getPosition(window));
 
-		if (false) {
-			if (mouseIsReleased) c.addPoint(mousePos);
-			if (sf::Mouse::isButtonPressed(sf::Mouse::Right)) c.clear();
-		}
+		
 
-		if (mouseLeftIsPressed) {
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
 			//auto pos = gun.getPosition();
 			auto dir = mousePos - pos;
 			float dirLen = std::sqrt(dir.x * dir.x + dir.y * dir.y);
@@ -181,8 +201,12 @@ int main()
 			if (dirLen) {
 				dxy = dir / dirLen;
 			}
-			dxy *= 60.0f * 3;
-			bullets.create(pos.x, pos.y, dxy.x, dxy.y);
+			dxy *= 60.0f * 7;
+			if (paddle->currentBall) {
+				paddle->currentBall->dx = dxy.x;
+				paddle->currentBall->dy = dxy.y;
+			}
+			paddle->currentBall = nullptr;
 		}
 
 		if (mouseLeftIsPressed) 
@@ -192,8 +216,8 @@ int main()
 
 		//calculate angle from char to mouse
 		sf::Vector2f characterToMouse(
-			mousePos.y - paddle.getPosition().y,
-			mousePos.x - paddle.getPosition().x);
+			mousePos.y - paddle->getPosition().y,
+			mousePos.x - paddle->getPosition().x);
 
 		float radToDeg = 57.2958;
 		float angleC2M = atan2(characterToMouse.y, characterToMouse.x);
@@ -211,8 +235,8 @@ int main()
 		
 		////////////////////
 		//UPDATE
-		bullets.update(dt);
-
+		world.update(dt);
+		paddle->update(dt);
 		////////////////////
 		//DRAW
 		//drawMountain(window);
@@ -221,10 +245,11 @@ int main()
 
 		//game elems
 		//window.draw(shape);
-		window.draw(paddle);
+		paddle->draw(window);
+		ball->draw(window,RenderStates::Default);
 		//window.draw(gun);
 		
-		c.draw(window);
+		//c.draw(window);
 		window.draw(ptr);
 
 		//ui
