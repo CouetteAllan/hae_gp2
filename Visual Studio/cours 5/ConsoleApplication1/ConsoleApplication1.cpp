@@ -15,6 +15,7 @@
 #include "Curve.hpp"
 #include "Bullet.hpp"
 #include "Entity.hpp"
+#include "World.hpp"
 
 float catmull(float p0 , float p1 , float p2,float p3 , float t ) {
 	auto q = 2.0f * p1;
@@ -115,10 +116,14 @@ int main()
 	bool mouseLeftWasPressed = false;
 	Curve c;
 
-	sf::Texture texture;
-	if (!texture.loadFromFile("res\violet.png"))
+	sf::Texture textureWeeb;
+	if (!textureWeeb.loadFromFile("res/violet.png"))
 		return EXIT_FAILURE;
-	sf::Sprite sprite(texture);
+	sf::Texture textureDuck;
+	if (!textureDuck.loadFromFile("res/duck.png"))
+		return EXIT_FAILURE;
+	Entity paddle(PlayerObject,textureWeeb, 135, 30);
+	paddle.setPosition(800, 650);
 
 	while (window.isOpen()){
 		sf::Event event;
@@ -141,7 +146,7 @@ int main()
 				break;
 			}
 		}
-		auto pos = shape.getPosition();
+		auto pos = paddle.getPosition();
 		float deltaX = dt * 360;
 		float deltaY = dt * 360;
 		bool keyHit = false;
@@ -154,7 +159,8 @@ int main()
 			keyHit = true;
 		}
 		if(keyHit)
-			shape.setPosition(pos);
+			if(pos.x < 0)
+				paddle.setPosition(pos);
 
 
 		bool mouseLeftIsPressed = sf::Mouse::isButtonPressed(sf::Mouse::Left);
@@ -186,8 +192,8 @@ int main()
 
 		//calculate angle from char to mouse
 		sf::Vector2f characterToMouse(
-			mousePos.y - shape.getPosition().y,
-			mousePos.x - shape.getPosition().x);
+			mousePos.y - paddle.getPosition().y,
+			mousePos.x - paddle.getPosition().x);
 
 		float radToDeg = 57.2958;
 		float angleC2M = atan2(characterToMouse.y, characterToMouse.x);
@@ -214,7 +220,8 @@ int main()
 		//bullets.draw(window);
 
 		//game elems
-		window.draw(shape);
+		//window.draw(shape);
+		window.draw(paddle);
 		//window.draw(gun);
 		
 		c.draw(window);

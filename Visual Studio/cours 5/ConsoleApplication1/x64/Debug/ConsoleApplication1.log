@@ -2,6 +2,26 @@
 c:\workspace\allan\hae_gp2\visual studio\cours 5\consoleapplication1\curve.hpp(48): warning C4267: 'argument' : conversion de 'size_t' en 'int', perte possible de données
 c:\workspace\allan\hae_gp2\visual studio\cours 5\consoleapplication1\curve.hpp(49): warning C4267: 'argument' : conversion de 'size_t' en 'int', perte possible de données
 c:\workspace\allan\hae_gp2\visual studio\cours 5\consoleapplication1\curve.hpp(50): warning C4267: 'argument' : conversion de 'size_t' en 'int', perte possible de données
+c:\workspace\allan\hae_gp2\visual studio\cours 5\consoleapplication1\entity.hpp(27): warning C4244: '=' : conversion de 'float' en 'T', perte possible de données
+          with
+          [
+              T=int
+          ]
+c:\workspace\allan\hae_gp2\visual studio\cours 5\consoleapplication1\entity.hpp(28): warning C4244: '=' : conversion de 'float' en 'T', perte possible de données
+          with
+          [
+              T=int
+          ]
+c:\workspace\allan\hae_gp2\visual studio\cours 5\consoleapplication1\entity.hpp(35): warning C4244: '=' : conversion de 'float' en 'T', perte possible de données
+          with
+          [
+              T=int
+          ]
+c:\workspace\allan\hae_gp2\visual studio\cours 5\consoleapplication1\entity.hpp(36): warning C4244: '=' : conversion de 'float' en 'T', perte possible de données
+          with
+          [
+              T=int
+          ]
 c:\workspace\allan\hae_gp2\visual studio\cours 5\consoleapplication1\consoleapplication1.cpp(41): warning C4244: 'argument' : conversion de 'T' en 'T', perte possible de données
           with
           [
@@ -20,7 +40,7 @@ c:\workspace\allan\hae_gp2\visual studio\cours 5\consoleapplication1\consoleappl
           [
               T=float
           ]
-c:\workspace\allan\hae_gp2\visual studio\cours 5\consoleapplication1\consoleapplication1.cpp(145): warning C4244: 'initialisation' : conversion de 'double' en 'float', perte possible de données
-c:\workspace\allan\hae_gp2\visual studio\cours 5\consoleapplication1\consoleapplication1.cpp(146): warning C4244: 'initialisation' : conversion de 'double' en 'float', perte possible de données
-c:\workspace\allan\hae_gp2\visual studio\cours 5\consoleapplication1\consoleapplication1.cpp(192): warning C4305: 'initialisation' : troncation de 'double' à 'float'
+c:\workspace\allan\hae_gp2\visual studio\cours 5\consoleapplication1\consoleapplication1.cpp(149): warning C4244: 'initialisation' : conversion de 'double' en 'float', perte possible de données
+c:\workspace\allan\hae_gp2\visual studio\cours 5\consoleapplication1\consoleapplication1.cpp(150): warning C4244: 'initialisation' : conversion de 'double' en 'float', perte possible de données
+c:\workspace\allan\hae_gp2\visual studio\cours 5\consoleapplication1\consoleapplication1.cpp(196): warning C4305: 'initialisation' : troncation de 'double' à 'float'
   ConsoleApplication1.vcxproj -> C:\WorkSpace\Allan\hae_gp2\Visual Studio\cours 5\ConsoleApplication1\x64\Debug\ConsoleApplication1.exe
