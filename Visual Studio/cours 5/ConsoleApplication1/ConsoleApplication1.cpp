@@ -228,6 +228,19 @@ int main()
 		ptr.setPosition(mousePos);
 		tDt.setString( to_string(dt)+" FPS:"+ to_string((int)(1.0f / dt)));
 		
+		if (ball->getPosition().x <= 10)
+			ball->dx = -ball->dx;
+
+		if (ball->getPosition().y <= 10)
+			ball->dy = -ball->dy;
+
+		if (ball->getPosition().x >= 1270)
+			ball->dx = -ball->dx;
+
+		if (ball->getPosition().y >= 680)
+			ball->dy = -ball->dy;
+
+		
 		////////////////////
 
 		//CLEAR

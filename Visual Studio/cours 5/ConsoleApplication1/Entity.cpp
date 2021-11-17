@@ -6,17 +6,7 @@ void Entity::update(double dt)
 	pos.x += dx * dt;
 	pos.y += dy * dt;
 	setPosition(pos);
-	if (pos.x <= 10)
-		dx = -dx;
 	
-	if (pos.y <= 10)
-		dy = -dy;
-
-	if (pos.x >= 1270)
-		dx = -dx;
-	
-	if (pos.y >= 680)
-		dy = -dy;
 
 	box.top = getPosition().y - height/2;
 	box.left = getPosition().x - width/2;
