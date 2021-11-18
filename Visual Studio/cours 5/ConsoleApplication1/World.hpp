@@ -13,6 +13,7 @@ public:
 
 	void collideWallBall(Entity* wall, Entity* ball);
 	void collideBrickBall(Entity* brick, Entity* ball);
+	void collidePadBall(Entity* pad, Entity* ball);
 };
 
 

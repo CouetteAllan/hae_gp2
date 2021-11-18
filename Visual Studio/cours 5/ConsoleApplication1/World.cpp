@@ -43,8 +43,8 @@ void World::update(double dt)
 				for (size_t i = 0; i < data.size(); i++)
 				{
 					auto oe = data[i];
-					if (oe->entity == Brick) {
-						collideBrickBall(oe, e);
+					if (oe->entity == PlayerObject) {
+						collidePadBall(oe, e);
 					}
 				}
 			}
@@ -76,11 +76,11 @@ void World::collideWallBall(Entity * wall, Entity * ball)
 		ball->setPosition(ball->lastGoodPosition);
 		if (wall->width > wall->height) {
 			//mur en haut ou mur en bas
-			ball->dy *= -1;
+			ball->dy = -ball->dy;
 		}
 		else {
 			//mur de côté
-			ball->dx *= -1;
+			ball->dx = -ball->dx;
 		}
 
 	}
@@ -90,21 +90,33 @@ void World::collideWallBall(Entity * wall, Entity * ball)
 void World::collideBrickBall(Entity * brick, Entity * ball)
 {
 	//voir si ball collide avec brick
-	if (brick->box.intersects(ball->box)) {
+	if (brick->box.contains(ball->getPosition())) {
 		//jouer un son
 		ball->setPosition(ball->lastGoodPosition);
 		auto oldPos = ball->lastGoodPosition;
 		auto boxBrick = brick->box;
 		if ((oldPos.y < boxBrick.top) || (oldPos.y > (boxBrick.top + boxBrick.height))) {
-			ball->dy *= -ball->dy;
+			ball->dy = -ball->dy;
+
 		}
 		else {
-			ball->dx *= -ball->dx;
+			ball->dx = -ball->dx;
 		}
 		//détruire la brique
 		//rebondir la balle
 	}
+	data.erase(brick);
 
+}
+
+void World::collidePadBall(Entity* pad, Entity* ball)
+{
+	if (pad->box.intersects(ball->box)) {
+		//audio
+		ball->setPosition(ball->lastGoodPosition);
+		ball->dy = -ball->dy;
+
+	}
 }
 
 Audio::Audio()
