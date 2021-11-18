@@ -37,6 +37,4 @@ C:\Workshop\Allan\hae_gp2\Visual Studio\cours 5\ConsoleApplication1\ConsoleAppli
               T=float
           ]
 C:\Workshop\Allan\hae_gp2\Visual Studio\cours 5\ConsoleApplication1\ConsoleApplication1.cpp(274,27): warning C4305: 'initialisation' : troncation de 'double' à 'float'
-  World.cpp
-  Génération de code en cours...
   ConsoleApplication1.vcxproj -> C:\Workshop\Allan\hae_gp2\Visual Studio\cours 5\ConsoleApplication1\x64\Debug\ConsoleApplication1.exe

@@ -11,9 +11,12 @@ public:
 	void update(double dt);
 	void draw(sf::RenderWindow& win);
 
+	std::vector<Entity*> breackBrick;
+
 	void collideWallBall(Entity* wall, Entity* ball);
 	void collideBrickBall(Entity* brick, Entity* ball);
 	void collidePadBall(Entity* pad, Entity* ball);
+
 };
 
 

@@ -83,7 +83,7 @@ void drawGround(sf::RenderWindow& window) {
 
 int main()
 {
-	sf::RenderWindow window(sf::VideoMode(1280, 720), "SFML works!");
+	sf::RenderWindow window(sf::VideoMode(1280, 720), "Coin Coin Casse Brick");
 	window.setVerticalSyncEnabled(true);
 	window.setFramerateLimit(144);
 
@@ -289,7 +289,6 @@ int main()
 		////////////////////
 		//UPDATE
 		world.update(dt);
-		paddle->update(dt);
 		////////////////////
 		//DRAW
 		//drawMountain(window);
@@ -302,10 +301,10 @@ int main()
 		//window.draw(gun);
 		
 		//c.draw(window);
-		window.draw(ptr);
+		//window.draw(ptr);
 
 		//ui
-		window.draw(tDt);
+		//window.draw(tDt);
 		
 		window.display();
 		tExitFrame = getTimeStamp();

@@ -61,6 +61,16 @@ void World::update(double dt)
 			};
 		}
 	}
+
+	if (breackBrick.size()) {
+		for (auto b : breackBrick) {
+			auto iter = std::find(data.begin(), data.end(), b);
+			if (iter != data.end())
+				data.erase(iter);
+			delete b;
+		}
+		breackBrick.clear();
+	}
 }
 
 void World::draw(sf::RenderWindow& win)
@@ -102,10 +112,8 @@ void World::collideBrickBall(Entity * brick, Entity * ball)
 		else {
 			ball->dx = -ball->dx;
 		}
-		//détruire la brique
-		//rebondir la balle
+		breackBrick.push_back(brick);
 	}
-	data.erase(brick);
 
 }
 
