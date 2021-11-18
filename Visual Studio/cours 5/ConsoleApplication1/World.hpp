@@ -6,7 +6,7 @@
 
 class World {
 public:
-	Audio* audio = nullptr;
+//	Audio* audio = nullptr;
 	std::vector<Entity*> data;
 	void update(double dt);
 	void draw(sf::RenderWindow& win);

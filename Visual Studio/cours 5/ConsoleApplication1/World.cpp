@@ -5,8 +5,8 @@
 
 void World::update(double dt)
 {
-	if (!audio) 
-		audio = new Audio();
+	//if (!audio) 
+		//audio = new Audio();
 	
 	PlayerPaddle* pad = nullptr;
 	int idx = 0;
@@ -66,7 +66,7 @@ void World::update(double dt)
 void World::draw(sf::RenderWindow& win)
 {
 	for (auto e : data)
-		e->draw(win,sf::RenderStates::Default);
+		e->draw(win);
 }
 
 void World::collideWallBall(Entity * wall, Entity * ball)

@@ -13,12 +13,11 @@ enum EType {
 	Ball,
 };
 
-class Entity : public sf::Drawable, public sf::Transformable {
+class Entity : public sf::Transformable{
 public:
 	Texture texture;
 	Sprite sprite;
 	FloatRect box;
-	Shape* shape = nullptr;
 	EType entity;
 	bool visible = true;
 
@@ -34,12 +33,16 @@ public:
 	Entity(EType entityType ,Texture _texture,float width, float height, Color color = Color::White) {
 		texture = _texture;
 		entity = entityType;
+
 		box.height = height;
 		box.width = width;
+
 		sprite.setTexture(texture);
 		sprite.setTextureRect((IntRect)box);
 		this->height = height;
+
 		this->width = width;
+
 		box.top = getPosition().y - height / 2;
 		box.left = getPosition().x - width / 2;
 	}
@@ -55,15 +58,13 @@ public:
 	}
 
 	~Entity() {
-		if (shape) {
-			delete shape;
-			shape = nullptr;
-		}
+		//delete(sprite);
+		
 	}
 
 	void update(double dt);
 
-	virtual void draw(RenderTarget& target, RenderStates states) const;
+	virtual void draw(RenderWindow& win);
 };
 
 

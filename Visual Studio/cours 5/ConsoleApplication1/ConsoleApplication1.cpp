@@ -270,7 +270,6 @@ int main()
 		
 		////////////////////
 		//UPDATE
-		world.update(dt);
 		paddle->update(dt);
 		////////////////////
 		//DRAW
@@ -280,8 +279,8 @@ int main()
 
 		//game elems
 		//window.draw(shape);
+		//world.draw(window)
 		paddle->draw(window);
-		ball->draw(window,RenderStates::Default);
 		//window.draw(gun);
 		
 		//c.draw(window);

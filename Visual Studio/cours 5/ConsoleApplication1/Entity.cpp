@@ -12,13 +12,10 @@ void Entity::update(double dt)
 	box.left = getPosition().x - width/2;
 }
 
-inline void Entity::draw(RenderTarget & win, RenderStates states) const {
+inline void Entity::draw(RenderWindow& win) {
 	if (visible) {
 
-		states.transform *= getTransform();//defined by sf::Transformable
-
-		states.texture = &texture;
-		win.draw(sprite, states);
+		win.draw(sprite);
 	}
 }
 
@@ -31,6 +28,6 @@ void PlayerPaddle::update(double dt)
 
 void PlayerPaddle::draw(RenderWindow & win)
 {
-	Entity::draw(win,RenderStates::Default);
+	Entity::draw(win);
 
 }
