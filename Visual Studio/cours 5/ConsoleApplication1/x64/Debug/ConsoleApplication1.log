@@ -1,7 +1,29 @@
-﻿  ConsoleApplication1.cpp
+﻿  Bullet.cpp
+c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 5\consoleapplication1\bullet.cpp(5): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
+c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 5\consoleapplication1\bullet.cpp(9): warning C4244: 'argument' : conversion de 'int' en 'T', perte possible de données
+          with
+          [
+              T=float
+          ]
+c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 5\consoleapplication1\bullet.cpp(33): warning C4244: '+=' : conversion de 'double' en '_Ty', perte possible de données
+          with
+          [
+              _Ty=float
+          ]
+c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 5\consoleapplication1\bullet.cpp(34): warning C4244: '+=' : conversion de 'double' en '_Ty', perte possible de données
+          with
+          [
+              _Ty=float
+          ]
+c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 5\consoleapplication1\bullet.cpp(46): warning C4267: 'initialisation' : conversion de 'size_t' en 'int', perte possible de données
+c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 5\consoleapplication1\bullet.cpp(46): warning C4267: 'initialisation' : conversion de 'size_t' en 'const int', perte possible de données
+  ConsoleApplication1.cpp
 c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 5\consoleapplication1\curve.hpp(48): warning C4267: 'argument' : conversion de 'size_t' en 'int', perte possible de données
 c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 5\consoleapplication1\curve.hpp(49): warning C4267: 'argument' : conversion de 'size_t' en 'int', perte possible de données
 c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 5\consoleapplication1\curve.hpp(50): warning C4267: 'argument' : conversion de 'size_t' en 'int', perte possible de données
+c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 5\consoleapplication1\world.hpp(9): error C2143: erreur de syntaxe : absence de ';' avant '*'
+c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 5\consoleapplication1\world.hpp(9): error C4430: spécificateur de type manquant - int est pris en compte par défaut. Remarque : C++ ne prend pas en charge int par défaut
+c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 5\consoleapplication1\world.hpp(9): error C2238: jetons inattendus avant ';'
 c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 5\consoleapplication1\consoleapplication1.cpp(42): warning C4244: 'argument' : conversion de 'T' en 'T', perte possible de données
           with
           [
@@ -20,9 +42,9 @@ c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 5\consoleapplic
           [
               T=float
           ]
-c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 5\consoleapplication1\consoleapplication1.cpp(165): warning C4244: 'initialisation' : conversion de 'double' en 'float', perte possible de données
-c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 5\consoleapplication1\consoleapplication1.cpp(166): warning C4244: 'initialisation' : conversion de 'double' en 'float', perte possible de données
-c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 5\consoleapplication1\consoleapplication1.cpp(180): warning C4244: '=' : conversion de 'T' en 'T', perte possible de données
+c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 5\consoleapplication1\consoleapplication1.cpp(187): warning C4244: 'initialisation' : conversion de 'double' en 'float', perte possible de données
+c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 5\consoleapplication1\consoleapplication1.cpp(188): warning C4244: 'initialisation' : conversion de 'double' en 'float', perte possible de données
+c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 5\consoleapplication1\consoleapplication1.cpp(202): warning C4244: '=' : conversion de 'T' en 'T', perte possible de données
           with
           [
               T=unsigned int
@@ -31,7 +53,7 @@ c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 5\consoleapplic
           [
               T=float
           ]
-c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 5\consoleapplication1\consoleapplication1.cpp(222): warning C4305: 'initialisation' : troncation de 'double' à 'float'
+c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 5\consoleapplication1\consoleapplication1.cpp(244): warning C4305: 'initialisation' : troncation de 'double' à 'float'
   Entity.cpp
 c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 5\consoleapplication1\entity.cpp(6): warning C4244: '+=' : conversion de 'double' en 'T', perte possible de données
           with
@@ -43,5 +65,13 @@ c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 5\consoleapplic
           [
               T=float
           ]
+  Int64Array.cpp
+c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 5\consoleapplication1\int64array.cpp(18): warning C4244: 'argument' : conversion de 'int64_t' en 'int', perte possible de données
+c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 5\consoleapplication1\int64array.cpp(97): warning C4244: '=' : conversion de 'double' en 'int', perte possible de données
+  World.cpp
+c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 5\consoleapplication1\world.hpp(9): error C2143: erreur de syntaxe : absence de ';' avant '*'
+c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 5\consoleapplication1\world.hpp(9): error C4430: spécificateur de type manquant - int est pris en compte par défaut. Remarque : C++ ne prend pas en charge int par défaut
+c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 5\consoleapplication1\world.hpp(9): error C2238: jetons inattendus avant ';'
+c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 5\consoleapplication1\world.cpp(8): error C2065: 'audio' : identificateur non déclaré
+c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 5\consoleapplication1\world.cpp(9): error C2065: 'audio' : identificateur non déclaré
   Génération de code en cours...
-  ConsoleApplication1.vcxproj -> C:\Users\couet\OneDrive\Bureau\Allan\hae_gp2\Visual Studio\cours 5\ConsoleApplication1\x64\Debug\ConsoleApplication1.exe

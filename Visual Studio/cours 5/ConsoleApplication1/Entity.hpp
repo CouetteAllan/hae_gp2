@@ -25,6 +25,8 @@ public:
 	float dx = 0.0f;
 	float dy = 0.0f;
 
+	sf::Vector2f	lastGoodPosition;
+
 	float height = 0.0f;
 	float width = 0.0f;
 

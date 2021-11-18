@@ -113,7 +113,7 @@ int main()
 	double tExitFrame = getTimeStamp();
 
 	bool mouseLeftWasPressed = false;
-
+	//-----------TEXTURES-----------------------
 	sf::Texture textureWeeb;
 	if (!textureWeeb.loadFromFile("res/violet.png"))
 		return EXIT_FAILURE;
@@ -123,6 +123,10 @@ int main()
 	sf::Texture textureBall;
 	if (!textureBall.loadFromFile("res/ball.png"))
 		return EXIT_FAILURE;
+	sf::Texture textureWall;
+	if (!textureWall.loadFromFile("res/wall.png"))
+		return EXIT_FAILURE;
+	textureWall.setRepeated(true);
 
 	//----------CREATION DU PADDLE--------------
 	const int widthPaddle = 135;
@@ -137,9 +141,27 @@ int main()
 	ball->setOrigin(10, 10);
 	paddle->currentBall = ball;
 
+
+	//-----------CREATION DES MURS-----------------
+	Entity* wallLeft = new Entity(Wall,textureWall, 20, 720);
+	wallLeft->setPosition(Vector2f(0, 0));
+	Entity* wallRight = new Entity(Wall,textureWall, 20, 720);
+	wallRight->setPosition(Vector2f(1260, 0));
+	Entity* wallTop = new Entity(Wall,textureWall, 1280, 20);
+	wallRight->setPosition(Vector2f(0, 0));
+	Entity* wallBottom = new Entity(Wall,textureWall, 1280, 20);
+	wallRight->setPosition(Vector2f(0, 700));
+
+
+
+
 	World world;
 	world.data.push_back(paddle);
 	world.data.push_back(ball);
+	world.data.push_back(wallLeft);
+	world.data.push_back(wallRight);
+	world.data.push_back(wallRight);
+	world.data.push_back(wallRight);
 	while (window.isOpen()){
 		sf::Event event;
 		double dt = tExitFrame - tEnterFrame;
