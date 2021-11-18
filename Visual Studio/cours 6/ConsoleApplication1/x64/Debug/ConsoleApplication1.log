@@ -1,0 +1,9 @@
+﻿  ConsoleApplication1.cpp
+C:\Workshop\Allan\hae_gp2\Visual Studio\cours 6\ConsoleApplication1\ConsoleApplication1.cpp(72,16): warning C4244: 'initialisation' : conversion de 'double' en 'float', perte possible de données
+C:\Workshop\Allan\hae_gp2\Visual Studio\cours 6\ConsoleApplication1\ConsoleApplication1.cpp(73,16): warning C4244: 'initialisation' : conversion de 'double' en 'float', perte possible de données
+C:\Workshop\Allan\hae_gp2\Visual Studio\cours 6\ConsoleApplication1\ConsoleApplication1.cpp(76,37): warning C4244: 'argument' : conversion de 'double' en 'float', perte possible de données
+C:\Workshop\Allan\hae_gp2\Visual Studio\cours 6\ConsoleApplication1\ConsoleApplication1.cpp(80,36): warning C4244: 'argument' : conversion de 'double' en 'float', perte possible de données
+C:\Workshop\Allan\hae_gp2\Visual Studio\cours 6\ConsoleApplication1\ConsoleApplication1.cpp(85,30): warning C4244: 'argument' : conversion de 'double' en 'float', perte possible de données
+C:\Workshop\Allan\hae_gp2\Visual Studio\cours 6\ConsoleApplication1\ConsoleApplication1.cpp(89,31): warning C4244: 'argument' : conversion de 'double' en 'float', perte possible de données
+C:\Workshop\Allan\hae_gp2\Visual Studio\cours 6\ConsoleApplication1\ConsoleApplication1.cpp(113,27): warning C4305: 'initialisation' : troncation de 'double' à 'float'
+  ConsoleApplication1.vcxproj -> C:\Workshop\Allan\hae_gp2\Visual Studio\cours 6\ConsoleApplication1\x64\Debug\ConsoleApplication1.exe
