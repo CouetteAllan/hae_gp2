@@ -2,11 +2,11 @@
 
 void Entity::update(double dt)
 {
-	auto pos = getPosition();
+	auto pos = this->getPosition();
 	pos.x += dx * dt;
 	pos.y += dy * dt;
-	setPosition(pos);
-	
+	this->setPosition(pos);
+	sprite.setPosition(pos);
 
 	box.top = getPosition().y - height/2;
 	box.left = getPosition().x - width/2;

@@ -117,51 +117,81 @@ int main()
 	sf::Texture textureWeeb;
 	if (!textureWeeb.loadFromFile("res/violet.png"))
 		return EXIT_FAILURE;
+
 	sf::Texture textureDuck;
 	if (!textureDuck.loadFromFile("res/duck.png"))
 		return EXIT_FAILURE;
+
 	sf::Texture textureBall;
 	if (!textureBall.loadFromFile("res/ball.png"))
 		return EXIT_FAILURE;
+
 	sf::Texture textureWall;
 	if (!textureWall.loadFromFile("res/wall.png"))
 		return EXIT_FAILURE;
+
 	textureWall.setRepeated(true);
 
 	//----------CREATION DU PADDLE--------------
 	const int widthPaddle = 135;
 	const int heightPaddle = 30;
-	PlayerPaddle* paddle = new PlayerPaddle(PlayerObject,textureDuck, widthPaddle, heightPaddle);
+	PlayerPaddle* paddle = new PlayerPaddle(PlayerObject,textureWeeb, widthPaddle, heightPaddle);
 	paddle->setPosition(800, 650);
-	paddle->setOrigin(widthPaddle / 2, heightPaddle / 2);
 
 
 	//-----------CREATION DE LA BALLE---------------
 	Entity* ball = new Entity(Ball, textureBall, 20, 20);
-	ball->setOrigin(10, 10);
 	paddle->currentBall = ball;
+	ball->setPosition(paddle->getPosition() + Vector2f(0, -35));
 
 
 	//-----------CREATION DES MURS-----------------
 	Entity* wallLeft = new Entity(Wall,textureWall, 20, 720);
-	wallLeft->setPosition(Vector2f(0, 0));
+	wallLeft->setPosition(Vector2f(10, 720/2));
 	Entity* wallRight = new Entity(Wall,textureWall, 20, 720);
-	wallRight->setPosition(Vector2f(1260, 0));
+	wallRight->setPosition(Vector2f(1270, 720/2));
 	Entity* wallTop = new Entity(Wall,textureWall, 1280, 20);
-	wallRight->setPosition(Vector2f(0, 0));
-	Entity* wallBottom = new Entity(Wall,textureWall, 1280, 20);
-	wallRight->setPosition(Vector2f(0, 700));
+	wallTop->setPosition(Vector2f(1280/2, 10));
+	Entity* wallBottom = new Entity(Wall,textureWall, 1280, 40);
+	wallBottom->setPosition(Vector2f(1280/2, 700));
 
-
-
-
+	
 	World world;
 	world.data.push_back(paddle);
 	world.data.push_back(ball);
 	world.data.push_back(wallLeft);
 	world.data.push_back(wallRight);
-	world.data.push_back(wallRight);
-	world.data.push_back(wallRight);
+	world.data.push_back(wallTop);
+	world.data.push_back(wallBottom);
+	//----------CREATION DES BRIQUES---------------
+	for (size_t i = 1; i < 7; i++)
+	{
+		Color randomColor;
+		randomColor.r = rand() % 255 + 1;
+		randomColor.g = 0;
+		randomColor.b = rand() % 255 + 1;
+		Entity* brick = new Entity(Brick, textureDuck, 120, 35, randomColor);
+
+		for (size_t j = 1; j < 8; j++)
+		{
+			//faire la brique
+			
+			float brickWidth = 120;
+			float brickHeight = 35;
+			Entity* brick = new Entity(Brick, textureDuck, 120, 35, randomColor);
+			//placer la brique
+			auto pos = brick->getPosition();
+			pos.x = j * (brickWidth + 40);
+			pos.y = i * 60;
+			brick->setPosition(pos);
+
+			//faire un offset
+
+			world.data.push_back(brick);
+		}
+	}
+
+
 	while (window.isOpen()){
 		sf::Event event;
 		double dt = tExitFrame - tEnterFrame;
@@ -196,16 +226,16 @@ int main()
 			keyHit = true;
 		}
 		if (keyHit) {
-			if (pos.x < 0)
-					pos.x = 0;
-			if (pos.x > window.getSize().x)
-					pos.x = window.getSize().x;
+			if (pos.x < 20)
+					pos.x = 20;
+			if (pos.x > window.getSize().x - 20)
+					pos.x = window.getSize().x - 20;
 			paddle->setPosition(pos);
 		}
 
-		if (paddle->box.intersects(ball->box)) {
+		/*if (paddle->box.intersects(ball->box)) {
 			ball->dy = -ball->dy;
-		}
+		}*/
 
 
 		bool mouseLeftIsPressed = sf::Mouse::isButtonPressed(sf::Mouse::Left);
@@ -250,18 +280,6 @@ int main()
 		ptr.setPosition(mousePos);
 		tDt.setString( to_string(dt)+" FPS:"+ to_string((int)(1.0f / dt)));
 		
-		if (ball->getPosition().x <= 10)
-			ball->dx = -ball->dx;
-
-		if (ball->getPosition().y <= 10)
-			ball->dy = -ball->dy;
-
-		if (ball->getPosition().x >= 1270)
-			ball->dx = -ball->dx;
-
-		if (ball->getPosition().y >= 680)
-			ball->dy = -ball->dy;
-
 		
 		////////////////////
 
@@ -270,6 +288,7 @@ int main()
 		
 		////////////////////
 		//UPDATE
+		world.update(dt);
 		paddle->update(dt);
 		////////////////////
 		//DRAW
@@ -279,8 +298,7 @@ int main()
 
 		//game elems
 		//window.draw(shape);
-		//world.draw(window)
-		paddle->draw(window);
+		world.draw(window);
 		//window.draw(gun);
 		
 		//c.draw(window);

@@ -13,7 +13,7 @@ enum EType {
 	Ball,
 };
 
-class Entity : public sf::Transformable{
+class Entity : public sf::Transformable {
 public:
 	Texture texture;
 	Sprite sprite;
@@ -37,11 +37,14 @@ public:
 		box.height = height;
 		box.width = width;
 
+		this->setOrigin(width / 2, height / 2);
+
 		sprite.setTexture(texture);
 		sprite.setTextureRect((IntRect)box);
-		this->height = height;
 
+		this->height = height;
 		this->width = width;
+		sprite.setOrigin(width / 2, height / 2);
 
 		box.top = getPosition().y - height / 2;
 		box.left = getPosition().x - width / 2;

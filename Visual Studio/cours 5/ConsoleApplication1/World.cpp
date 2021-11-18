@@ -76,11 +76,11 @@ void World::collideWallBall(Entity * wall, Entity * ball)
 		ball->setPosition(ball->lastGoodPosition);
 		if (wall->width > wall->height) {
 			//mur en haut ou mur en bas
-			ball->dy = -ball->dy;
+			ball->dy *= -1;
 		}
 		else {
 			//mur de côté
-			ball->dx = -ball->dx;
+			ball->dx *= -1;
 		}
 
 	}
@@ -90,16 +90,16 @@ void World::collideWallBall(Entity * wall, Entity * ball)
 void World::collideBrickBall(Entity * brick, Entity * ball)
 {
 	//voir si ball collide avec brick
-	//récupérer la box de brick et voir si la position de ball est dedans
 	if (brick->box.intersects(ball->box)) {
 		//jouer un son
+		ball->setPosition(ball->lastGoodPosition);
 		auto oldPos = ball->lastGoodPosition;
 		auto boxBrick = brick->box;
 		if ((oldPos.y < boxBrick.top) || (oldPos.y > (boxBrick.top + boxBrick.height))) {
-			ball->dy = -ball->dy;
+			ball->dy *= -ball->dy;
 		}
 		else {
-			ball->dx = -ball->dx;
+			ball->dx *= -ball->dx;
 		}
 		//détruire la brique
 		//rebondir la balle
