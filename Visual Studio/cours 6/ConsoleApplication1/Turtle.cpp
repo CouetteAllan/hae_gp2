@@ -24,9 +24,11 @@
 	radius = turtleBody->getRadius();
 	head->setPosition(body->getPosition() + offset);
 	head->setOrigin(body->getOrigin());
-	Vector2f pawPosOffset = Vector2f(radius, -radius);
+	Vector2f pawPosOffset = Vector2f(0, -radius);
 	for (auto p : paws) {
-		p->setPosition(body->getPosition() + offset);
+		p->setOrigin(body->getOrigin());
+		pawPosOffset = -pawPosOffset;
+		p->setPosition(body->getPosition() + pawPosOffset);
 	}
 
 }

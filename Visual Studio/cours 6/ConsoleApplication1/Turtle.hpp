@@ -27,7 +27,7 @@ public:
 	CircleShape* paw = nullptr;
 	std::vector<CircleShape*> paws;
 	float radius = 20.0f;
-	Vector2f offset = Vector2f(0, -radius);
+	Vector2f offset = Vector2f(radius, -radius);
 	float dx = 0.0f;
 	float rot = 0.0f;
 	 
