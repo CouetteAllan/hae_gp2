@@ -29,30 +29,23 @@ int main()
 	tDt.setFillColor(sf::Color::White);
 	tDt.setCharacterSize(45);
 
-	sf::CircleShape* turtleHead = new CircleShape(20);
-	turtleHead->setFillColor(sf::Color::Red);
-	turtleHead->setOrigin(20, 20);
-
-	sf::CircleShape* turtleBody = new CircleShape(40);
-	turtleBody->setFillColor(sf::Color::Green);
-	turtleBody->setOrigin(40,40);
 	
 
-	Turtle* turtle = new Turtle(turtleBody, turtleHead);
-	turtle->trs.translate(500, 500);
+	
+
+	Turtle turtle;
+
+
+	turtle.trs.translate(500, 500);
+
 	double tStart = getTimeStamp();
 	double tEnterFrame = getTimeStamp();
 	double tExitFrame = getTimeStamp();
 
 	bool mouseLeftWasPressed = false;
 
-	Command* advance;
-	advance->type = Advance;
-	advance->originalValue = 10;
-
-	Command* moveBack;
-	moveBack->type = Advance;
-	moveBack->originalValue = -advance->originalValue;
+	Command* advance = nullptr;
+	Command* moveBack = nullptr;
 
 	while (window.isOpen()){
 		sf::Event event;
@@ -71,34 +64,34 @@ int main()
 					window.close();
 
 				if (event.key.code == sf::Keyboard::E)
-					turtle->isDrawing = !turtle->isDrawing;
+					turtle.isDrawing = !turtle.isDrawing;
 
 				if (event.key.code == sf::Keyboard::A)
-					turtle->isDrawing = !turtle->isDrawing;
+					turtle.isDrawing = !turtle.isDrawing;
 				break;
 				
 			default:
 				break;
 			}
 		}
-		auto pos = turtle->getPosition();
+		//auto pos = turtle->getPosition();
 		float deltaX = dt * 360;
 		float deltaY = dt * 360;
 		bool keyHit = false;
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)|| sf::Keyboard::isKeyPressed(sf::Keyboard::Z)) {
-			turtle->trs.translate(0, -7 * dt * 60);
-			turtle->appendCmd(advance);
+			turtle.trs.translate(0, -7 * dt * 60);
+//			turtle.appendCmd(advance);
 		}
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down) || sf::Keyboard::isKeyPressed(sf::Keyboard::S)) {
-			turtle->trs.translate(0, 7 * dt * 60);
-			turtle->appendCmd(moveBack);
+			turtle.trs.translate(0, 7 * dt * 60);
+	//		turtle.appendCmd(moveBack);
 		}
 		
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)|| sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
-			turtle->trs.rotate(5 * dt * 60);
+			turtle.trs.rotate(5 * dt * 60);
 		}
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left) || sf::Keyboard::isKeyPressed(sf::Keyboard::Q)) {
-			turtle->trs.rotate(-5 * dt * 60);
+			turtle.trs.rotate(-5 * dt * 60);
 		}
 
 
@@ -132,19 +125,20 @@ int main()
 		
 		////////////////////
 		//UPDATE
-		turtle->update(dt);
+		turtle.update(dt);
 
 		////////////////////
 		//DRAW
 
-		turtle->draw(window);
+		turtle.draw(window);
 
 		//game elems
 
 		
 
 		//ui
-		
+		if(turtle.isDrawing)
+			window.draw(tDt);
 		window.display();
 		tExitFrame = getTimeStamp();
 	}
