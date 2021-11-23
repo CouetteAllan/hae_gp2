@@ -1,17 +1,1 @@
-﻿  ConsoleApplication1.cpp
-c:\workspace\allan\hae_gp2\visual studio\cours 6\consoleapplication1\consoleapplication1.cpp(22): warning C4244: 'argument' : conversion de 'float' en 'unsigned int', perte possible de données
-c:\workspace\allan\hae_gp2\visual studio\cours 6\consoleapplication1\consoleapplication1.cpp(43): warning C4244: 'argument' : conversion de 'T' en 'float', perte possible de données
-          with
-          [
-              T=unsigned int
-          ]
-c:\workspace\allan\hae_gp2\visual studio\cours 6\consoleapplication1\consoleapplication1.cpp(84): warning C4244: 'initialisation' : conversion de 'double' en 'float', perte possible de données
-c:\workspace\allan\hae_gp2\visual studio\cours 6\consoleapplication1\consoleapplication1.cpp(85): warning C4244: 'initialisation' : conversion de 'double' en 'float', perte possible de données
-c:\workspace\allan\hae_gp2\visual studio\cours 6\consoleapplication1\consoleapplication1.cpp(88): warning C4244: 'argument' : conversion de 'double' en 'float', perte possible de données
-c:\workspace\allan\hae_gp2\visual studio\cours 6\consoleapplication1\consoleapplication1.cpp(93): warning C4244: 'argument' : conversion de 'double' en 'float', perte possible de données
-c:\workspace\allan\hae_gp2\visual studio\cours 6\consoleapplication1\consoleapplication1.cpp(98): warning C4244: 'argument' : conversion de 'double' en 'float', perte possible de données
-c:\workspace\allan\hae_gp2\visual studio\cours 6\consoleapplication1\consoleapplication1.cpp(101): warning C4244: 'argument' : conversion de 'double' en 'float', perte possible de données
-c:\workspace\allan\hae_gp2\visual studio\cours 6\consoleapplication1\consoleapplication1.cpp(123): warning C4244: 'argument' : conversion de 'int64_t' en 'float', perte possible de données
-c:\workspace\allan\hae_gp2\visual studio\cours 6\consoleapplication1\consoleapplication1.cpp(126): warning C4244: 'argument' : conversion de 'double' en 'float', perte possible de données
-c:\workspace\allan\hae_gp2\visual studio\cours 6\consoleapplication1\consoleapplication1.cpp(144): warning C4305: 'initialisation' : troncation de 'double' à 'float'
-  ConsoleApplication1.vcxproj -> C:\WorkSpace\Allan\hae_gp2\Visual Studio\cours 6\ConsoleApplication1\x64\Debug\ConsoleApplication1.exe
+﻿  ConsoleApplication1.vcxproj -> C:\Users\couet\OneDrive\Bureau\Allan\hae_gp2\Visual Studio\cours 6\ConsoleApplication1\x64\Debug\ConsoleApplication1.exe
