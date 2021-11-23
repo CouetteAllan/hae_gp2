@@ -17,7 +17,9 @@
 
 int main()
 {
-	sf::RenderWindow window(sf::VideoMode(1280, 720), "Tortue du turfu");
+	float wHeight = 720;
+	float wWidth = 1280;
+	sf::RenderWindow window(sf::VideoMode(wWidth, wHeight), "Tortue du turfu");
 	window.setVerticalSyncEnabled(true);
 	window.setFramerateLimit(144);
 
@@ -31,20 +33,22 @@ int main()
 
 	
 
-	
+	Texture textureDuck;
+	if (!textureDuck.loadFromFile("res/duck.png"))
+		return EXIT_FAILURE;
+		
 
 	Turtle turtle;
-
-
+	turtle.textureTurtle = textureDuck;
+	turtle.createTextureInWindow(window.getSize().x, window.getSize().y);
 	turtle.trs.translate(500, 500);
-
 	double tStart = getTimeStamp();
 	double tEnterFrame = getTimeStamp();
 	double tExitFrame = getTimeStamp();
 
 	bool mouseLeftWasPressed = false;
 
-	Command* advance = nullptr;
+	Command* advance = new Command(Advance);
 	Command* moveBack = nullptr;
 
 	while (window.isOpen()){
@@ -67,7 +71,7 @@ int main()
 					turtle.isDrawing = !turtle.isDrawing;
 
 				if (event.key.code == sf::Keyboard::A)
-					turtle.isDrawing = !turtle.isDrawing;
+					turtle.color = turtle.changeColor();
 				break;
 				
 			default:
@@ -79,11 +83,12 @@ int main()
 		float deltaY = dt * 360;
 		bool keyHit = false;
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)|| sf::Keyboard::isKeyPressed(sf::Keyboard::Z)) {
-			turtle.trs.translate(0, -7 * dt * 60);
+			turtle.trs.translate(0, -7 * dt * 40);
+			//turtle.appendCmd(advance);
 //			turtle.appendCmd(advance);
 		}
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down) || sf::Keyboard::isKeyPressed(sf::Keyboard::S)) {
-			turtle.trs.translate(0, 7 * dt * 60);
+			turtle.trs.translate(0, 7 * dt * 40);
 	//		turtle.appendCmd(moveBack);
 		}
 		
@@ -119,9 +124,9 @@ int main()
 		
 		
 		////////////////////
-
+		turtle.drawTexture.display();
 		//CLEAR
-		window.clear();
+		window.clear(Color::Cyan);
 		
 		////////////////////
 		//UPDATE
@@ -129,9 +134,9 @@ int main()
 
 		////////////////////
 		//DRAW
-
+		sf::Sprite sprite(turtle.drawTexture.getTexture());
 		turtle.draw(window);
-
+		window.draw(sprite);
 		//game elems
 
 		

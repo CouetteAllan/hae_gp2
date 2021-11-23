@@ -8,8 +8,9 @@
 	head = turtleHead;
 
 	CircleShape* turtleBody = new CircleShape(40);
-	turtleBody->setFillColor(sf::Color::Green);
 	turtleBody->setOrigin(40, 40);
+	turtleBody->setTexture(&textureTurtle);
+	turtleBody->setFillColor(Color::Green);
 	body = turtleBody;
 
 	for (size_t i = 0; i < 4; i++)
@@ -24,13 +25,17 @@
 	radius = turtleBody->getRadius();
 	head->setPosition(body->getPosition() + offset);
 	head->setOrigin(body->getOrigin());
-	Vector2f pawPosOffset = Vector2f(0, -radius);
-	for (auto p : paws) {
-		p->setOrigin(body->getOrigin());
+	Vector2f pawPosOffset = Vector2f(radius - 10, -radius + 10);
+	Vector2f pawPosOffset2 = Vector2f((radius - 10), radius - 10);
+	for (size_t i = 0; i < 2; i++) {
 		pawPosOffset = -pawPosOffset;
-		p->setPosition(body->getPosition() + pawPosOffset);
+		paws[i]->setPosition(pawPosOffset);
 	}
 
+	for (size_t i = 2; i < 4; i++) {
+		pawPosOffset2 = -pawPosOffset2;
+		paws[i]->setPosition(pawPosOffset2);
+	}
 }
 
  Turtle::~Turtle() {
@@ -55,22 +60,48 @@ void Turtle::draw(RenderWindow& win)
 
 void Turtle::update(double dt)
 {
-	auto pos = getPosition();
-	pos.x = dx * dt;
-	setPosition(pos);
-
+	turtleDrawing();
+	drawTexture.display();
 }
 
-void Turtle::changeColor()
+void Turtle::createTextureInWindow(float width, float height)
 {
+	drawTexture.create(width, height);
+}
 
+void Turtle::turtleDrawing()
+{
+	if (isDrawing) {
+		CircleShape brush(15);
+		brush.setFillColor(color);
+		brush.setOrigin(15,15);
+
+		brush.setPosition(Vector2f(0, radius));
+		drawTexture.draw(brush,trs);
+
+	}
+}
+
+Color Turtle::changeColor()
+{
+	if (color == Color::Black)
+		return Color::Magenta;
+	if (color == Color::Magenta)
+		return Color::Green;
+	if (color == Color::Green)
+		return Color::White;
+	if (color == Color::White)
+		return Color::Yellow;
+	if (color == Color::Yellow)
+		return Color::Black;
 }
 
 void Turtle::appendCmd(Command* cmd)
 {
-	if(!cmds)
+	if (cmds)
+		cmds = cmds->append(cmd);
+	else
 		cmds = cmd;
-
 
 
 	appendCmd(cmds->next);
@@ -78,10 +109,19 @@ void Turtle::appendCmd(Command* cmd)
 
 Command* Turtle::applyCmd(Command* cmd)
 {
-	if (cmd->type == Advance) {
-		cmd->originalValue;
-	}
+	switch (cmd->type) {
+	case Advance:
+		//trs.translate(cmd->originalValue);
 
+		break;
+	case Turn:
+		//trs.rotate(cmd->originalValue);
+
+		break;
+
+	default:
+		break;
+	}
 	return nullptr;
 }
 

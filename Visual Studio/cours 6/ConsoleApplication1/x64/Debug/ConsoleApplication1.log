@@ -1,8 +1,6 @@
 ﻿  Turtle.cpp
-c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 6\consoleapplication1\turtle.cpp(59): warning C4244: '=' : conversion de 'double' en 'T', perte possible de données
-          with
-          [
-              T=float
-          ]
-c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 6\consoleapplication1\turtle.cpp(77): warning C4717: 'Turtle::appendCmd' : récurrent sur tous les chemins d'accès de contrôle, la fonction entraînera un dépassement de capacité de la pile d'exécution
-  ConsoleApplication1.vcxproj -> C:\Users\couet\OneDrive\Bureau\Allan\hae_gp2\Visual Studio\cours 6\ConsoleApplication1\x64\Debug\ConsoleApplication1.exe
+c:\workspace\allan\hae_gp2\visual studio\cours 6\consoleapplication1\turtle.cpp(69): warning C4244: 'argument' : conversion de 'float' en 'unsigned int', perte possible de données
+c:\workspace\allan\hae_gp2\visual studio\cours 6\consoleapplication1\turtle.cpp(108): warning C4717: 'Turtle::appendCmd' : récurrent sur tous les chemins d'accès de contrôle, la fonction entraînera un dépassement de capacité de la pile d'exécution
+c:\workspace\allan\hae_gp2\visual studio\cours 6\consoleapplication1\turtle.cpp(97): warning C4715: 'Turtle::changeColor' : les chemins de contrôle ne retournent pas tous une valeur
+c:\workspace\allan\hae_gp2\visual studio\cours 6\consoleapplication1\turtle.hpp(29): warning C4715: 'Command::append' : les chemins de contrôle ne retournent pas tous une valeur
+  ConsoleApplication1.vcxproj -> C:\WorkSpace\Allan\hae_gp2\Visual Studio\cours 6\ConsoleApplication1\x64\Debug\ConsoleApplication1.exe

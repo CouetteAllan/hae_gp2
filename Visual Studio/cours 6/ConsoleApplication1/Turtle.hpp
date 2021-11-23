@@ -15,6 +15,21 @@ struct Command {
 	float currentValue = 0.0f;
 	Command* next = nullptr;
 
+	Command(CmdType t, float value = 0.0) {
+		type = t;
+		originalValue = value;
+	}
+
+	Command* append(Command* cmd) {
+		if (!next)
+			 next = cmd;
+		else
+			return append(cmd);
+
+	}
+
+	//
+
 	//Command* clone();
 };
 
@@ -25,6 +40,8 @@ public:
 	CircleShape* head = nullptr;
 	CircleShape* body = nullptr;
 	CircleShape* paw = nullptr;
+
+	Texture textureTurtle;
 	std::vector<CircleShape*> paws;
 	float radius = 20.0f;
 	Vector2f offset = Vector2f(radius, -radius);
@@ -32,8 +49,9 @@ public:
 	float rot = 0.0f;
 	 
 	bool isDrawing = false;
+	RenderTexture drawTexture;
 
-	Color color;
+	Color color = Color::Black;
 
 
 
@@ -43,8 +61,11 @@ public:
 
 	virtual void draw(RenderWindow& win);
 	virtual void update(double dt);
-	void changeColor();
 
+	void createTextureInWindow(float width, float height);
+	void turtleDrawing();
+
+	Color changeColor();
 	void appendCmd(Command* cmd);
 
 protected:
