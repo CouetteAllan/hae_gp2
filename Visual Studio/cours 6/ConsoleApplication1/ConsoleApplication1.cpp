@@ -51,6 +51,8 @@ int main()
 	Command* advance = new Command(Advance);
 	Command* moveBack = nullptr;
 
+	
+
 	while (window.isOpen()){
 		sf::Event event;
 		double dt = tExitFrame - tEnterFrame;
@@ -106,9 +108,31 @@ int main()
 		sf::Vector2f mousePos = sf::Vector2f(sf::Mouse::getPosition(window));
 
 		
+		static bool enterWasPressed = false;
 
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
-			
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter) && !enterWasPressed) {
+			FILE* f = nullptr;
+			fopen_s(&f, "res/ui.txt", "rb");
+			if (f && !feof(f)) {
+				char line[256] = {};
+				while (true) {
+					int64_t nb = 0;
+					fscanf_s(f, "%s %lld\n",line,256,&nb);
+					std::string s = line;
+					if (s == "Advance"){
+						turtle.trs.translate(0,-nb);
+					}
+					else if (s == "Rotate") {
+						turtle.trs.rotate(nb * dt * 60);
+					}
+					else if (s == "PenDown") {
+						turtle.isDrawing = true;
+					}
+					if (feof(f))
+						break;
+				}
+				fclose(f);
+			}
 		}
 
 		if (mouseLeftIsPressed) 

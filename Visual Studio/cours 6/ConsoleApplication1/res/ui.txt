@@ -1,0 +1,6 @@
+PenDown
+Advance 20
+Rotate 5
+Advance -20
+Rotate -50
+Advance 12
