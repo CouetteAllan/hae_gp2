@@ -17,7 +17,11 @@
 #include <stdio.h>
 #include <errno.h>
 
+void writeFile(FILE* file, Command* cmd) {
 
+
+
+}
 
 int main()
 {
@@ -58,7 +62,7 @@ int main()
 	const char* filename = "res/ui.txt";
 	char time[26];
 	errno_t err;
-
+	bool automatic = false;
 	result = _stat(filename, &buf);
 
 	// Check if statistics are valid:
@@ -107,6 +111,9 @@ int main()
 
 				if (event.key.code == sf::Keyboard::A)
 					turtle.color = turtle.changeColor();
+
+				if (event.key.code == sf::Keyboard::F)
+					turtle.automatik = !turtle.automatik;
 				break;
 				
 			default:
@@ -117,21 +124,22 @@ int main()
 		float deltaX = dt * 360;
 		float deltaY = dt * 360;
 		bool keyHit = false;
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)|| sf::Keyboard::isKeyPressed(sf::Keyboard::Z)) {
-			turtle.trs.translate(0, -7 * dt * 40);
-			//turtle.appendCmd(advance);
-//			turtle.appendCmd(advance);
-		}
-		/*if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down) || sf::Keyboard::isKeyPressed(sf::Keyboard::S)) {
-			turtle.trs.translate(0, 7 * dt * 40);
-	//		turtle.appendCmd(moveBack);
-		}*/
+
+		if (!automatic) {
+
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)|| sf::Keyboard::isKeyPressed(sf::Keyboard::Z)) {
+				turtle.translate(-7 * dt * 80);
+			}
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down) || sf::Keyboard::isKeyPressed(sf::Keyboard::S)) {
+				turtle.translate(7 * dt * 80);
+			}
 		
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)|| sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
-			turtle.trs.rotate(5 * dt * 60);
-		}
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left) || sf::Keyboard::isKeyPressed(sf::Keyboard::Q)) {
-			turtle.trs.rotate(-5 * dt * 60);
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)|| sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
+				turtle.rotate(5 * dt * 60);
+			}
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left) || sf::Keyboard::isKeyPressed(sf::Keyboard::Q)) {
+				turtle.rotate(-5 * dt * 60);
+			}
 		}
 
 
@@ -144,7 +152,7 @@ int main()
 		bool enterIsReleased = (!enterIsPressed && enterWasPressed);
 		static bool enterWasPressed = false;
 
-		if (enterIsPressed && !enterWasPressed || doReinterpret) {
+		if (enterIsPressed && !enterWasPressed && turtle.automatik || doReinterpret && turtle.automatik) {
 			FILE* f = nullptr;
 			fopen_s(&f, "res/ui.txt", "rb");
 			if (f && !feof(f)) {
@@ -155,23 +163,30 @@ int main()
 					std::string s = line;
 					if (s == "Advance"){
 						turtle.translate(nb);
+
 					}
 					else if (s == "Rotate") {
 						turtle.rotate(nb);
+
 					}
 					else if (s == "PenDown") {
 						turtle.draw(true);
+
 					}
 					else if (s == "PenUp") {
 						turtle.draw(false);
+
 					}
 					else if (s == "Clear") {
-						turtle.clear();
+						turtle.appendCmd(new Command(Clear,0.0f));
+
 					}
 					if (feof(f))
 						break;
 				}
 				fclose(f);
+				turtle.writeCommands("res/uiWrite.txt");
+
 			}
 			enterWasPressed = true;
 			doReinterpret = false;

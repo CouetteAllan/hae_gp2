@@ -2,7 +2,7 @@ Clear
 Advance -200
 Rotate -120
 PenDown
-Advance -260
+Advance -260 
 Rotate -150
 Advance -260
 Rotate -150

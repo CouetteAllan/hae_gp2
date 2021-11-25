@@ -1,10 +1,10 @@
 ﻿  Turtle.cpp
-C:\Workshop\Allan\hae_gp2\Visual Studio\cours 6\ConsoleApplication1\Turtle.cpp(70,28): warning C4244: 'argument' : conversion de 'float' en 'unsigned int', perte possible de données
-C:\Workshop\Allan\hae_gp2\Visual Studio\cours 6\ConsoleApplication1\Turtle.cpp(70,21): warning C4244: 'argument' : conversion de 'float' en 'unsigned int', perte possible de données
-C:\Workshop\Allan\hae_gp2\Visual Studio\cours 6\ConsoleApplication1\Turtle.cpp(147,51): warning C4244: '-=' : conversion de 'double' en 'float', perte possible de données
-C:\Workshop\Allan\hae_gp2\Visual Studio\cours 6\ConsoleApplication1\Turtle.cpp(153,52): warning C4244: '+=' : conversion de 'double' en 'float', perte possible de données
-C:\Workshop\Allan\hae_gp2\Visual Studio\cours 6\ConsoleApplication1\Turtle.cpp(160,40): warning C4244: 'argument' : conversion de 'double' en 'float', perte possible de données
-C:\Workshop\Allan\hae_gp2\Visual Studio\cours 6\ConsoleApplication1\Turtle.cpp(163,34): warning C4244: 'argument' : conversion de 'double' en 'float', perte possible de données
-C:\Workshop\Allan\hae_gp2\Visual Studio\cours 6\ConsoleApplication1\Turtle.cpp(134): warning C4715: 'Turtle::changeColor' : les chemins de contrôle ne retournent pas tous une valeur
-C:\Workshop\Allan\hae_gp2\Visual Studio\cours 6\ConsoleApplication1\Turtle.hpp(35): warning C4715: 'Command::append' : les chemins de contrôle ne retournent pas tous une valeur
+C:\Workshop\Allan\hae_gp2\Visual Studio\cours 6\ConsoleApplication1\Turtle.cpp(78,28): warning C4244: 'argument' : conversion de 'float' en 'unsigned int', perte possible de données
+C:\Workshop\Allan\hae_gp2\Visual Studio\cours 6\ConsoleApplication1\Turtle.cpp(78,21): warning C4244: 'argument' : conversion de 'float' en 'unsigned int', perte possible de données
+C:\Workshop\Allan\hae_gp2\Visual Studio\cours 6\ConsoleApplication1\Turtle.cpp(197,47): warning C4244: '-=' : conversion de 'double' en 'float', perte possible de données
+C:\Workshop\Allan\hae_gp2\Visual Studio\cours 6\ConsoleApplication1\Turtle.cpp(203,48): warning C4244: '+=' : conversion de 'double' en 'float', perte possible de données
+C:\Workshop\Allan\hae_gp2\Visual Studio\cours 6\ConsoleApplication1\Turtle.cpp(210,40): warning C4244: 'argument' : conversion de 'double' en 'float', perte possible de données
+C:\Workshop\Allan\hae_gp2\Visual Studio\cours 6\ConsoleApplication1\Turtle.cpp(213,34): warning C4244: 'argument' : conversion de 'double' en 'float', perte possible de données
+C:\Workshop\Allan\hae_gp2\Visual Studio\cours 6\ConsoleApplication1\Turtle.cpp(185): warning C4715: 'Turtle::changeColor' : les chemins de contrôle ne retournent pas tous une valeur
+C:\Workshop\Allan\hae_gp2\Visual Studio\cours 6\ConsoleApplication1\Turtle.hpp(36): warning C4715: 'Command::append' : les chemins de contrôle ne retournent pas tous une valeur
   ConsoleApplication1.vcxproj -> C:\Workshop\Allan\hae_gp2\Visual Studio\cours 6\ConsoleApplication1\x64\Debug\ConsoleApplication1.exe

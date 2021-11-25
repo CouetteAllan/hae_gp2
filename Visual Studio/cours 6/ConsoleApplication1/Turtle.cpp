@@ -62,7 +62,15 @@ void Turtle::update(double dt)
 {
 	turtleDrawing();
 	drawTexture.display();
-	cmds = applyCmdInter(cmds, dt);
+	if(automatik)
+		cmds = applyCmdInter(cmds, dt);
+
+	else {
+		while (cmds) {
+			applyCmd(cmds);
+			cmds = cmds->popFirst();
+		}
+	}
 }
 
 void Turtle::createTextureInWindow(float width, float height)
@@ -86,29 +94,33 @@ void Turtle::translate(float value)
 {
 	Command* move = new Command (Advance, value);
 	appendCmd(move);
-	commandsSaved.push_back(move);
+	if(!automatik)
+		commandsSaved.push_back(move);
 }
 
 void Turtle::rotate(float value)
 {
 	Command* rot = new Command(Turn, value);
 	appendCmd(rot);
-	commandsSaved.push_back(rot);
+	if(!automatik)
+		commandsSaved.push_back(rot);
 
 }
 
 void Turtle::draw(bool value)
 {
 	if (value) {
-		Command* draw = new Command(PenDown);
+		Command* draw = new Command(PenDown,0.0f);
 		appendCmd(draw);
-		commandsSaved.push_back(draw);
+		if(!automatik)
+			commandsSaved.push_back(draw);
 
 	}
 	else {
 		Command* noDraw = new Command(PenUp);
 		appendCmd(noDraw);
-		commandsSaved.push_back(noDraw);
+		if(!automatik)
+			commandsSaved.push_back(noDraw);
 
 	}
 }
@@ -124,7 +136,39 @@ void Turtle::clear()
 	}
 }
 
+void Turtle::writeCommands(const char* fileName)
+{
+	FILE* f = nullptr;
+	fopen_s(&f, fileName, "wb");
+	if (f) {
+		write(f, cmds);
+		fflush(f);
+		fclose(f);
+	}
 
+}
+
+void Turtle::write(FILE* f, Command* cmd)
+{
+	switch (cmd->type) {
+	case Clear:
+		fprintf(f, "PenDown");
+		break;
+	case Advance:
+		fprintf(f, "Advance %0.0f", cmd->originalValue);
+		break;
+	case Turn: 
+		fprintf(f, "Turn %0.0f", cmd->originalValue);
+		break;
+	case PenDown:
+		fprintf(f, "PenDown");
+
+		break;
+	case PenUp:
+		fprintf(f, "PenUp");
+		break;
+	}
+}
 
 Color Turtle::changeColor()
 {
@@ -145,9 +189,7 @@ Command * Turtle::applyCmdInter(Command * cmd, double dt)
 	dt = 1.0f / 60.0f;
 	if (cmd == nullptr)                   
 		return nullptr;
-	dt = 1.0f / 60.0f;
 	float time = 2.0f;
-	float ratio = cmd->currentValue / cmd->originalValue;
 
 	if (cmd->originalValue > 0)      
 	{
@@ -178,11 +220,15 @@ Command * Turtle::applyCmdInter(Command * cmd, double dt)
 		isDrawing = false;
 		return cmd->popFirst();
 		break;
-
+	case Clear:
+		clear();
+		return cmd->next;
+		break;
 	default:
 		break;
 	}
 	return cmds;
+
 
 
 

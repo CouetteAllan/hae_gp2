@@ -1,7 +1,7 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
-
+#include <list>
 
 using namespace sf;
 
@@ -10,6 +10,7 @@ enum CmdType {
 	Turn,
 	PenDown,
 	PenUp,
+	Clear,
 };
 
 struct Command {
@@ -41,6 +42,8 @@ struct Command {
 	}
 };
 
+
+
 class Turtle : public Transformable{
 public:
 	Transform trs;
@@ -57,9 +60,10 @@ public:
 	float dx = 0.0f;
 	float rot = 0.0f;
 	 
-	std::vector<Command*> commandsSaved;
+	std::list<Command*> commandsSaved;
 
 	bool isDrawing = false;
+	bool automatik = false;
 	RenderTexture drawTexture;
 
 	Color color = Color::Black;
@@ -80,6 +84,9 @@ public:
 	void rotate(float value);
 	void draw(bool value);
 	void clear();
+	
+	void writeCommands(const char* fileName);
+	void write(FILE* f, Command* cmd);
 
 	Color changeColor();
 	Command* applyCmdInter(Command* cmd, double dt);
