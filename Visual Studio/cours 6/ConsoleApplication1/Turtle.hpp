@@ -18,19 +18,24 @@ struct Command {
 	Command(CmdType t, float value = 0.0) {
 		type = t;
 		originalValue = value;
+		currentValue = value;
 	}
 
 	Command* append(Command* cmd) {
-		if (!next)
+		if (!next) {
 			 next = cmd;
+			 return this;
+		}
 		else
-			return append(cmd);
+			 next->append(cmd);
 
 	}
 
-	//
-
-	//Command* clone();
+	Command* popFirst() {
+		Command* ru = next;
+		delete this;
+		return ru;
+	}
 };
 
 class Turtle : public Transformable{
@@ -65,11 +70,15 @@ public:
 	void createTextureInWindow(float width, float height);
 	void turtleDrawing();
 
+	void translate(float value);
+	void rotate(float value);
+
 	Color changeColor();
+	Command* applyCmdInter(Command* cmd, double dt);
 	void appendCmd(Command* cmd);
 
 protected:
 	Command* applyCmd(Command* cmd);
 	Command* cmds = nullptr;
-
+	bool calledOnce = false;
 };

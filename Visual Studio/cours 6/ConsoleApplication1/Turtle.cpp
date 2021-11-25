@@ -62,6 +62,7 @@ void Turtle::update(double dt)
 {
 	turtleDrawing();
 	drawTexture.display();
+	cmds = applyCmdInter(cmds, dt);
 }
 
 void Turtle::createTextureInWindow(float width, float height)
@@ -82,6 +83,20 @@ void Turtle::turtleDrawing()
 	}
 }
 
+void Turtle::translate(float value)
+{
+	Command* move = new Command (Advance, value);
+	appendCmd(move);
+}
+
+void Turtle::rotate(float value)
+{
+	Command* rot = new Command(Turn, value);
+	appendCmd(rot);
+}
+
+
+
 Color Turtle::changeColor()
 {
 	if (color == Color::Black)
@@ -96,26 +111,67 @@ Color Turtle::changeColor()
 		return Color::Black;
 }
 
+Command * Turtle::applyCmdInter(Command * cmd, double dt)
+{
+
+	if (cmd == nullptr)                   
+		return nullptr;
+	dt = 1.0f / 60.0f;
+	float time = 2.0f;
+	float ratio = cmd->currentValue / cmd->originalValue;
+
+	if (cmd->originalValue > 0)      
+	{
+		cmd->currentValue -= dt * cmd->originalValue;
+		if (cmd->currentValue <= 0)
+			return cmd->popFirst();
+	}
+	else                                  
+	{
+		cmd->currentValue += dt * -cmd->originalValue;
+		if (cmd->currentValue >= 0)
+			return cmd->popFirst();
+
+	}
+	switch (cmd->type) {
+	case Advance:
+		trs.translate(0, (cmd->originalValue * dt));
+
+		break;
+	case Turn:
+		trs.rotate((cmd->originalValue * dt));
+
+
+		break;
+
+	default:
+		break;
+	}
+	return cmds;
+
+
+
+}
+
 void Turtle::appendCmd(Command* cmd)
 {
 	if (cmds)
-		cmds = cmds->append(cmd);
+		cmds->append(cmd);
 	else
 		cmds = cmd;
 
 
-	appendCmd(cmds->next);
 }
 
 Command* Turtle::applyCmd(Command* cmd)
 {
 	switch (cmd->type) {
 	case Advance:
-		//trs.translate(cmd->originalValue);
+		trs.translate(0,cmd->originalValue);
 
 		break;
 	case Turn:
-		//trs.rotate(cmd->originalValue);
+		trs.rotate(cmd->originalValue);
 
 		break;
 

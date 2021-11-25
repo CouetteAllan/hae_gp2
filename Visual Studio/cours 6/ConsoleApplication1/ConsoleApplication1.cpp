@@ -47,7 +47,7 @@ int main()
 	double tExitFrame = getTimeStamp();
 
 	bool mouseLeftWasPressed = false;
-
+	bool enterWasPressed = false;
 	Command* advance = new Command(Advance);
 	Command* moveBack = nullptr;
 
@@ -107,10 +107,11 @@ int main()
 
 		sf::Vector2f mousePos = sf::Vector2f(sf::Mouse::getPosition(window));
 
-		
+		bool enterIsPressed = sf::Keyboard::isKeyPressed(sf::Keyboard::Enter);
+		bool enterIsReleased = (!enterIsPressed && enterWasPressed);
 		static bool enterWasPressed = false;
 
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter) && !enterWasPressed) {
+		if (enterIsPressed && !enterWasPressed ) {
 			FILE* f = nullptr;
 			fopen_s(&f, "res/ui.txt", "rb");
 			if (f && !feof(f)) {
@@ -120,25 +121,29 @@ int main()
 					fscanf_s(f, "%s %lld\n",line,256,&nb);
 					std::string s = line;
 					if (s == "Advance"){
-						turtle.trs.translate(0,-nb);
+						turtle.translate(nb);
 					}
 					else if (s == "Rotate") {
-						turtle.trs.rotate(nb * dt * 60);
+						turtle.rotate(nb);
 					}
 					else if (s == "PenDown") {
 						turtle.isDrawing = true;
+					}
+					else if (s == "PenUp") {
+						turtle.isDrawing = false;
 					}
 					if (feof(f))
 						break;
 				}
 				fclose(f);
 			}
+			enterWasPressed = true;
 		}
 
-		if (mouseLeftIsPressed) 
-			mouseLeftWasPressed = true;
+		if (enterIsPressed) 
+			enterWasPressed = true;
 		else
-			mouseLeftWasPressed = false;
+			enterWasPressed = false;
 
 
 		float radToDeg = 57.2958;
