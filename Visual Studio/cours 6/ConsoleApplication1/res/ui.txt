@@ -1,36 +1,21 @@
+Clear
+Advance -200
+Rotate -120
 PenDown
-Advance -100
+Advance -260
+Rotate -150
+Advance -260
+Rotate -150
+Advance -260
+Rotate -150
+Advance -260
+Rotate -150
+Advance -260
+Rotate -150
+PenUp
+Advance -450
 Rotate 90
-Advance -100
-Rotate 90
-Advance -100
-Rotate 90
-Advance -100
-Rotate 90
-Advance -100
-Rotate 90
-Advance 200
-Advance -100
-Rotate 90
-Advance -100
-Rotate 90
-Advance -100
-Rotate 90
-Advance -100
-Rotate 90
-Advance -100
-Rotate 90
-Advance 100
-Advance -100
-Rotate 90
-Advance 200
-Advance -100
-Rotate 90
-Advance -100
-Rotate 90
-Advance -100
-Rotate 90
-Advance -100
-Rotate 90
-Advance -100
-Rotate 90
+PenDown
+Advance -500
+
+

@@ -11,7 +11,11 @@
 #include <SFML/Window.hpp>
 #include "Entity.hpp"
 #include "Turtle.hpp"
-
+#include <time.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <stdio.h>
+#include <errno.h>
 
 
 
@@ -41,17 +45,46 @@ int main()
 	Turtle turtle;
 	turtle.textureTurtle = textureDuck;
 	turtle.createTextureInWindow(window.getSize().x, window.getSize().y);
-	turtle.trs.translate(500, 500);
+	turtle.trs.translate(680, 360);
 	double tStart = getTimeStamp();
 	double tEnterFrame = getTimeStamp();
 	double tExitFrame = getTimeStamp();
 
 	bool mouseLeftWasPressed = false;
 	bool enterWasPressed = false;
-	Command* advance = new Command(Advance);
-	Command* moveBack = nullptr;
 
-	
+	struct _stat buf;
+	int result;
+	const char* filename = "res/ui.txt";
+	char time[26];
+	errno_t err;
+
+	result = _stat(filename, &buf);
+
+	// Check if statistics are valid:
+	if (result != 0)
+	{
+		perror("Problem getting information");
+		switch (errno)
+		{
+		case ENOENT:
+			printf("File %s not found.\n", filename);
+			break;
+		case EINVAL:
+			printf("Invalid parameter to _stat.\n");
+			break;
+		default:
+			printf("Unexpected error in _stat.\n");
+		}
+	}
+	else {
+		printf("File size :  %ld\n", buf.st_size);
+		ctime_s(time, 26, &buf.st_mtime);
+		printf("Last Modif :  %s", time);
+	}
+	auto lastTime = buf.st_mtime;
+	float timer = 0.0f;
+	bool doReinterpret = false;
 
 	while (window.isOpen()){
 		sf::Event event;
@@ -89,10 +122,10 @@ int main()
 			//turtle.appendCmd(advance);
 //			turtle.appendCmd(advance);
 		}
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down) || sf::Keyboard::isKeyPressed(sf::Keyboard::S)) {
+		/*if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down) || sf::Keyboard::isKeyPressed(sf::Keyboard::S)) {
 			turtle.trs.translate(0, 7 * dt * 40);
 	//		turtle.appendCmd(moveBack);
-		}
+		}*/
 		
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)|| sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
 			turtle.trs.rotate(5 * dt * 60);
@@ -111,7 +144,7 @@ int main()
 		bool enterIsReleased = (!enterIsPressed && enterWasPressed);
 		static bool enterWasPressed = false;
 
-		if (enterIsPressed && !enterWasPressed ) {
+		if (enterIsPressed && !enterWasPressed || doReinterpret) {
 			FILE* f = nullptr;
 			fopen_s(&f, "res/ui.txt", "rb");
 			if (f && !feof(f)) {
@@ -127,10 +160,13 @@ int main()
 						turtle.rotate(nb);
 					}
 					else if (s == "PenDown") {
-						turtle.isDrawing = true;
+						turtle.draw(true);
 					}
 					else if (s == "PenUp") {
-						turtle.isDrawing = false;
+						turtle.draw(false);
+					}
+					else if (s == "Clear") {
+						turtle.clear();
 					}
 					if (feof(f))
 						break;
@@ -138,6 +174,7 @@ int main()
 				fclose(f);
 			}
 			enterWasPressed = true;
+			doReinterpret = false;
 		}
 
 		if (enterIsPressed) 
@@ -145,9 +182,17 @@ int main()
 		else
 			enterWasPressed = false;
 
+		if (timer > 0.1f) {
+			_stat("res/ui.txt", &buf);
 
-		float radToDeg = 57.2958;
-		//float angleC2M = /*atan2()*/;
+			if (lastTime < buf.st_mtime ) {
+				doReinterpret = true;
+				lastTime = buf.st_mtime;
+			}
+			timer = 0.0f;
+		}
+
+
 
 		tDt.setString( to_string(dt)+" FPS:"+ to_string((int)(1.0f / dt)));
 		
@@ -160,7 +205,7 @@ int main()
 		////////////////////
 		//UPDATE
 		turtle.update(dt);
-
+		timer += dt;
 		////////////////////
 		//DRAW
 		sf::Sprite sprite(turtle.drawTexture.getTexture());

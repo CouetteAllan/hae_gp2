@@ -2,11 +2,14 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
 
+
 using namespace sf;
 
 enum CmdType {
 	Advance,
-	Turn
+	Turn,
+	PenDown,
+	PenUp,
 };
 
 struct Command {
@@ -50,9 +53,12 @@ public:
 	std::vector<CircleShape*> paws;
 	float radius = 20.0f;
 	Vector2f offset = Vector2f(radius, -radius);
+	Vector2f startPosition = Vector2f(640, 360);
 	float dx = 0.0f;
 	float rot = 0.0f;
 	 
+	std::vector<Command*> commandsSaved;
+
 	bool isDrawing = false;
 	RenderTexture drawTexture;
 
@@ -72,6 +78,8 @@ public:
 
 	void translate(float value);
 	void rotate(float value);
+	void draw(bool value);
+	void clear();
 
 	Color changeColor();
 	Command* applyCmdInter(Command* cmd, double dt);

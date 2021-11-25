@@ -77,7 +77,6 @@ void Turtle::turtleDrawing()
 		brush.setFillColor(color);
 		brush.setOrigin(15,15);
 
-		brush.setPosition(Vector2f(0, radius));
 		drawTexture.draw(brush,trs);
 
 	}
@@ -87,12 +86,42 @@ void Turtle::translate(float value)
 {
 	Command* move = new Command (Advance, value);
 	appendCmd(move);
+	commandsSaved.push_back(move);
 }
 
 void Turtle::rotate(float value)
 {
 	Command* rot = new Command(Turn, value);
 	appendCmd(rot);
+	commandsSaved.push_back(rot);
+
+}
+
+void Turtle::draw(bool value)
+{
+	if (value) {
+		Command* draw = new Command(PenDown);
+		appendCmd(draw);
+		commandsSaved.push_back(draw);
+
+	}
+	else {
+		Command* noDraw = new Command(PenUp);
+		appendCmd(noDraw);
+		commandsSaved.push_back(noDraw);
+
+	}
+}
+
+void Turtle::clear()
+{
+	isDrawing = false;
+	trs = Transform::Identity;
+	trs.translate(startPosition);
+	drawTexture.clear(Color::Color(0,0,0,0));
+	while (cmds) {
+		cmds = cmds->popFirst();
+	}
 }
 
 
@@ -113,7 +142,7 @@ Color Turtle::changeColor()
 
 Command * Turtle::applyCmdInter(Command * cmd, double dt)
 {
-
+	dt = 1.0f / 60.0f;
 	if (cmd == nullptr)                   
 		return nullptr;
 	dt = 1.0f / 60.0f;
@@ -126,7 +155,7 @@ Command * Turtle::applyCmdInter(Command * cmd, double dt)
 		if (cmd->currentValue <= 0)
 			return cmd->popFirst();
 	}
-	else                                  
+	else if (cmd->originalValue < 0)
 	{
 		cmd->currentValue += dt * -cmd->originalValue;
 		if (cmd->currentValue >= 0)
@@ -135,13 +164,19 @@ Command * Turtle::applyCmdInter(Command * cmd, double dt)
 	}
 	switch (cmd->type) {
 	case Advance:
-		trs.translate(0, (cmd->originalValue * dt));
-
+		trs.translate(0, (cmd->originalValue * dt) );
 		break;
 	case Turn:
-		trs.rotate((cmd->originalValue * dt));
+		trs.rotate((cmd->originalValue * dt) );
+		break;
 
-
+	case PenDown:
+		isDrawing = true;
+		return cmd->popFirst();
+		break;
+	case PenUp:
+		isDrawing = false;
+		return cmd->popFirst();
 		break;
 
 	default:
