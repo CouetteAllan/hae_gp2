@@ -17,6 +17,9 @@
 #include <stdio.h>
 #include <errno.h>
 
+#include <imgui.h>
+#include "imgui.h"
+
 void writeFile(FILE* file, Command* cmd) {
 
 
