@@ -16,9 +16,8 @@
 #include <sys/stat.h>
 #include <stdio.h>
 #include <errno.h>
-
-#include <imgui.h>
 #include "imgui.h"
+#include "imgui-SFML.h"
 
 void writeFile(FILE* file, Command* cmd) {
 
@@ -33,6 +32,8 @@ int main()
 	sf::RenderWindow window(sf::VideoMode(wWidth, wHeight), "Tortue du turfu");
 	window.setVerticalSyncEnabled(true);
 	window.setFramerateLimit(144);
+
+	ImGui::SFML::Init(window);
 
 	sf::Font fArial;
 	if (!fArial.loadFromFile("res/arial.ttf"))	
@@ -56,6 +57,8 @@ int main()
 	double tStart = getTimeStamp();
 	double tEnterFrame = getTimeStamp();
 	double tExitFrame = getTimeStamp();
+	float penColor[3] = { 0 , 0 , 0 };
+	
 
 	bool mouseLeftWasPressed = false;
 	bool enterWasPressed = false;
@@ -93,11 +96,14 @@ int main()
 	float timer = 0.0f;
 	bool doReinterpret = false;
 
+
+	Clock clock;
 	while (window.isOpen()){
 		sf::Event event;
 		double dt = tExitFrame - tEnterFrame;
 		tEnterFrame = getTimeStamp();
 		while (window.pollEvent(event)){
+			ImGui::SFML::ProcessEvent(event);
 			switch (event.type)
 			{
 				// fenêtre fermée
@@ -213,8 +219,19 @@ int main()
 
 
 		tDt.setString( to_string(dt)+" FPS:"+ to_string((int)(1.0f / dt)));
-		
-		
+
+		ImGui::SFML::Update(window, clock.restart());
+		ImGui::Begin("ImGui works");
+		ImGui::Text("Text");
+		ImGui::ColorEdit3("Pen Color!", penColor);
+		ImGui::End();
+
+		turtle.color = Color(
+			penColor[0] * 255,
+			penColor[1] * 255,
+			penColor[2] * 255
+		);
+
 		////////////////////
 		turtle.drawTexture.display();
 		//CLEAR
@@ -236,9 +253,12 @@ int main()
 		//ui
 		if(turtle.isDrawing)
 			window.draw(tDt);
+
+		ImGui::SFML::Render(window);
 		window.display();
 		tExitFrame = getTimeStamp();
 	}
+	ImGui::SFML::Shutdown();
 
 	return 0;
 }

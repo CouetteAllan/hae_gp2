@@ -1,38 +1,21 @@
 ﻿  ConsoleApplication1.cpp
-c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 6\consoleapplication1\consoleapplication1.cpp(30): warning C4244: 'argument' : conversion de 'float' en 'unsigned int', perte possible de données
-c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 6\consoleapplication1\consoleapplication1.cpp(51): warning C4244: 'argument' : conversion de 'T' en 'float', perte possible de données
+c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 6\consoleapplication1\consoleapplication1.cpp(32): warning C4244: 'argument' : conversion de 'float' en 'unsigned int', perte possible de données
+c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 6\consoleapplication1\consoleapplication1.cpp(55): warning C4244: 'argument' : conversion de 'T' en 'float', perte possible de données
           with
           [
               T=unsigned int
           ]
-c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 6\consoleapplication1\consoleapplication1.cpp(124): warning C4244: 'initialisation' : conversion de 'double' en 'float', perte possible de données
-c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 6\consoleapplication1\consoleapplication1.cpp(125): warning C4244: 'initialisation' : conversion de 'double' en 'float', perte possible de données
-c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 6\consoleapplication1\consoleapplication1.cpp(131): warning C4244: 'argument' : conversion de 'double' en 'float', perte possible de données
-c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 6\consoleapplication1\consoleapplication1.cpp(134): warning C4244: 'argument' : conversion de 'double' en 'float', perte possible de données
-c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 6\consoleapplication1\consoleapplication1.cpp(138): warning C4244: 'argument' : conversion de 'double' en 'float', perte possible de données
-c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 6\consoleapplication1\consoleapplication1.cpp(141): warning C4244: 'argument' : conversion de 'double' en 'float', perte possible de données
-c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 6\consoleapplication1\consoleapplication1.cpp(165): warning C4244: 'argument' : conversion de 'int64_t' en 'float', perte possible de données
-c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 6\consoleapplication1\consoleapplication1.cpp(169): warning C4244: 'argument' : conversion de 'int64_t' en 'float', perte possible de données
-c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 6\consoleapplication1\consoleapplication1.cpp(223): warning C4244: '+=' : conversion de 'double' en 'float', perte possible de données
-c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 6\consoleapplication1\consoleapplication1.cpp(64): warning C4101: 'err' : variable locale non référencée
-  Entity.cpp
-c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 6\consoleapplication1\entity.cpp(6): warning C4244: '+=' : conversion de 'double' en 'T', perte possible de données
-          with
-          [
-              T=float
-          ]
-c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 6\consoleapplication1\entity.cpp(7): warning C4244: '+=' : conversion de 'double' en 'T', perte possible de données
-          with
-          [
-              T=float
-          ]
-  Turtle.cpp
-c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 6\consoleapplication1\turtle.cpp(78): warning C4244: 'argument' : conversion de 'float' en 'unsigned int', perte possible de données
-c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 6\consoleapplication1\turtle.cpp(196): warning C4244: '-=' : conversion de 'double' en 'float', perte possible de données
-c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 6\consoleapplication1\turtle.cpp(202): warning C4244: '+=' : conversion de 'double' en 'float', perte possible de données
-c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 6\consoleapplication1\turtle.cpp(209): warning C4244: 'argument' : conversion de 'double' en 'float', perte possible de données
-c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 6\consoleapplication1\turtle.cpp(212): warning C4244: 'argument' : conversion de 'double' en 'float', perte possible de données
-  Génération de code en cours...
-c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 6\consoleapplication1\turtle.cpp(185): warning C4715: 'Turtle::changeColor' : les chemins de contrôle ne retournent pas tous une valeur
-c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 6\consoleapplication1\turtle.hpp(36): warning C4715: 'Command::append' : les chemins de contrôle ne retournent pas tous une valeur
+c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 6\consoleapplication1\consoleapplication1.cpp(133): warning C4244: 'initialisation' : conversion de 'double' en 'float', perte possible de données
+c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 6\consoleapplication1\consoleapplication1.cpp(134): warning C4244: 'initialisation' : conversion de 'double' en 'float', perte possible de données
+c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 6\consoleapplication1\consoleapplication1.cpp(140): warning C4244: 'argument' : conversion de 'double' en 'float', perte possible de données
+c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 6\consoleapplication1\consoleapplication1.cpp(143): warning C4244: 'argument' : conversion de 'double' en 'float', perte possible de données
+c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 6\consoleapplication1\consoleapplication1.cpp(147): warning C4244: 'argument' : conversion de 'double' en 'float', perte possible de données
+c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 6\consoleapplication1\consoleapplication1.cpp(150): warning C4244: 'argument' : conversion de 'double' en 'float', perte possible de données
+c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 6\consoleapplication1\consoleapplication1.cpp(174): warning C4244: 'argument' : conversion de 'int64_t' en 'float', perte possible de données
+c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 6\consoleapplication1\consoleapplication1.cpp(178): warning C4244: 'argument' : conversion de 'int64_t' en 'float', perte possible de données
+c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 6\consoleapplication1\consoleapplication1.cpp(232): warning C4244: 'argument' : conversion de 'float' en 'sf::Uint8', perte possible de données
+c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 6\consoleapplication1\consoleapplication1.cpp(231): warning C4244: 'argument' : conversion de 'float' en 'sf::Uint8', perte possible de données
+c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 6\consoleapplication1\consoleapplication1.cpp(230): warning C4244: 'argument' : conversion de 'float' en 'sf::Uint8', perte possible de données
+c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 6\consoleapplication1\consoleapplication1.cpp(243): warning C4244: '+=' : conversion de 'double' en 'float', perte possible de données
+c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 6\consoleapplication1\consoleapplication1.cpp(70): warning C4101: 'err' : variable locale non référencée
   ConsoleApplication1.vcxproj -> C:\Users\couet\OneDrive\Bureau\Allan\hae_gp2\Visual Studio\cours 6\ConsoleApplication1\x64\Debug\ConsoleApplication1.exe
