@@ -1,2 +1,26 @@
-﻿  imgui_demo.cpp
+﻿  ConsoleApplication1.cpp
+c:\workspace\allan\hae_gp2\visual studio\cours 6\consoleapplication1\consoleapplication1.cpp(31): warning C4244: 'argument' : conversion de 'float' en 'unsigned int', perte possible de données
+c:\workspace\allan\hae_gp2\visual studio\cours 6\consoleapplication1\consoleapplication1.cpp(54): warning C4244: 'argument' : conversion de 'T' en 'float', perte possible de données
+          with
+          [
+              T=unsigned int
+          ]
+c:\workspace\allan\hae_gp2\visual studio\cours 6\consoleapplication1\consoleapplication1.cpp(133): warning C4244: 'initialisation' : conversion de 'double' en 'float', perte possible de données
+c:\workspace\allan\hae_gp2\visual studio\cours 6\consoleapplication1\consoleapplication1.cpp(134): warning C4244: 'initialisation' : conversion de 'double' en 'float', perte possible de données
+c:\workspace\allan\hae_gp2\visual studio\cours 6\consoleapplication1\consoleapplication1.cpp(140): warning C4244: 'argument' : conversion de 'double' en 'float', perte possible de données
+c:\workspace\allan\hae_gp2\visual studio\cours 6\consoleapplication1\consoleapplication1.cpp(143): warning C4244: 'argument' : conversion de 'double' en 'float', perte possible de données
+c:\workspace\allan\hae_gp2\visual studio\cours 6\consoleapplication1\consoleapplication1.cpp(147): warning C4244: 'argument' : conversion de 'double' en 'float', perte possible de données
+c:\workspace\allan\hae_gp2\visual studio\cours 6\consoleapplication1\consoleapplication1.cpp(150): warning C4244: 'argument' : conversion de 'double' en 'float', perte possible de données
+c:\workspace\allan\hae_gp2\visual studio\cours 6\consoleapplication1\consoleapplication1.cpp(174): warning C4244: 'argument' : conversion de 'int64_t' en 'float', perte possible de données
+c:\workspace\allan\hae_gp2\visual studio\cours 6\consoleapplication1\consoleapplication1.cpp(178): warning C4244: 'argument' : conversion de 'int64_t' en 'float', perte possible de données
+c:\workspace\allan\hae_gp2\visual studio\cours 6\consoleapplication1\consoleapplication1.cpp(322): warning C4244: 'argument' : conversion de 'int64_t' en 'float', perte possible de données
+c:\workspace\allan\hae_gp2\visual studio\cours 6\consoleapplication1\consoleapplication1.cpp(326): warning C4244: 'argument' : conversion de 'int64_t' en 'float', perte possible de données
+c:\workspace\allan\hae_gp2\visual studio\cours 6\consoleapplication1\consoleapplication1.cpp(365): warning C4244: 'argument' : conversion de 'float' en 'sf::Uint8', perte possible de données
+c:\workspace\allan\hae_gp2\visual studio\cours 6\consoleapplication1\consoleapplication1.cpp(364): warning C4244: 'argument' : conversion de 'float' en 'sf::Uint8', perte possible de données
+c:\workspace\allan\hae_gp2\visual studio\cours 6\consoleapplication1\consoleapplication1.cpp(363): warning C4244: 'argument' : conversion de 'float' en 'sf::Uint8', perte possible de données
+c:\workspace\allan\hae_gp2\visual studio\cours 6\consoleapplication1\consoleapplication1.cpp(374): warning C4244: 'argument' : conversion de 'float' en 'sf::Uint8', perte possible de données
+c:\workspace\allan\hae_gp2\visual studio\cours 6\consoleapplication1\consoleapplication1.cpp(373): warning C4244: 'argument' : conversion de 'float' en 'sf::Uint8', perte possible de données
+c:\workspace\allan\hae_gp2\visual studio\cours 6\consoleapplication1\consoleapplication1.cpp(372): warning C4244: 'argument' : conversion de 'float' en 'sf::Uint8', perte possible de données
+c:\workspace\allan\hae_gp2\visual studio\cours 6\consoleapplication1\consoleapplication1.cpp(380): warning C4244: '+=' : conversion de 'double' en 'float', perte possible de données
+c:\workspace\allan\hae_gp2\visual studio\cours 6\consoleapplication1\consoleapplication1.cpp(69): warning C4101: 'err' : variable locale non référencée
   ConsoleApplication1.vcxproj -> C:\WorkSpace\Allan\hae_gp2\Visual Studio\cours 6\ConsoleApplication1\x64\Debug\ConsoleApplication1.exe

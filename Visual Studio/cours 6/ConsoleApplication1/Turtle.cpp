@@ -81,9 +81,9 @@ void Turtle::createTextureInWindow(float width, float height)
 void Turtle::turtleDrawing()
 {
 	if (isDrawing) {
-		CircleShape brush(15);
+		CircleShape brush(penRadius);
 		brush.setFillColor(color);
-		brush.setOrigin(15,15);
+		brush.setOrigin(penRadius,penRadius);
 
 		drawTexture.draw(brush,trs);
 
@@ -206,7 +206,7 @@ Command * Turtle::applyCmdInter(Command * cmd, double dt)
 	}
 	switch (cmd->type) {
 	case Advance:
-		trs.translate(0, (cmd->originalValue * dt) );
+		trs.translate(0, -(cmd->originalValue * dt)* 2 );
 		break;
 	case Turn:
 		trs.rotate((cmd->originalValue * dt) );

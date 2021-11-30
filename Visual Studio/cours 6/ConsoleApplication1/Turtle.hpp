@@ -30,8 +30,10 @@ struct Command {
 			 next = cmd;
 			 return this;
 		}
-		else
-			 next->append(cmd);
+		else {
+			 next = next->append(cmd);
+			 return this;
+		}
 
 	}
 
@@ -55,6 +57,7 @@ public:
 	Texture textureTurtle;
 	std::vector<CircleShape*> paws;
 	float radius = 20.0f;
+	float penRadius = 15.0f;
 	Vector2f offset = Vector2f(radius, -radius);
 	Vector2f startPosition = Vector2f(640, 360);
 	float dx = 0.0f;
@@ -92,8 +95,8 @@ public:
 	Command* applyCmdInter(Command* cmd, double dt);
 	void appendCmd(Command* cmd);
 
+	Command* cmds = nullptr;
 protected:
 	Command* applyCmd(Command* cmd);
-	Command* cmds = nullptr;
 	bool calledOnce = false;
 };

@@ -1,4 +1,3 @@
-
 #include <iostream>
 #include <cstdio>
 #include <cstdlib>
@@ -36,19 +35,19 @@ int main()
 	ImGui::SFML::Init(window);
 
 	sf::Font fArial;
-	if (!fArial.loadFromFile("res/arial.ttf"))	
+	if (!fArial.loadFromFile("res/arial.ttf"))
 		cout << "font not loaded" << endl;
 	sf::Text tDt;
 	tDt.setFont(fArial);
 	tDt.setFillColor(sf::Color::White);
 	tDt.setCharacterSize(45);
 
-	
+
 
 	Texture textureDuck;
 	if (!textureDuck.loadFromFile("res/duck.png"))
 		return EXIT_FAILURE;
-		
+
 
 	Turtle turtle;
 	turtle.textureTurtle = textureDuck;
@@ -58,7 +57,7 @@ int main()
 	double tEnterFrame = getTimeStamp();
 	double tExitFrame = getTimeStamp();
 	float penColor[3] = { 0 , 0 , 0 };
-	
+
 
 	bool mouseLeftWasPressed = false;
 	bool enterWasPressed = false;
@@ -97,12 +96,13 @@ int main()
 	bool doReinterpret = false;
 	//----------------------------------------  IMGUI STUFF  -------------------------------------------------------------
 	bool activeTool = true;
+	float bgCol[3] = { 0,0,150 };
 	Clock clock;
-	while (window.isOpen()){
+	while (window.isOpen()) {
 		sf::Event event;
 		double dt = tExitFrame - tEnterFrame;
 		tEnterFrame = getTimeStamp();
-		while (window.pollEvent(event)){
+		while (window.pollEvent(event)) {
 			ImGui::SFML::ProcessEvent(event);
 			switch (event.type)
 			{
@@ -124,7 +124,7 @@ int main()
 				if (event.key.code == sf::Keyboard::F)
 					turtle.automatik = !turtle.automatik;
 				break;
-				
+
 			default:
 				break;
 			}
@@ -136,14 +136,14 @@ int main()
 
 		if (!automatic) {
 
-			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)|| sf::Keyboard::isKeyPressed(sf::Keyboard::Z)) {
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) || sf::Keyboard::isKeyPressed(sf::Keyboard::Z)) {
 				turtle.translate(-7 * dt * 80);
 			}
 			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down) || sf::Keyboard::isKeyPressed(sf::Keyboard::S)) {
 				turtle.translate(7 * dt * 80);
 			}
-		
-			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)|| sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
+
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right) || sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
 				turtle.rotate(5 * dt * 60);
 			}
 			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left) || sf::Keyboard::isKeyPressed(sf::Keyboard::Q)) {
@@ -168,9 +168,9 @@ int main()
 				char line[256] = {};
 				while (true) {
 					int64_t nb = 0;
-					fscanf_s(f, "%s %lld\n",line,256,&nb);
+					fscanf_s(f, "%s %lld\n", line, 256, &nb);
 					std::string s = line;
-					if (s == "Advance"){
+					if (s == "Advance") {
 						turtle.translate(nb);
 
 					}
@@ -187,7 +187,7 @@ int main()
 
 					}
 					else if (s == "Clear") {
-						turtle.appendCmd(new Command(Clear,0.0f));
+						turtle.appendCmd(new Command(Clear, 0.0f));
 
 					}
 					if (feof(f))
@@ -201,7 +201,7 @@ int main()
 			doReinterpret = false;
 		}
 
-		if (enterIsPressed) 
+		if (enterIsPressed)
 			enterWasPressed = true;
 		else
 			enterWasPressed = false;
@@ -209,7 +209,7 @@ int main()
 		if (timer > 0.1f) {
 			_stat("res/ui.txt", &buf);
 
-			if (lastTime < buf.st_mtime ) {
+			if (lastTime < buf.st_mtime) {
 				doReinterpret = true;
 				lastTime = buf.st_mtime;
 			}
@@ -218,11 +218,11 @@ int main()
 
 
 
-		tDt.setString( to_string(dt)+" FPS:"+ to_string((int)(1.0f / dt)));
+		tDt.setString(to_string(dt) + " FPS:" + to_string((int)(1.0f / dt)));
 
 		ImGui::SFML::Update(window, clock.restart());
 
-		ImGui::Begin("ImGui works",&activeTool,ImGuiWindowFlags_MenuBar);
+		ImGui::Begin("ImGui works", &activeTool, ImGuiWindowFlags_MenuBar);
 		if (ImGui::BeginMenuBar()) {
 			if (ImGui::BeginMenu("File")) {
 				if (ImGui::MenuItem("Close", "Ctrl + W"))
@@ -232,13 +232,132 @@ int main()
 			ImGui::EndMenuBar();
 		}
 		ImGui::Text("Text");
-		ImGui::ColorEdit3("Pen Color!", penColor);
 		if (ImGui::Button("Load File")) {
 			printf("oeeeeeeeee");
 		}
 		ImGui::End();
+		ImGui::Begin("Pen and Background");
+		if (ImGui::TreeNode("Pen")) {
+			ImGui::ColorEdit3("Pen Color!", penColor);
+			ImGui::SliderFloat("Pen Radius", &turtle.penRadius, 2.0f, 50.0f);
+			ImGui::Checkbox("Is Drawing ?", &turtle.isDrawing);
+			ImGui::TreePop();
+		}
 
-		ImGui::ShowDemoWindow(&activeTool);
+		if (ImGui::TreeNode("BackGround")) {
+			ImGui::ColorEdit3("Background Cplor", bgCol);
+			ImGui::TreePop();
+		}
+		ImGui::End();
+		ImGui::Begin("Commands");
+		if (ImGui::TreeNode("Base Command")) {
+
+			if (ImGui::Button("Avancer")) {
+				turtle.translate(-25);
+			}
+
+			if (ImGui::Button("Reculer")) {
+				turtle.translate(25);
+			}
+
+			if (ImGui::Button("Gauche")) {
+				turtle.rotate(-10);
+			}
+			ImGui::SameLine();
+
+			if (ImGui::Button("Droite")) {
+				turtle.rotate(10);
+			}
+			ImGui::TreePop();
+		}
+		static Command* head = nullptr;
+		if (ImGui::TreeNode("Commandes")) {
+			if (ImGui::Button("+", ImVec2(20, 20))) {
+				auto p = new Command(Advance,50);
+				if (!head) {
+					head = p;
+				}
+				else {
+					head = head->append(p);
+				}
+			}
+			int idx = 0;
+			ImGui::Separator();
+			auto h = head;
+			while (h) {
+				ImGui::PushID(idx);
+				ImGui::Value("idx", idx);
+				static const char* items[] = {
+					"Advance",
+					"Turn",
+					"PenDown",
+					"PenUp",
+				};
+
+				ImGui::Combo("Command Type", (int*)&h->type, items, IM_ARRAYSIZE(items));
+				ImGui::DragFloat("Value", &h->originalValue);
+				ImGui::NewLine();
+				ImGui::Separator();
+				h = h->next;
+				idx ++;
+				ImGui::PopID();
+			}
+
+			if (ImGui::Button("Run")) {
+
+				turtle.appendCmd(head);
+				head = nullptr;
+			}
+			ImGui::SameLine();
+			if (ImGui::Button("Load")) {
+				FILE* f = nullptr;
+				fopen_s(&f, "res/ui.txt", "rb");
+				if (f && !feof(f)) {
+					char line[256] = {};
+					while (true) {
+						int64_t nb = 0;
+						fscanf_s(f, "%s %lld\n", line, 256, &nb);
+						std::string s = line;
+						if (s == "Advance") {
+							turtle.translate(nb);
+
+						}
+						else if (s == "Rotate") {
+							turtle.rotate(nb);
+
+						}
+						else if (s == "PenDown") {
+							turtle.draw(true);
+
+						}
+						else if (s == "PenUp") {
+							turtle.draw(false);
+
+						}
+						else if (s == "Clear") {
+							turtle.appendCmd(new Command(Clear, 0.0f));
+
+						}
+						if (feof(f))
+							break;
+					}
+					fclose(f);
+					head = turtle.cmds;
+				}
+			}
+			ImGui::SameLine();
+
+			if (ImGui::Button("Save")) {
+				FILE* f = nullptr;
+				turtle.write(f, head);
+				fflush(f);
+				fclose(f);
+			}
+			ImGui::TreePop();
+		}
+		ImGui::End();
+
+		//ImGui::ShowDemoWindow(&activeTool);
 
 		turtle.color = Color(
 			penColor[0] * 255,
@@ -249,8 +368,12 @@ int main()
 		////////////////////
 		turtle.drawTexture.display();
 		//CLEAR
-		window.clear(Color::Cyan);
-		
+		window.clear(Color(
+			bgCol[0] * 255,
+			bgCol[1] * 255,
+			bgCol[2] * 255
+		));
+
 		////////////////////
 		//UPDATE
 		turtle.update(dt);
@@ -262,10 +385,10 @@ int main()
 		window.draw(sprite);
 		//game elems
 
-		
+
 
 		//ui
-		if(turtle.isDrawing)
+		if (turtle.isDrawing)
 			window.draw(tDt);
 
 		ImGui::SFML::Render(window);
