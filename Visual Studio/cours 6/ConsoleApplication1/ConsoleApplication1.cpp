@@ -95,8 +95,8 @@ int main()
 	auto lastTime = buf.st_mtime;
 	float timer = 0.0f;
 	bool doReinterpret = false;
-
-
+	//----------------------------------------  IMGUI STUFF  -------------------------------------------------------------
+	bool activeTool = true;
 	Clock clock;
 	while (window.isOpen()){
 		sf::Event event;
@@ -221,10 +221,24 @@ int main()
 		tDt.setString( to_string(dt)+" FPS:"+ to_string((int)(1.0f / dt)));
 
 		ImGui::SFML::Update(window, clock.restart());
-		ImGui::Begin("ImGui works");
+
+		ImGui::Begin("ImGui works",&activeTool,ImGuiWindowFlags_MenuBar);
+		if (ImGui::BeginMenuBar()) {
+			if (ImGui::BeginMenu("File")) {
+				if (ImGui::MenuItem("Close", "Ctrl + W"))
+					activeTool = false;
+				ImGui::EndMenu();
+			}
+			ImGui::EndMenuBar();
+		}
 		ImGui::Text("Text");
 		ImGui::ColorEdit3("Pen Color!", penColor);
+		if (ImGui::Button("Load File")) {
+			printf("oeeeeeeeee");
+		}
 		ImGui::End();
+
+		ImGui::ShowDemoWindow(&activeTool);
 
 		turtle.color = Color(
 			penColor[0] * 255,
