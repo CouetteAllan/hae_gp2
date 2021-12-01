@@ -343,15 +343,19 @@ int main()
 					}
 					fclose(f);
 					head = turtle.cmds;
+					turtle.cmds = nullptr;
 				}
 			}
 			ImGui::SameLine();
 
 			if (ImGui::Button("Save")) {
 				FILE* f = nullptr;
-				turtle.write(f, head);
-				fflush(f);
-				fclose(f);
+				fopen_s(&f, "res/uiWrite.txt", "wb");
+				if (f && head) {
+					turtle.write(f, head);
+					fflush(f);
+					fclose(f);
+				}
 			}
 			ImGui::TreePop();
 		}

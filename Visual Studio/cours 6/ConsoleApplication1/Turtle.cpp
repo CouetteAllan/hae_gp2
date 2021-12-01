@@ -155,19 +155,21 @@ void Turtle::write(FILE* f, Command* cmd)
 		fprintf(f, "PenDown");
 		break;
 	case Advance:
-		fprintf(f, "Advance %0.0f", cmd->originalValue);
+		fprintf(f, "Advance %0.0f\n", cmd->originalValue);
 		break;
 	case Turn: 
-		fprintf(f, "Turn %0.0f", cmd->originalValue);
+		fprintf(f, "Turn %0.0f\n", cmd->originalValue);
 		break;
 	case PenDown:
-		fprintf(f, "PenDown");
+		fprintf(f, "PenDown\n");
 
 		break;
 	case PenUp:
-		fprintf(f, "PenUp");
+		fprintf(f, "PenUp\n");
 		break;
 	}
+	if (cmd->next)
+		write(f, cmd->next);
 }
 
 Color Turtle::changeColor()
