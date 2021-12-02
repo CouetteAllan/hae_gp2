@@ -19,7 +19,7 @@ public:
 
 	//---------- Graphic Components ------------//
 	Sprite sprite;
-	bool visible;
+	bool visible = true;
 	EType type;
 
 	//---------- Base Coordinates -------------------//
@@ -28,6 +28,9 @@ public:
 	float xr = 0.0f; //Ratio de la cellule en X allant de 0.0f à 1.0f
 	float yr = 0.0f; //Ratio de la cellule en Y allant de 0.0f à 1.0f
 
+	//-------------- Movement -------------------------//
+	float dx = 0.0f;
+	float dy = 0.0f;
 
 	//-------------- Resulting Coordinates -----------------//
 	float xx = 0.0f;
@@ -35,12 +38,7 @@ public:
 
 	Entity(EType _type = Player, float x = 640.0f, float y = 360.0f) {
 		type = _type;
-		xx = x;
-		yy = y;
-		cx = floor(xx / 16);
-		cy = floor(yy / 16);
-		xr = (xx - cx * 16) / 16;
-		yr = (yy - cy * 16) / 16;
+		setPosition(x, y);
 	}
 
 

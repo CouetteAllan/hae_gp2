@@ -22,7 +22,7 @@ int main()
 {
 	float wHeight = 720;
 	float wWidth = 1280;
-	sf::RenderWindow window(sf::VideoMode(wWidth, wHeight), "Tortue du turfu");
+	sf::RenderWindow window(sf::VideoMode(wWidth, wHeight), "Moteur à Case");
 	window.setVerticalSyncEnabled(true);
 	window.setFramerateLimit(144);
 
