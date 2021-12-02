@@ -1,2 +1,14 @@
-﻿  imgui_widgets.cpp
+﻿  Entity.cpp
+C:\Workshop\Allan\hae_gp2\Visual Studio\cours 7\ConsoleApplication1\Entity.hpp(49,8): warning C4244: '=' : conversion de 'float' en 'int', perte possible de données
+C:\Workshop\Allan\hae_gp2\Visual Studio\cours 7\ConsoleApplication1\Entity.hpp(50,8): warning C4244: '=' : conversion de 'float' en 'int', perte possible de données
+C:\Workshop\Allan\hae_gp2\Visual Studio\cours 7\ConsoleApplication1\Entity.cpp(7,12): warning C4244: '=' : conversion de 'double' en 'int', perte possible de données
+C:\Workshop\Allan\hae_gp2\Visual Studio\cours 7\ConsoleApplication1\Entity.cpp(8,12): warning C4244: '=' : conversion de 'double' en 'int', perte possible de données
+C:\Workshop\Allan\hae_gp2\Visual Studio\cours 7\ConsoleApplication1\Entity.cpp(9,26): warning C4244: '=' : conversion de 'double' en 'float', perte possible de données
+C:\Workshop\Allan\hae_gp2\Visual Studio\cours 7\ConsoleApplication1\Entity.cpp(10,26): warning C4244: '=' : conversion de 'double' en 'float', perte possible de données
+C:\Workshop\Allan\hae_gp2\Visual Studio\cours 7\ConsoleApplication1\Entity.cpp(19,26): warning C4244: 'argument' : conversion de 'double' en 'float', perte possible de données
+C:\Workshop\Allan\hae_gp2\Visual Studio\cours 7\ConsoleApplication1\Entity.cpp(19,22): warning C4244: 'argument' : conversion de 'double' en 'float', perte possible de données
+C:\Workshop\Allan\hae_gp2\Visual Studio\cours 7\ConsoleApplication1\Entity.cpp(26,15): warning C4244: '+=' : conversion de 'double' en 'float', perte possible de données
+C:\Workshop\Allan\hae_gp2\Visual Studio\cours 7\ConsoleApplication1\Entity.cpp(45,15): warning C4244: '+=' : conversion de 'double' en 'float', perte possible de données
+C:\Workshop\Allan\hae_gp2\Visual Studio\cours 7\ConsoleApplication1\Entity.cpp(47,19): warning C4244: '+=' : conversion de 'double' en 'float', perte possible de données
+C:\Workshop\Allan\hae_gp2\Visual Studio\cours 7\ConsoleApplication1\Entity.cpp(80,15): warning C4244: '=' : conversion de 'float' en 'int', perte possible de données
   ConsoleApplication1.vcxproj -> C:\Workshop\Allan\hae_gp2\Visual Studio\cours 7\ConsoleApplication1\x64\Debug\ConsoleApplication1.exe

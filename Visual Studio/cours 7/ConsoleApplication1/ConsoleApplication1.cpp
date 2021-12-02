@@ -9,6 +9,7 @@
 #include <SFML/Main.hpp>
 #include <SFML/Window.hpp>
 #include "Entity.hpp"
+#include "World.hpp"
 #include <time.h>
 #include <sys/types.h>
 #include <sys/stat.h>
@@ -17,6 +18,8 @@
 
 #include "imgui.h"
 #include "imgui-SFML.h"
+
+using namespace ImGui;
 
 int main()
 {
@@ -28,16 +31,27 @@ int main()
 
 	ImGui::SFML::Init(window);
 
+
+
+	RectangleShape* heroSprite = new RectangleShape(Vector2f(15,35));
+	heroSprite->setFillColor(Color::Red);
+	heroSprite->setOrigin(heroSprite->getSize().x / 2, heroSprite->getSize().y);
+	Entity* player = new Entity(heroSprite, 15, 15);
 	
+
+	RectangleShape* wallShape = new RectangleShape(Vector2f(player->stride, player->stride));
+	wallShape->setFillColor(Color::Blue);
+
 
 	double tStart = getTimeStamp();
 	double tEnterFrame = getTimeStamp();
 	double tExitFrame = getTimeStamp();
 
 
-	//bool mouseLeftWasPressed = false;
+	bool mouseLeftWasPressed = false;
 	//bool enterWasPressed = false;
-
+	World data;
+	data.objects.push_back(player);
 
 	//----------------------------------------  IMGUI STUFF  -------------------------------------------------------------
 	float bgCol[3] = { 0,0,150 };
@@ -69,33 +83,65 @@ int main()
 		bool keyHit = false;
 
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) || sf::Keyboard::isKeyPressed(sf::Keyboard::Z)) {
-
+			player->dy -= 10;
+			player->isGrounded = false;
 		}
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down) || sf::Keyboard::isKeyPressed(sf::Keyboard::S)) {
-
+			player->dy += 1;
 		}
 
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right) || sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
-
+			player->dx += 2;
 		}
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left) || sf::Keyboard::isKeyPressed(sf::Keyboard::Q)) {
+			player->dx -= 2;
+
 		}
 
 
-		/*
-		//bool mouseLeftIsPressed = sf::Mouse::isButtonPressed(sf::Mouse::Left);
-		//bool mouseIsReleased = (!mouseLeftIsPressed && mouseLeftWasPressed);
-		//sf::Vector2f mousePos = sf::Vector2f(sf::Mouse::getPosition(window));
-		//bool enterIsPressed = sf::Keyboard::isKeyPressed(sf::Keyboard::Enter);
-		//bool enterIsReleased = (!enterIsPressed && enterWasPressed);
-		*/
+		
+		bool mouseLeftIsPressed = sf::Mouse::isButtonPressed(sf::Mouse::Left);
+		bool mouseIsReleased = (!mouseLeftIsPressed && mouseLeftWasPressed);
+		
+
+		if (mouseLeftIsPressed && !mouseLeftWasPressed) {
+			Vector2f mousePos = sf::Vector2f(sf::Mouse::getPosition(window));
+			Entity* wall = new Entity(wallShape, mousePos.x/player->stride, mousePos.y / player->stride, Wall);
+			
+
+
+			//Faire apparaître un mur au niveau du clic
+
+		}
+
+
+
+		if (mouseLeftIsPressed)
+			mouseLeftWasPressed = true;
+		else
+			mouseLeftWasPressed = false;
+
 		ImGui::SFML::Update(window, clock.restart());
 
 		
-		ImGui::Begin("Background");
-		ImGui::ColorEdit3("Background Color", bgCol);
 			
-		ImGui::End();
+
+		Begin("Coordonates");
+		static bool modified;
+		modified = SliderInt("CX", &player->cx, 0.0f, wWidth / player->stride);
+		modified = SliderInt("CY", &player->cy, 0.0f, wHeight / player->stride - 2);
+		modified = SliderFloat("RX", &player->rx, 0.0f, 1.0f);
+		modified = SliderFloat("RY", &player->ry, 0.0f, 1.0f);
+
+		Value("Coord X", player->sprite->getPosition().x);
+		Value("Coord Y", player->sprite->getPosition().y);
+		Value("Speed X", player->dx);
+		Value("Speed Y", player->dy);
+
+		SliderFloat("Friction", &player->friction, 0.0f, 1.0f);
+		if (modified)
+			player->syncSprite();
+		End();
 
 		//ImGui::ShowDemoWindow(&activeTool);
 
@@ -109,9 +155,12 @@ int main()
 
 		////////////////////
 		//UPDATE
-
+		player->update(dt);
+		
 		////////////////////
 		//DRAW
+		player->draw(window);
+
 		//game elems
 
 
