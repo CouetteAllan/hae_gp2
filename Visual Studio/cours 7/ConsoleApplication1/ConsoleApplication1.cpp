@@ -49,12 +49,13 @@ int main()
 
 
 	bool mouseLeftWasPressed = false;
+	bool hasJumped = false;
 	//bool enterWasPressed = false;
 	World data;
 	data.objects.push_back(player);
 
 	//----------------------------------------  IMGUI STUFF  -------------------------------------------------------------
-	float bgCol[3] = { 0,0,150 };
+	float bgCol[3] = { 0,0,0 };
 	Clock clock;
 	while (window.isOpen()) {
 		sf::Event event;
@@ -82,13 +83,13 @@ int main()
 		float deltaY = dt * 360;
 		bool keyHit = false;
 
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) || sf::Keyboard::isKeyPressed(sf::Keyboard::Z)) {
+		/*if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) || sf::Keyboard::isKeyPressed(sf::Keyboard::Z)) {
 			player->dy -= 10;
 			player->isGrounded = false;
 		}
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down) || sf::Keyboard::isKeyPressed(sf::Keyboard::S)) {
 			player->dy += 1;
-		}
+		}*/
 
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right) || sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
 			player->dx += 2;
@@ -97,6 +98,14 @@ int main()
 			player->dx -= 2;
 
 		}
+
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && !hasJumped && player->isGrounded) {
+			player->dy -= 50;
+			player->isGrounded = false;
+			hasJumped = true;
+		}
+		else
+			hasJumped = false;
 
 
 		
@@ -107,8 +116,7 @@ int main()
 		if (mouseLeftIsPressed && !mouseLeftWasPressed) {
 			Vector2f mousePos = sf::Vector2f(sf::Mouse::getPosition(window));
 			Entity* wall = new Entity(wallShape, mousePos.x/player->stride, mousePos.y / player->stride, Wall);
-			
-
+			data.objects.push_back(wall);
 
 			//Faire apparaître un mur au niveau du clic
 
@@ -155,12 +163,12 @@ int main()
 
 		////////////////////
 		//UPDATE
-		player->update(dt);
-		
+		//player->update(dt);
+		data.update(dt);
 		////////////////////
 		//DRAW
-		player->draw(window);
-
+		//player->draw(window);
+		data.draw(window);
 		//game elems
 
 
