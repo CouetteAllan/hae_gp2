@@ -43,8 +43,8 @@ void Entity::update(double dt)
 
 
 	ry += dy * dt;
-	if(!isGrounded && type != Wall)
-		dy += 20.0f * dt;
+	if(!isGrounded && type != Wall && gravity)
+		dy += 50.0f * dt;
 	dy *= 0.95f;
 	while (ry > 1) {
 		handleCollisions();
@@ -64,6 +64,31 @@ void Entity::update(double dt)
 
 void Entity::handleCollisions(Entity* e)
 {
+	if (e) {
+		if (e->type == Wall) {
+			//collide avec des entités (murs,sol,ennemis...)
+			if (cx == e->cx && cy == e->cy + 1) {
+				rx = 0.0f;
+				dx = 0;
+			}
+
+			if (cx - 1 == e->cx && cy == e->cy + 1) {
+				cx = cx + 1;
+				rx = 0.0f;
+				dx = 0;
+			}
+
+			if (cy == e->cy && cx == e->cx) {
+				ry = 0.0f;
+				dy = 0;
+				isGrounded = true;
+			}
+			if (cy - 1 == e->cy && cx == e->cx) {
+				ry = 0.0f;
+				dy = 0;
+			}
+		}
+	}
 	if (((cx + rx)*stride) > 1280) {
 		rx = 0.7f;
 		dx = 0;
@@ -88,12 +113,18 @@ void Entity::handleCollisions(Entity* e)
 
 
 
-	if (e) {
-		//collide avec des entités (murs,sol,ennemis
-	}
 }
 
 void Entity::draw(RenderWindow &win)
 {
 	win.draw(*sprite);
+}
+
+bool Entity::hasCollision(int _cx, int _cy)
+{
+
+	//regarde si il y a quelque chose en (_cx,_cy);
+
+
+	return false;
 }

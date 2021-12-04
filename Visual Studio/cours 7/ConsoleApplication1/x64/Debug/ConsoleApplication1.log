@@ -1,12 +1,13 @@
-﻿  ConsoleApplication1.cpp
-c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 7\consoleapplication1\entity.hpp(49): warning C4244: '=' : conversion de 'float' en 'int', perte possible de données
+﻿  Entity.cpp
 c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 7\consoleapplication1\entity.hpp(50): warning C4244: '=' : conversion de 'float' en 'int', perte possible de données
-c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 7\consoleapplication1\consoleapplication1.cpp(28): warning C4244: 'argument' : conversion de 'float' en 'unsigned int', perte possible de données
-c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 7\consoleapplication1\consoleapplication1.cpp(82): warning C4244: 'initialisation' : conversion de 'double' en 'float', perte possible de données
-c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 7\consoleapplication1\consoleapplication1.cpp(83): warning C4244: 'initialisation' : conversion de 'double' en 'float', perte possible de données
-c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 7\consoleapplication1\consoleapplication1.cpp(139): warning C4244: 'argument' : conversion de 'float' en 'int', perte possible de données
-c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 7\consoleapplication1\consoleapplication1.cpp(140): warning C4244: 'argument' : conversion de 'float' en 'int', perte possible de données
-c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 7\consoleapplication1\consoleapplication1.cpp(161): warning C4244: 'argument' : conversion de 'float' en 'sf::Uint8', perte possible de données
-c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 7\consoleapplication1\consoleapplication1.cpp(160): warning C4244: 'argument' : conversion de 'float' en 'sf::Uint8', perte possible de données
-c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 7\consoleapplication1\consoleapplication1.cpp(159): warning C4244: 'argument' : conversion de 'float' en 'sf::Uint8', perte possible de données
+c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 7\consoleapplication1\entity.hpp(51): warning C4244: '=' : conversion de 'float' en 'int', perte possible de données
+c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 7\consoleapplication1\entity.cpp(7): warning C4244: '=' : conversion de 'double' en 'int', perte possible de données
+c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 7\consoleapplication1\entity.cpp(8): warning C4244: '=' : conversion de 'double' en 'int', perte possible de données
+c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 7\consoleapplication1\entity.cpp(9): warning C4244: '=' : conversion de 'double' en 'float', perte possible de données
+c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 7\consoleapplication1\entity.cpp(10): warning C4244: '=' : conversion de 'double' en 'float', perte possible de données
+c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 7\consoleapplication1\entity.cpp(19): warning C4244: 'argument' : conversion de 'double' en 'float', perte possible de données
+c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 7\consoleapplication1\entity.cpp(26): warning C4244: '+=' : conversion de 'double' en 'float', perte possible de données
+c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 7\consoleapplication1\entity.cpp(45): warning C4244: '+=' : conversion de 'double' en 'float', perte possible de données
+c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 7\consoleapplication1\entity.cpp(47): warning C4244: '+=' : conversion de 'double' en 'float', perte possible de données
+c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 7\consoleapplication1\entity.cpp(106): warning C4244: '=' : conversion de 'float' en 'int', perte possible de données
   ConsoleApplication1.vcxproj -> C:\Users\couet\OneDrive\Bureau\Allan\hae_gp2\Visual Studio\cours 7\ConsoleApplication1\x64\Debug\ConsoleApplication1.exe

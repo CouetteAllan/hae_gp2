@@ -36,6 +36,7 @@ public:
 	float dy = 0.0f;
 	inline static float friction = 0.827f;
 	bool isGrounded = false;
+	bool gravity = true;
 
 	//-------------- Resulting Coordinates -----------------//
 	double xx = 0.0f;
@@ -59,5 +60,6 @@ public:
 	void handleCollisions(Entity* e = nullptr);
 	void draw(RenderWindow &win);
 
+	bool hasCollision(int _cx, int _cy);
 };
 

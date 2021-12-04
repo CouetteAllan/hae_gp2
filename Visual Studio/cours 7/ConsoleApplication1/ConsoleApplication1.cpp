@@ -39,8 +39,7 @@ int main()
 	Entity* player = new Entity(heroSprite, 15, 15);
 	
 
-	RectangleShape* wallShape = new RectangleShape(Vector2f(player->stride, player->stride));
-	wallShape->setFillColor(Color::Blue);
+	
 
 
 	double tStart = getTimeStamp();
@@ -53,7 +52,6 @@ int main()
 	//bool enterWasPressed = false;
 	World data;
 	data.objects.push_back(player);
-
 	//----------------------------------------  IMGUI STUFF  -------------------------------------------------------------
 	float bgCol[3] = { 0,0,0 };
 	Clock clock;
@@ -115,9 +113,10 @@ int main()
 
 		if (mouseLeftIsPressed && !mouseLeftWasPressed) {
 			Vector2f mousePos = sf::Vector2f(sf::Mouse::getPosition(window));
+			RectangleShape* wallShape = new RectangleShape(Vector2f(player->stride, player->stride));
+			wallShape->setFillColor(Color::Blue);
 			Entity* wall = new Entity(wallShape, mousePos.x/player->stride, mousePos.y / player->stride, Wall);
 			data.objects.push_back(wall);
-
 			//Faire apparaître un mur au niveau du clic
 
 		}
@@ -140,11 +139,13 @@ int main()
 		modified = SliderInt("CY", &player->cy, 0.0f, wHeight / player->stride - 2);
 		modified = SliderFloat("RX", &player->rx, 0.0f, 1.0f);
 		modified = SliderFloat("RY", &player->ry, 0.0f, 1.0f);
+		modified = Checkbox("Enable Gravity", &player->gravity);
 
 		Value("Coord X", player->sprite->getPosition().x);
 		Value("Coord Y", player->sprite->getPosition().y);
 		Value("Speed X", player->dx);
 		Value("Speed Y", player->dy);
+		Value("IsGrounded", player->isGrounded);
 
 		SliderFloat("Friction", &player->friction, 0.0f, 1.0f);
 		if (modified)
@@ -163,11 +164,9 @@ int main()
 
 		////////////////////
 		//UPDATE
-		//player->update(dt);
 		data.update(dt);
 		////////////////////
 		//DRAW
-		//player->draw(window);
 		data.draw(window);
 		//game elems
 

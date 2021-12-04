@@ -10,7 +10,21 @@ void World::draw(RenderWindow& win)
 
 void World::update(double dt)
 {
+	Entity* p = nullptr;
 	for (auto o : objects) {
 		o->update(dt);
+
+		if (o->type == Player)
+			p = o;
+			for (int j = 0; j < objects.size(); ++j) {
+				auto oe = objects[j];
+				if (oe->type == Wall) {
+					p->handleCollisions(oe);
+
+				}
+			}
+
 	}
+
+
 }
