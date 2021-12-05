@@ -67,14 +67,13 @@ void Entity::handleCollisions(Entity* e)
 	if (e) {
 		if (e->type == Wall) {
 			//collide avec des entités (murs,sol,ennemis...)
-			if (cx == e->cx && cy == e->cy + 1) {
-				rx = 0.0f;
+			if (cx + rx < e->cx && cy == e->cy + 1) {
+				rx = 0.8f;
 				dx = 0;
 			}
 
-			if (cx - 1 == e->cx && cy == e->cy + 1) {
-				cx = cx + 1;
-				rx = 0.0f;
+			if (cx - rx > e->cx && cx - 1 == e->cx && cy == e->cy + 1) {
+				rx = 0.5f;
 				dx = 0;
 			}
 
@@ -83,6 +82,8 @@ void Entity::handleCollisions(Entity* e)
 				dy = 0;
 				isGrounded = true;
 			}
+			if(cy != e->cy && (cy + ry) * stride <= 640.0f && cx != e->cx)
+				isGrounded = false;
 			if (cy - 1 == e->cy && cx == e->cx) {
 				ry = 0.0f;
 				dy = 0;
@@ -99,7 +100,7 @@ void Entity::handleCollisions(Entity* e)
 		dx = 0;
 	}
 	
-	if ((cy + ry) > 640.0f / stride) {
+	if ((cy + ry) * stride > 640.0f ) {
 		isGrounded = true;
 		ry = 0.0f;
 		cy = 650.0f / stride;
@@ -124,7 +125,7 @@ bool Entity::hasCollision(int _cx, int _cy)
 {
 
 	//regarde si il y a quelque chose en (_cx,_cy);
-
+	//cx 
 
 	return false;
 }

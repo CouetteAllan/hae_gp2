@@ -99,7 +99,6 @@ int main()
 
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && !hasJumped && player->isGrounded) {
 			player->dy -= 50;
-			player->isGrounded = false;
 			hasJumped = true;
 		}
 		else
