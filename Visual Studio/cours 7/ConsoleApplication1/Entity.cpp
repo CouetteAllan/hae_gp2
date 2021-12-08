@@ -73,7 +73,7 @@ void Entity::handleCollisions(Entity* e)
 				dx = 0;
 			}
 
-			if ((cx - rx) * stride <= e->xx && cy == e->cy + 1 && cx == e->cx + 1) {
+			if ((cx - rx	) * stride <= e->xx && cy == e->cy + 1 && cx == e->cx + 1) {
 				cx++;
 				rx = 0.8f;
 				dx = 0;
