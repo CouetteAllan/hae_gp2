@@ -38,6 +38,7 @@ public:
 	bool isGrounded = false;
 	bool gravity = true;
 
+
 	//-------------- Resulting Coordinates -----------------//
 	double xx = 0.0f;
 	double yy = 0.0f;
@@ -45,11 +46,14 @@ public:
 	const inline static int stride = 32;
 
 
+	int click = 0;
+
 	Entity( Shape* shape, float _cx, float _cy, EType _type = Player) {
 		type = _type;
 		cx = _cx;
 		cy = _cy;
 		sprite = shape;
+		syncSprite();
 	}
 
 

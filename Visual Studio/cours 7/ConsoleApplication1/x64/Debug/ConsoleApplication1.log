@@ -1,6 +1,6 @@
 ﻿  Entity.cpp
-c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 7\consoleapplication1\entity.hpp(50): warning C4244: '=' : conversion de 'float' en 'int', perte possible de données
-c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 7\consoleapplication1\entity.hpp(51): warning C4244: '=' : conversion de 'float' en 'int', perte possible de données
+c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 7\consoleapplication1\entity.hpp(53): warning C4244: '=' : conversion de 'float' en 'int', perte possible de données
+c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 7\consoleapplication1\entity.hpp(54): warning C4244: '=' : conversion de 'float' en 'int', perte possible de données
 c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 7\consoleapplication1\entity.cpp(7): warning C4244: '=' : conversion de 'double' en 'int', perte possible de données
 c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 7\consoleapplication1\entity.cpp(8): warning C4244: '=' : conversion de 'double' en 'int', perte possible de données
 c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 7\consoleapplication1\entity.cpp(9): warning C4244: '=' : conversion de 'double' en 'float', perte possible de données
@@ -9,5 +9,5 @@ c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 7\consoleapplic
 c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 7\consoleapplication1\entity.cpp(26): warning C4244: '+=' : conversion de 'double' en 'float', perte possible de données
 c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 7\consoleapplication1\entity.cpp(45): warning C4244: '+=' : conversion de 'double' en 'float', perte possible de données
 c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 7\consoleapplication1\entity.cpp(47): warning C4244: '+=' : conversion de 'double' en 'float', perte possible de données
-c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 7\consoleapplication1\entity.cpp(106): warning C4244: '=' : conversion de 'float' en 'int', perte possible de données
+c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 7\consoleapplication1\entity.cpp(107): warning C4244: '=' : conversion de 'float' en 'int', perte possible de données
   ConsoleApplication1.vcxproj -> C:\Users\couet\OneDrive\Bureau\Allan\hae_gp2\Visual Studio\cours 7\ConsoleApplication1\x64\Debug\ConsoleApplication1.exe

@@ -55,6 +55,7 @@ int main()
 	//----------------------------------------  IMGUI STUFF  -------------------------------------------------------------
 	float bgCol[3] = { 0,0,0 };
 	Clock clock;
+	int click = 0;
 	while (window.isOpen()) {
 		sf::Event event;
 		double dt = tExitFrame - tEnterFrame;
@@ -100,6 +101,7 @@ int main()
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && !hasJumped && player->isGrounded) {
 			player->dy -= 50;
 			hasJumped = true;
+			player->isGrounded = false;
 		}
 		else
 			hasJumped = false;
@@ -117,7 +119,8 @@ int main()
 			Entity* wall = new Entity(wallShape, mousePos.x/player->stride, mousePos.y / player->stride, Wall);
 			data.objects.push_back(wall);
 			//Faire apparaître un mur au niveau du clic
-
+			player->click++;
+			
 		}
 
 
