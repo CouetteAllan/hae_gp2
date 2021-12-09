@@ -69,6 +69,8 @@ void Entity::update(double dt)
 		dy = 0;
 		isGrounded = true;
 	}
+	else
+		isGrounded = false;
 
 	while (ry > 1) {
 
@@ -84,63 +86,6 @@ void Entity::update(double dt)
 	syncSprite();
 }
 
-void Entity::handleCollisions(Entity* e)
-{
-	if (e) {
-		if (e->type == Wall) {
-			//collide avec des entités (murs,sol,ennemis...)
-			//verifie si il y a une case à la droite du player ET si la case est alignée avec lui sur l'axe Y
-			if ((cx + rx) * stride >= e->xx && cy == e->cy + 1 && cx == e->cx) {
-				//remet le player à côté de la case
- 				cx--;
-				rx = 0.8f;
-				dx = 0;
-			}
-			//pareil mais à gauche du player (sauf que ça marche pas pour l'instant)
-			if ((cx - rx) * stride <= e->xx && cy == e->cy + 1 && cx == e->cx + 1) {
-				rx = 0.3f;
-				dx = 0;
-			}
-
-			//pareil mais sous le joueur
-			if (cy == e->cy && cx == e->cx) {
-				ry = 0.0f;
-				dy = 0;
-				isGrounded = true;
-			}
-			//et au dessus du joueur
-			if (cy - 1 == e->cy && cx == e->cx) {
-				ry = 0.0f;
-				cy = cy + 1;
-				dy = 0;
-			}
-		}
-	}
-	if ((cx + rx)*stride > 1280) {
-		rx = 0.7f;
-		dx = 0;
-	}
-	
-	if ((cx + rx)*stride < 0) {
-		rx = 0.3f;
-		dx = 0;
-	}
-	
-	if ((cy + ry) * stride > 640.0f ) {
-		isGrounded = true;
-		ry = 0.0f;
-		cy = 650.0f / stride;
-		dy = 0;
-	}
-	
-	if ((cy + ry)*stride < 10) {
-		ry = 0.7f;
-		dy = 0;
-	}
-
-
-
-}
 
 void Entity::draw(RenderWindow &win)
 {

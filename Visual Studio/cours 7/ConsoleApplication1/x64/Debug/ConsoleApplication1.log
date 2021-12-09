@@ -10,5 +10,4 @@ C:\Workshop\Allan\hae_gp2\Visual Studio\cours 7\ConsoleApplication1\Entity.cpp(2
 C:\Workshop\Allan\hae_gp2\Visual Studio\cours 7\ConsoleApplication1\Entity.cpp(30,15): warning C4244: '+=' : conversion de 'double' en 'float', perte possible de données
 C:\Workshop\Allan\hae_gp2\Visual Studio\cours 7\ConsoleApplication1\Entity.cpp(57,15): warning C4244: '+=' : conversion de 'double' en 'float', perte possible de données
 C:\Workshop\Allan\hae_gp2\Visual Studio\cours 7\ConsoleApplication1\Entity.cpp(59,19): warning C4244: '+=' : conversion de 'double' en 'float', perte possible de données
-C:\Workshop\Allan\hae_gp2\Visual Studio\cours 7\ConsoleApplication1\Entity.cpp(132,15): warning C4244: '=' : conversion de 'float' en 'int', perte possible de données
   ConsoleApplication1.vcxproj -> C:\Workshop\Allan\hae_gp2\Visual Studio\cours 7\ConsoleApplication1\x64\Debug\ConsoleApplication1.exe
