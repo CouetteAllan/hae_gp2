@@ -21,6 +21,24 @@
 
 using namespace ImGui;
 
+void drawGrid(World& data) {
+	for (size_t i = 0; i < 40; i++)
+	{
+		for (size_t j = 0; j < 21; j++)
+		{
+			RectangleShape* grid = new RectangleShape(Vector2f(32, 32));
+			grid->setOrigin(1, 1);
+			grid->setFillColor(Color(0,0,0,0));
+			grid->setOutlineThickness(1);
+			grid->setOutlineColor(Color(150,150,150,150));
+			grid->setPosition(Vector2f(i * 32, j * 32));
+			data.grid.push_back(grid);
+		}
+		
+	}
+}
+
+
 int main()
 {
 	float wHeight = 720;
@@ -52,6 +70,7 @@ int main()
 	//bool enterWasPressed = false;
 	World data;
 	data.objects.push_back(player);
+	drawGrid(data);
 	//----------------------------------------  IMGUI STUFF  -------------------------------------------------------------
 	float bgCol[3] = { 0,0,0 };
 	Clock clock;
@@ -99,7 +118,7 @@ int main()
 		}
 
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && !hasJumped && player->isGrounded) {
-			player->dy -= 50;
+			player->dy -= 30;
 			hasJumped = true;
 			player->isGrounded = false;
 		}

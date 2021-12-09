@@ -5,7 +5,9 @@ void World::draw(RenderWindow& win)
 	for (auto o : objects) {
 		o->draw(win);
 	}
-
+	for (auto r : grid) {
+		win.draw(*r);
+	}
 }
 
 void World::update(double dt)
@@ -23,8 +25,5 @@ void World::update(double dt)
 
 				}
 			}
-
 	}
-
-
 }

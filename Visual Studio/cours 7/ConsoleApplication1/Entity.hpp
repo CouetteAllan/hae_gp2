@@ -4,6 +4,7 @@
 #include <SFML/Window.hpp>
 #include <stdlib.h>
 #include <math.h>
+#include "World.hpp"
 
 
 using namespace sf;
@@ -16,8 +17,6 @@ enum EType {
 
 class Entity {
 public:
-
-
 
 
 	//---------- Graphic Components ------------//
@@ -64,6 +63,6 @@ public:
 	void handleCollisions(Entity* e = nullptr);
 	void draw(RenderWindow &win);
 
-	bool hasCollision(int _cx, int _cy);
+	bool isColliding(int _cx, int _cy);
 };
 
