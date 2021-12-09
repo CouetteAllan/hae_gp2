@@ -1,4 +1,7 @@
 #include "Entity.hpp"
+#include "SFML/Graphics/RenderWindow.hpp"
+#include "imgui.h"
+#include "World.hpp"
 
 void Entity::setPosition(float x, float y)
 {
@@ -21,7 +24,9 @@ void Entity::syncSprite()
 
 void Entity::update(double dt)
 {
-
+	if (type == Wall) {
+		return;
+	}
 	rx += dx * dt;
 	dx *= friction;//0.96f
 
@@ -32,7 +37,7 @@ void Entity::update(double dt)
 		dx = 0;
 	}
 	
-	if (isColliding(cx - 1, cy)&& rx >= 0.2f) {
+	if (isColliding(cx - 1, cy)&& rx <= 0.2f) {
 		rx = 0.2f;
 		dx = 0;
 	}
@@ -53,15 +58,16 @@ void Entity::update(double dt)
 	if(!isGrounded && type != Wall && gravity)
 		dy += 80.0f * dt;
 	dy *= 0.95f;
-
+	
 	if (isColliding(cx, cy - 1) && ry <= 0.0f) {
-		ry = 0.0f;
+		ry = 1.0f;
 		dy = 0;
 	}
 	
 	if (isColliding(cx, cy + 1) && ry >= 0.9f) {
-		ry = 0.9f;
+		ry = 1.0f;
 		dy = 0;
+		isGrounded = true;
 	}
 
 	while (ry > 1) {
@@ -151,8 +157,14 @@ bool Entity::isColliding(int _cx, int _cy)
 		return true;
 	if (cy > 720 / stride)
 		return true;
+	
+	for (auto& w : World::objects) {
+		if (w->type != Player) {
 
-
+			if (w->cx == _cx && w->cy == _cy)
+				return true;
+		}
+	}
 
 	return false;
 

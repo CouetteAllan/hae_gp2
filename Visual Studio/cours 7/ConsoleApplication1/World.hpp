@@ -9,8 +9,8 @@ class Entity;
 
 class World {
 public:
-	std::vector<sf::RectangleShape* > grid;
-	std::vector<Entity*> objects;
+	static std::vector<sf::RectangleShape* > grid;
+	static std::vector<Entity*> objects;
 
 
 	void draw(sf::RenderWindow& win);

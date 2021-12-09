@@ -1,4 +1,8 @@
 #include "World.hpp"
+#include "Entity.hpp"
+
+std::vector<Entity*> World::objects;
+std::vector<RectangleShape*> World::grid;
 
 void World::draw(RenderWindow& win)
 {
@@ -16,14 +20,5 @@ void World::update(double dt)
 	for (auto o : objects) {
 		o->update(dt);
 
-		if (o->type == Player)
-			p = o;
-			for (int j = 0; j < objects.size(); ++j) {
-				auto oe = objects[j];
-				if (oe->type == Wall) {
-					p->handleCollisions(oe);
-
-				}
-			}
 	}
 }

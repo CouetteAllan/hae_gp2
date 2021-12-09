@@ -1,43 +1,14 @@
-﻿  ConsoleApplication1.cpp
+﻿  Entity.cpp
 C:\Workshop\Allan\hae_gp2\Visual Studio\cours 7\ConsoleApplication1\Entity.hpp(52,8): warning C4244: '=' : conversion de 'float' en 'int', perte possible de données
 C:\Workshop\Allan\hae_gp2\Visual Studio\cours 7\ConsoleApplication1\Entity.hpp(53,8): warning C4244: '=' : conversion de 'float' en 'int', perte possible de données
-C:\Workshop\Allan\hae_gp2\Visual Studio\cours 7\ConsoleApplication1\ConsoleApplication1.cpp(34,41): warning C4244: 'argument' : conversion de 'size_t' en 'T', perte possible de données
-          with
-          [
-              T=float
-          ]
-C:\Workshop\Allan\hae_gp2\Visual Studio\cours 7\ConsoleApplication1\ConsoleApplication1.cpp(34,33): warning C4244: 'argument' : conversion de 'size_t' en 'T', perte possible de données
-          with
-          [
-              T=float
-          ]
-C:\Workshop\Allan\hae_gp2\Visual Studio\cours 7\ConsoleApplication1\ConsoleApplication1.cpp(46,48): warning C4244: 'argument' : conversion de 'float' en 'unsigned int', perte possible de données
-C:\Workshop\Allan\hae_gp2\Visual Studio\cours 7\ConsoleApplication1\ConsoleApplication1.cpp(46,40): warning C4244: 'argument' : conversion de 'float' en 'unsigned int', perte possible de données
-C:\Workshop\Allan\hae_gp2\Visual Studio\cours 7\ConsoleApplication1\ConsoleApplication1.cpp(100,16): warning C4244: 'initialisation' : conversion de 'double' en 'float', perte possible de données
-C:\Workshop\Allan\hae_gp2\Visual Studio\cours 7\ConsoleApplication1\ConsoleApplication1.cpp(101,16): warning C4244: 'initialisation' : conversion de 'double' en 'float', perte possible de données
-C:\Workshop\Allan\hae_gp2\Visual Studio\cours 7\ConsoleApplication1\ConsoleApplication1.cpp(159,56): warning C4244: 'argument' : conversion de 'float' en 'int', perte possible de données
-C:\Workshop\Allan\hae_gp2\Visual Studio\cours 7\ConsoleApplication1\ConsoleApplication1.cpp(159,43): warning C4244: 'argument' : conversion de 'float' en 'int', perte possible de données
-C:\Workshop\Allan\hae_gp2\Visual Studio\cours 7\ConsoleApplication1\ConsoleApplication1.cpp(160,74): warning C4244: 'argument' : conversion de 'float' en 'int', perte possible de données
-C:\Workshop\Allan\hae_gp2\Visual Studio\cours 7\ConsoleApplication1\ConsoleApplication1.cpp(160,43): warning C4244: 'argument' : conversion de 'float' en 'int', perte possible de données
-C:\Workshop\Allan\hae_gp2\Visual Studio\cours 7\ConsoleApplication1\ConsoleApplication1.cpp(183,13): warning C4244: 'argument' : conversion de 'float' en 'sf::Uint8', perte possible de données
-C:\Workshop\Allan\hae_gp2\Visual Studio\cours 7\ConsoleApplication1\ConsoleApplication1.cpp(182,13): warning C4244: 'argument' : conversion de 'float' en 'sf::Uint8', perte possible de données
-C:\Workshop\Allan\hae_gp2\Visual Studio\cours 7\ConsoleApplication1\ConsoleApplication1.cpp(181,13): warning C4244: 'argument' : conversion de 'float' en 'sf::Uint8', perte possible de données
-  Entity.cpp
-C:\Workshop\Allan\hae_gp2\Visual Studio\cours 7\ConsoleApplication1\Entity.hpp(52,8): warning C4244: '=' : conversion de 'float' en 'int', perte possible de données
-C:\Workshop\Allan\hae_gp2\Visual Studio\cours 7\ConsoleApplication1\Entity.hpp(53,8): warning C4244: '=' : conversion de 'float' en 'int', perte possible de données
-C:\Workshop\Allan\hae_gp2\Visual Studio\cours 7\ConsoleApplication1\Entity.cpp(7,12): warning C4244: '=' : conversion de 'double' en 'int', perte possible de données
-C:\Workshop\Allan\hae_gp2\Visual Studio\cours 7\ConsoleApplication1\Entity.cpp(8,12): warning C4244: '=' : conversion de 'double' en 'int', perte possible de données
-C:\Workshop\Allan\hae_gp2\Visual Studio\cours 7\ConsoleApplication1\Entity.cpp(9,26): warning C4244: '=' : conversion de 'double' en 'float', perte possible de données
-C:\Workshop\Allan\hae_gp2\Visual Studio\cours 7\ConsoleApplication1\Entity.cpp(10,26): warning C4244: '=' : conversion de 'double' en 'float', perte possible de données
-C:\Workshop\Allan\hae_gp2\Visual Studio\cours 7\ConsoleApplication1\Entity.cpp(19,26): warning C4244: 'argument' : conversion de 'double' en 'float', perte possible de données
-C:\Workshop\Allan\hae_gp2\Visual Studio\cours 7\ConsoleApplication1\Entity.cpp(19,22): warning C4244: 'argument' : conversion de 'double' en 'float', perte possible de données
-C:\Workshop\Allan\hae_gp2\Visual Studio\cours 7\ConsoleApplication1\Entity.cpp(25,15): warning C4244: '+=' : conversion de 'double' en 'float', perte possible de données
-C:\Workshop\Allan\hae_gp2\Visual Studio\cours 7\ConsoleApplication1\Entity.cpp(52,15): warning C4244: '+=' : conversion de 'double' en 'float', perte possible de données
-C:\Workshop\Allan\hae_gp2\Visual Studio\cours 7\ConsoleApplication1\Entity.cpp(54,19): warning C4244: '+=' : conversion de 'double' en 'float', perte possible de données
-C:\Workshop\Allan\hae_gp2\Visual Studio\cours 7\ConsoleApplication1\Entity.cpp(126,15): warning C4244: '=' : conversion de 'float' en 'int', perte possible de données
-C:\Workshop\Allan\hae_gp2\Visual Studio\cours 7\ConsoleApplication1\Entity.cpp(159,15): warning C4244: '=' : conversion de 'float' en 'int', perte possible de données
-  World.cpp
-C:\Workshop\Allan\hae_gp2\Visual Studio\cours 7\ConsoleApplication1\Entity.hpp(52,8): warning C4244: '=' : conversion de 'float' en 'int', perte possible de données
-C:\Workshop\Allan\hae_gp2\Visual Studio\cours 7\ConsoleApplication1\Entity.hpp(53,8): warning C4244: '=' : conversion de 'float' en 'int', perte possible de données
-  Génération de code en cours...
+C:\Workshop\Allan\hae_gp2\Visual Studio\cours 7\ConsoleApplication1\Entity.cpp(10,12): warning C4244: '=' : conversion de 'double' en 'int', perte possible de données
+C:\Workshop\Allan\hae_gp2\Visual Studio\cours 7\ConsoleApplication1\Entity.cpp(11,12): warning C4244: '=' : conversion de 'double' en 'int', perte possible de données
+C:\Workshop\Allan\hae_gp2\Visual Studio\cours 7\ConsoleApplication1\Entity.cpp(12,26): warning C4244: '=' : conversion de 'double' en 'float', perte possible de données
+C:\Workshop\Allan\hae_gp2\Visual Studio\cours 7\ConsoleApplication1\Entity.cpp(13,26): warning C4244: '=' : conversion de 'double' en 'float', perte possible de données
+C:\Workshop\Allan\hae_gp2\Visual Studio\cours 7\ConsoleApplication1\Entity.cpp(22,26): warning C4244: 'argument' : conversion de 'double' en 'float', perte possible de données
+C:\Workshop\Allan\hae_gp2\Visual Studio\cours 7\ConsoleApplication1\Entity.cpp(22,22): warning C4244: 'argument' : conversion de 'double' en 'float', perte possible de données
+C:\Workshop\Allan\hae_gp2\Visual Studio\cours 7\ConsoleApplication1\Entity.cpp(30,15): warning C4244: '+=' : conversion de 'double' en 'float', perte possible de données
+C:\Workshop\Allan\hae_gp2\Visual Studio\cours 7\ConsoleApplication1\Entity.cpp(57,15): warning C4244: '+=' : conversion de 'double' en 'float', perte possible de données
+C:\Workshop\Allan\hae_gp2\Visual Studio\cours 7\ConsoleApplication1\Entity.cpp(59,19): warning C4244: '+=' : conversion de 'double' en 'float', perte possible de données
+C:\Workshop\Allan\hae_gp2\Visual Studio\cours 7\ConsoleApplication1\Entity.cpp(132,15): warning C4244: '=' : conversion de 'float' en 'int', perte possible de données
   ConsoleApplication1.vcxproj -> C:\Workshop\Allan\hae_gp2\Visual Studio\cours 7\ConsoleApplication1\x64\Debug\ConsoleApplication1.exe
