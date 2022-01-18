@@ -134,8 +134,8 @@ void Entity::draw(RenderWindow &win)
 {
 	sf::RenderStates st;
 
-	st.shader = &s_Vtx;
-	s_Vtx.setUniform("col", Glsl::Vec4(1, 0.5f, 1, 1));
+	st.shader = &g_MainShaderNoTex;
+	g_MainShaderNoTex.setUniform("col", Glsl::Vec4(1, 0.5f, 1, 1));
 
 	win.draw(*sprite, st);
 }

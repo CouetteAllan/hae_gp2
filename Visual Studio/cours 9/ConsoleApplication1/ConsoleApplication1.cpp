@@ -39,7 +39,8 @@ void drawGrid(World& data) {
 }
 
 
-sf::Shader s_Vtx;
+sf::Shader g_MainShaderNoTex;
+sf::Shader g_MainShaderTex;
 
 bool loadFile(const char* path, std::string& res) {
 	FILE* f = 0;
@@ -82,8 +83,20 @@ int main()
 		printf("can't load vert");
 	}
 
-	if (!s_Vtx.loadFromMemory(vertContent.c_str(), fragContent.c_str())) {
-		printf("shader ne s'ouvre pas");
+
+	//fragContent = "#define HAS_UNIFORM_COLOR\\n" + fragContent;
+
+	{
+		if (!g_MainShaderTex.loadFromMemory(vertContent.c_str(), (std::string("#define HAS_TEXTURE \\n") + fragContent).c_str())) {
+			cout << "cannot load shaders with tex\n";
+			return 1;
+		}
+	}
+	{
+		if (!g_MainShaderNoTex.loadFromMemory(vertContent.c_str(), fragContent.c_str())) {
+			cout << "cannot load shaders without tex\n";
+			return 1;
+		}
 	}
 
 	sf::Texture bg;
@@ -115,7 +128,8 @@ int main()
 	drawGrid(data);
 	World::dij.init(Vector2i(World::player->cx, World::player->cy));
 	//----------------------------------------  IMGUI STUFF  -------------------------------------------------------------
-	float bgCol[3] = { 0,0,0 };
+	float bgCol[4] = { 0,0,0,1 };
+	float multiplier = 0.1f;
 	Clock clock;
 	int click = 0;
 	while (window.isOpen()) {
@@ -253,22 +267,65 @@ int main()
 		if (modified)
 			player->syncSprite();
 		ImGui::End();
+		ImGui::Begin("Shader");
+		if (ImGui::ColorEdit4("Bg Color", bgCol)) {
+			g_MainShaderTex.setUniform("col", Glsl::Vec4(
+				bgCol[0],
+				bgCol[1],
+				bgCol[2],
+				bgCol[3]));
+		}
+		ImGui::End();
+
+		if (multiplier > 0) {
+
+			bgCol[0] += multiplier * dt * 2;
+			bgCol[1] += multiplier * dt * 2;
+			bgCol[2] += multiplier * dt * 2;
+			g_MainShaderTex.setUniform("colAdd", Glsl::Vec4(
+				bgCol[0],
+				bgCol[1],
+				bgCol[2],
+				bgCol[3]));
+			if (bgCol[0] >= 1) {
+				multiplier = -multiplier;
+			}
+		}
+
+		if (multiplier < 0) {
+			bgCol[0] += multiplier * dt * 2;
+			bgCol[1] += multiplier * dt * 2;
+			bgCol[2] += multiplier * dt * 2;
+			g_MainShaderTex.setUniform("colAdd", Glsl::Vec4(
+				bgCol[0],
+				bgCol[1],
+				bgCol[2],
+				bgCol[3]));
+
+			if (bgCol[0] <= 0) {
+				multiplier = -multiplier;
+			}
+		}
 
 		//ImGui::ShowDemoWindow(&activeTool);
 
 		////////////////////
 		//CLEAR
-		window.clear(Color(
-			bgCol[0] * 255,
-			bgCol[1] * 255,
-			bgCol[2] * 255
-		));
+		window.clear();
 
 		////////////////////
 		//UPDATE
 		data.update(dt);
 		////////////////////
 		//DRAW
+		sf::RectangleShape rectBg;
+		rectBg.setTexture(&bg);
+		rectBg.setSize(sf::Vector2f(1280, 720));
+		sf::RenderStates rs;
+		rs.shader = &g_MainShaderTex;
+		window.draw(rectBg, rs);
+
+
 		data.draw(window);
 		//game elems
 

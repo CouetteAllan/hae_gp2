@@ -136,4 +136,3 @@ public:
 	bool isColliding(int _cx, int _cy);
 };
 
-extern sf::Shader s_Vtx;

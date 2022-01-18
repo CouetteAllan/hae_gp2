@@ -6,12 +6,15 @@ c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 9\consoleapplic
           [
               T=float
           ]
-c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 9\consoleapplication1\consoleapplication1.cpp(65): warning C4244: 'argument' : conversion de 'float' en 'unsigned int', perte possible de données
-c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 9\consoleapplication1\consoleapplication1.cpp(196): warning C4244: 'initialisation' : conversion de 'double' en 'float', perte possible de données
-c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 9\consoleapplication1\consoleapplication1.cpp(197): warning C4244: 'initialisation' : conversion de 'double' en 'float', perte possible de données
-c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 9\consoleapplication1\consoleapplication1.cpp(240): warning C4244: 'argument' : conversion de 'float' en 'int', perte possible de données
-c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 9\consoleapplication1\consoleapplication1.cpp(241): warning C4244: 'argument' : conversion de 'float' en 'int', perte possible de données
-c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 9\consoleapplication1\consoleapplication1.cpp(264): warning C4244: 'argument' : conversion de 'float' en 'sf::Uint8', perte possible de données
-c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 9\consoleapplication1\consoleapplication1.cpp(263): warning C4244: 'argument' : conversion de 'float' en 'sf::Uint8', perte possible de données
-c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 9\consoleapplication1\consoleapplication1.cpp(262): warning C4244: 'argument' : conversion de 'float' en 'sf::Uint8', perte possible de données
+c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 9\consoleapplication1\consoleapplication1.cpp(66): warning C4244: 'argument' : conversion de 'float' en 'unsigned int', perte possible de données
+c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 9\consoleapplication1\consoleapplication1.cpp(210): warning C4244: 'initialisation' : conversion de 'double' en 'float', perte possible de données
+c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 9\consoleapplication1\consoleapplication1.cpp(211): warning C4244: 'initialisation' : conversion de 'double' en 'float', perte possible de données
+c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 9\consoleapplication1\consoleapplication1.cpp(254): warning C4244: 'argument' : conversion de 'float' en 'int', perte possible de données
+c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 9\consoleapplication1\consoleapplication1.cpp(255): warning C4244: 'argument' : conversion de 'float' en 'int', perte possible de données
+c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 9\consoleapplication1\consoleapplication1.cpp(282): warning C4244: '+=' : conversion de 'double' en 'float', perte possible de données
+c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 9\consoleapplication1\consoleapplication1.cpp(283): warning C4244: '+=' : conversion de 'double' en 'float', perte possible de données
+c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 9\consoleapplication1\consoleapplication1.cpp(284): warning C4244: '+=' : conversion de 'double' en 'float', perte possible de données
+c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 9\consoleapplication1\consoleapplication1.cpp(296): warning C4244: '+=' : conversion de 'double' en 'float', perte possible de données
+c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 9\consoleapplication1\consoleapplication1.cpp(297): warning C4244: '+=' : conversion de 'double' en 'float', perte possible de données
+c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 9\consoleapplication1\consoleapplication1.cpp(298): warning C4244: '+=' : conversion de 'double' en 'float', perte possible de données
   ConsoleApplication1.vcxproj -> C:\Users\couet\OneDrive\Bureau\Allan\hae_gp2\Visual Studio\cours 9\ConsoleApplication1\x64\Debug\ConsoleApplication1.exe

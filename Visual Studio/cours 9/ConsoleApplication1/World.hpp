@@ -57,3 +57,5 @@ public:
 
 
 };
+extern sf::Shader g_MainShaderTex;
+extern sf::Shader g_MainShaderNoTex;
