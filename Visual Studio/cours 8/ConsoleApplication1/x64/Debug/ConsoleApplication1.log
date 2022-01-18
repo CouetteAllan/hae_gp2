@@ -1,13 +1,37 @@
-﻿  Entity.cpp
-c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 8\consoleapplication1\entity.hpp(110): warning C4244: '=' : conversion de 'float' en 'int', perte possible de données
-c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 8\consoleapplication1\entity.hpp(111): warning C4244: '=' : conversion de 'float' en 'int', perte possible de données
-c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 8\consoleapplication1\entity.cpp(10): warning C4244: '=' : conversion de 'double' en 'int', perte possible de données
-c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 8\consoleapplication1\entity.cpp(11): warning C4244: '=' : conversion de 'double' en 'int', perte possible de données
-c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 8\consoleapplication1\entity.cpp(12): warning C4244: '=' : conversion de 'double' en 'float', perte possible de données
-c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 8\consoleapplication1\entity.cpp(13): warning C4244: '=' : conversion de 'double' en 'float', perte possible de données
-c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 8\consoleapplication1\entity.cpp(31): warning C4244: 'argument' : conversion de 'double' en 'float', perte possible de données
-c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 8\consoleapplication1\entity.cpp(43): warning C4244: '+=' : conversion de 'double' en 'float', perte possible de données
-c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 8\consoleapplication1\entity.cpp(70): warning C4244: '+=' : conversion de 'double' en 'float', perte possible de données
-c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 8\consoleapplication1\entity.cpp(159): warning C4244: '-=' : conversion de 'double' en 'float', perte possible de données
-c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 8\consoleapplication1\entity.cpp(168): warning C4244: '-=' : conversion de 'double' en 'float', perte possible de données
+﻿  World.cpp
+c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 8\consoleapplication1\entity.hpp(116): warning C4244: '=' : conversion de 'float' en 'int', perte possible de données
+c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 8\consoleapplication1\entity.hpp(117): warning C4244: '=' : conversion de 'float' en 'int', perte possible de données
+c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 8\consoleapplication1\world.cpp(24): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
+c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 8\consoleapplication1\world.cpp(32): warning C4244: 'argument' : conversion de 'double' en 'float', perte possible de données
+c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 8\consoleapplication1\world.cpp(47): warning C4244: '=' : conversion de 'double' en 'T', perte possible de données
+          with
+          [
+              T=float
+          ]
+c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 8\consoleapplication1\world.cpp(48): warning C4244: '=' : conversion de 'double' en 'T', perte possible de données
+          with
+          [
+              T=float
+          ]
+c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 8\consoleapplication1\world.cpp(50): warning C4244: '=' : conversion de 'double' en 'T', perte possible de données
+          with
+          [
+              T=float
+          ]
+c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 8\consoleapplication1\world.cpp(51): warning C4244: '=' : conversion de 'double' en 'T', perte possible de données
+          with
+          [
+              T=float
+          ]
+c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 8\consoleapplication1\world.cpp(64): warning C4244: '=' : conversion de 'double' en 'T', perte possible de données
+          with
+          [
+              T=float
+          ]
+c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 8\consoleapplication1\world.cpp(65): warning C4244: '=' : conversion de 'double' en 'T', perte possible de données
+          with
+          [
+              T=float
+          ]
+c:\users\couet\onedrive\bureau\allan\hae_gp2\visual studio\cours 8\consoleapplication1\world.cpp(117): warning C4244: 'return' : conversion de 'double' en 'float', perte possible de données
   ConsoleApplication1.vcxproj -> C:\Users\couet\OneDrive\Bureau\Allan\hae_gp2\Visual Studio\cours 8\ConsoleApplication1\x64\Debug\ConsoleApplication1.exe

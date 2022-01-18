@@ -1,7 +1,6 @@
 #include <iostream>
 #include <cstdio>
 #include <cstdlib>
-#include "Tool.hpp"
 #include <algorithm>
 #include <vector>
 
@@ -54,7 +53,7 @@ int main()
 	RectangleShape* heroSprite = new RectangleShape(Vector2f(15,35));
 	heroSprite->setFillColor(Color::Red);
 	heroSprite->setOrigin(heroSprite->getSize().x / 2, heroSprite->getSize().y);
-	Entity* player = new Entity(heroSprite, 15, 15);
+	World::player = new Entity(heroSprite, 15, 15);
 	
 
 	
@@ -69,8 +68,9 @@ int main()
 	bool hasJumped = false;
 	//bool enterWasPressed = false;
 	World data;
-	data.objects.push_back(player);
+	data.objects.push_back(World::player);
 	drawGrid(data);
+	World::dij.init(Vector2i(World::player->cx, World::player->cy));
 	//----------------------------------------  IMGUI STUFF  -------------------------------------------------------------
 	float bgCol[3] = { 0,0,0 };
 	Clock clock;
@@ -79,8 +79,60 @@ int main()
 		sf::Event event;
 		double dt = tExitFrame - tEnterFrame;
 		tEnterFrame = getTimeStamp(); //calculer le temps entre chaque frame pour les vitesses
+		bool shifIsPressed = sf::Keyboard::isKeyPressed(sf::Keyboard::LShift);
 		while (window.pollEvent(event)) {
 			ImGui::SFML::ProcessEvent(event);//Intégration IMGUI
+
+			if (event.type == sf::Event::MouseButtonPressed) {
+
+				if (shifIsPressed) {
+					auto cx = event.mouseButton.x / Entity::stride;
+					auto cy = event.mouseButton.y / Entity::stride;
+
+					auto& p = World::currentPath;
+					World::currentPath.clear();
+					sf::Vector2i start = sf::Vector2i(World::player->cx, World::player->cy);
+					sf::Vector2i end = sf::Vector2i(cx, cy);
+
+					sf::Vector2i cur = end;
+					World::currentPath.push_back(end);
+					while (cur != start) {
+						auto pos = World::dij.pred.find(cur);
+						if (pos != World::dij.pred.end()) {
+							cur = World::dij.pred[cur];
+							World::currentPath.push_back(cur);
+						}
+						else {
+							World::currentPath.clear();
+							break;
+						}
+					}
+					std::reverse(p.begin(), p.end());
+					World::player->curPath = p;
+				}
+				else {
+					auto cx = event.mouseButton.x / Entity::stride;
+					auto cy = event.mouseButton.y / Entity::stride;
+
+					int pos = -1;
+					int idx = 0;
+					for (auto& v : World::walls) {
+						if (v.x == cx && v.y == cy)
+							pos = idx;
+						idx++;
+					}
+
+					if (pos < 0)
+						World::walls.push_back(sf::Vector2i(cx, cy));
+					else
+						World::walls.erase(World::walls.begin() + pos);
+				}
+			}
+			if (event.type == sf::Event::KeyReleased) {
+				if (event.key.code == sf::Keyboard::Enter) {
+					World::dij.compute(sf::Vector2i(World::player->cx, World::player->cy));
+				}
+			}
 			switch (event.type)
 			{
 
@@ -92,7 +144,6 @@ int main()
 				if (event.key.code == sf::Keyboard::Escape)
 					window.close();
 
-				if(event.key.code == sf::Keyboard::Enter)
 				break;
 
 			default:
@@ -127,23 +178,14 @@ int main()
 		bool mouseIsReleased = (!mouseLeftIsPressed && mouseLeftWasPressed);
 		
 
-		if (mouseLeftIsPressed && !mouseLeftWasPressed) {
-			Vector2f mousePos = sf::Vector2f(sf::Mouse::getPosition(window));
-			RectangleShape* wallShape = new RectangleShape(Vector2f(player->stride, player->stride));
-			wallShape->setFillColor(Color::Blue);
-			Entity* wall = new Entity(wallShape, mousePos.x/player->stride, mousePos.y / player->stride, Wall);
-			data.objects.push_back(wall);
-			//Faire apparaître un mur au niveau du clic
-			player->click++;
-			
-		}
-
 
 
 		if (mouseLeftIsPressed)
 			mouseLeftWasPressed = true;
 		else
 			mouseLeftWasPressed = false;
+
+		auto player = World::player;
 
 		ImGui::SFML::Update(window, clock.restart());
 

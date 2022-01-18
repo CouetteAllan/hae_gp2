@@ -6,6 +6,8 @@
 #include <math.h>
 #include "World.hpp"
 #include <map>
+#include <optional>
+#include "Tool.hpp"
 
 using namespace sf;
 
@@ -101,6 +103,9 @@ public:
 
 	const inline static int stride = 32;
 
+	std::vector<sf::Vector2i>	curPath;
+	std::optional<sf::Vector2i> target;
+
 
 	int click = 0;
 
@@ -124,7 +129,7 @@ public:
 	void setState(State* state);
 	void syncSprite();
 	void update(double dt);
-	void handleCollisions(Entity* e = nullptr);
+	void updatePath(double dt);
 	void draw(RenderWindow &win);
 
 	bool isColliding(int _cx, int _cy);
