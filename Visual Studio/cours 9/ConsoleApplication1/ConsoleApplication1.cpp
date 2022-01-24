@@ -16,6 +16,7 @@
 #include <sys/stat.h>
 #include <stdio.h>
 #include <errno.h>
+#include "HotReloadShader.hpp"
 
 #include "imgui.h"
 #include "imgui-SFML.h"
@@ -41,6 +42,8 @@ void drawGrid(World& data) {
 
 sf::Shader g_MainShaderNoTex;
 sf::Shader g_MainShaderTex;
+
+HotReloadShader g_bgShader;
 
 bool loadFile(const char* path, std::string& res) {
 	FILE* f = 0;
@@ -99,12 +102,17 @@ int main()
 		}
 	}
 
+
+
+	g_bgShader.vtxPath = "res/bg.vert";
+	g_bgShader.fragPath = "res/bg.frag";
+	g_bgShader.eval();
+
 	sf::Texture bg;
 	if (!bg.loadFromFile("res/bg.jpg")) {
 		printf("fail load bg");
 		return 1;
 	}
-
 
 	RectangleShape* heroSprite = new RectangleShape(Vector2f(15,35));
 	heroSprite->setFillColor(Color::Red);
@@ -131,6 +139,7 @@ int main()
 	float bgCol[4] = { 0,0,0,1 };
 	float multiplier = 0.1f;
 	Clock clock;
+	Clock time;
 	int click = 0;
 	while (window.isOpen()) {
 		sf::Event event;
@@ -207,47 +216,28 @@ int main()
 				break;
 			}
 		}
-		float deltaX = dt * 360;
-		float deltaY = dt * 360;
-		bool keyHit = false;
-
-		/*if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) || sf::Keyboard::isKeyPressed(sf::Keyboard::Z)) {
-			player->dy -= 10;
-			player->isGrounded = false;
-		}
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down) || sf::Keyboard::isKeyPressed(sf::Keyboard::S)) {
-			player->dy += 1;
-		}*/
-
-		
-
-		/*if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && !hasJumped && player->isGrounded) {
-			player->dy -= 30;
-			hasJumped = true;
-			player->isGrounded = false;
-		}
-		else
-			hasJumped = false;*/
-
-
 		
 		bool mouseLeftIsPressed = sf::Mouse::isButtonPressed(sf::Mouse::Left);
 		bool mouseIsReleased = (!mouseLeftIsPressed && mouseLeftWasPressed);
-		
-
-
 
 		if (mouseLeftIsPressed)
 			mouseLeftWasPressed = true;
 		else
 			mouseLeftWasPressed = false;
+		
+
+
+
+
+		
 
 		auto player = World::player;
 
-		ImGui::SFML::Update(window, clock.restart());
-
 		
+
+
 			
+		ImGui::SFML::Update(window, clock.restart());
 
 		ImGui::Begin("Coordonates");
 		static bool modified;
@@ -267,32 +257,53 @@ int main()
 		if (modified)
 			player->syncSprite();
 		ImGui::End();
-		ImGui::Begin("Shader");
-		if (ImGui::ColorEdit4("Bg Color", bgCol)) {
-			g_MainShaderTex.setUniform("col", Glsl::Vec4(
-				bgCol[0],
-				bgCol[1],
-				bgCol[2],
-				bgCol[3]));
+
+		static sf::Glsl::Vec4 colAdd = sf::Glsl::Vec4(0, 0, 0, 0);
+		static sf::Glsl::Vec4 colMul = sf::Glsl::Vec4(1, 1, 1, 1);
+
+		float id[] = {
+			1,0,0,0,
+			0,1,0,0,
+			0,0,1,0,
+			0,0,0,1,
+		};
+		static sf::Glsl::Mat4 colTrans = sf::Glsl::Mat4(
+			id
+		);
+
+		if (ImGui::Begin("Shader", 0)) {
+			if (ImGui::TreeNode("Add")) {
+				ImGui::ColorEdit4("colAdd", &colAdd.x);
+				ImGui::TreePop();
+			}
+			if (ImGui::TreeNode("Mul")) {
+				ImGui::ColorEdit4("colMul", &colMul.x);
+				ImGui::TreePop();
+			}
+
+			if (ImGui::TreeNode("Trans")) {
+				ImGui::ColorEdit4("r", &colTrans.array[0]);
+				ImGui::ColorEdit4("g", &colTrans.array[4]);
+				ImGui::ColorEdit4("b", &colTrans.array[8]);
+				ImGui::ColorEdit4("a", &colTrans.array[12]);
+				ImGui::TreePop();
+			}
 		}
 		ImGui::End();
+
+		g_bgShader.update(dt);
 
 		if (multiplier > 0) {
 
 			bgCol[0] += multiplier * dt * 2;
 			bgCol[1] += multiplier * dt * 2;
 			bgCol[2] += multiplier * dt * 2;
-			g_MainShaderTex.setUniform("colAdd", Glsl::Vec4(
-				bgCol[0],
-				bgCol[1],
-				bgCol[2],
-				bgCol[3]));
 			if (bgCol[0] >= 1) {
 				multiplier = -multiplier;
 			}
 		}
 
-		if (multiplier < 0) {
+		/*if (multiplier < 0) {
 			bgCol[0] += multiplier * dt * 2;
 			bgCol[1] += multiplier * dt * 2;
 			bgCol[2] += multiplier * dt * 2;
@@ -305,13 +316,12 @@ int main()
 			if (bgCol[0] <= 0) {
 				multiplier = -multiplier;
 			}
-		}
+		}*/
 
 		//ImGui::ShowDemoWindow(&activeTool);
-
-		////////////////////
+		  
 		//CLEAR
-		window.clear();
+		window.clear(Color::Blue);
 
 		////////////////////
 		//UPDATE
@@ -321,9 +331,22 @@ int main()
 		sf::RectangleShape rectBg;
 		rectBg.setTexture(&bg);
 		rectBg.setSize(sf::Vector2f(1280, 720));
-		sf::RenderStates rs;
+		auto v = sf::Glsl::Vec4(1.0f, 1.0f, 1.0f, 1.0f);
+
+		{
+			auto& sh = g_bgShader.sh;
+			sh.setUniform("dt", time.getElapsedTime().asSeconds());
+			sh.setUniform("col", v);
+			sh.setUniform("colAdd", colAdd);
+			sh.setUniform("colMul", colMul);
+			sh.setUniform("colTrans", colTrans);
+			sf::RenderStates rs;
+			rs.shader = &sh;
+			window.draw(rectBg, rs);
+		}
+		/*sf::RenderStates rs;
 		rs.shader = &g_MainShaderTex;
-		window.draw(rectBg, rs);
+		window.draw(rectBg, rs);*/
 
 
 		data.draw(window);

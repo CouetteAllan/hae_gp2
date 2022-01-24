@@ -19,12 +19,7 @@ void main()
     #ifdef HAS_TEXTURE
     vec4 pixel = texture2D(texture, gl_TexCoord[0].xy);
     #else
-
-    	#ifdef HAS_ADD_COLOR
-    	vec4 pixel = vec4(0.0f,0.0f,0.0f,1.0f);
-    	#else
-    	vec4 pixel = vec4(1.0f,1.0f,1.0f,1.0f);
-    	#endif 
+	vec4 pixel = vec4(1.0f,1.0f,1.0f,1.0f);
     #endif
 
     #ifdef HAS_UNIFORM_COLOR
